@@ -971,7 +971,109 @@ section { position: relative; z-index: 2; }
   margin: 0 auto;
 }
 
+
+/* === VIDEO SECTION === */
+.mc-video {
+  padding: 120px 0;
+  background: var(--charcoal);
+  color: var(--cream);
+  position: relative;
+  z-index: 2;
+}
+.mc-video-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.mc-video-header .section-eyebrow {
+  color: var(--stone);
+  justify-content: center;
+}
+.mc-video-header .section-eyebrow::before { display: none; }
+.mc-video-header .section-eyebrow::after {
+  content: "";
+  height: 1px;
+  width: 40px;
+  background: var(--stone);
+}
+.mc-video-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  font-variation-settings: "opsz" 144;
+  margin-bottom: 16px;
+}
+.mc-video-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--stone);
+}
+.mc-video-sub {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-style: italic;
+  color: rgba(255, 253, 245, 0.7);
+  max-width: 540px;
+  margin: 0 auto;
+}
+.mc-video-frame {
+  max-width: 940px;
+  margin: 0 auto;
+}
+.mc-video-aspect {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--cream);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow:
+    0 40px 100px -30px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(227, 211, 200, 0.15);
+}
+.mc-video-aspect iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.mc-video-caption {
+  text-align: center;
+  margin-top: 28px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 245, 0.5);
+}
+@media (max-width: 900px) {
+  .mc-video { padding: 70px 0; }
+  .mc-video-frame { padding: 0 16px; }
+}
+
 </style>
+
+<!-- ====== CLICKFUNNELS INTEGRATION ====== -->
+<!-- These meta tags + scripts let our form behave like a native ClickFunnels form.
+     Pulled from her existing reg page; required so submissions register against
+     her funnel + AutoResponder list "Webinar (Masterclass) registered" (id 4). -->
+<meta property="cf:app_domain" content="app.clickfunnels.com">
+<meta property="cf:page_code" content="webinar-registration-page1678444143249">
+<meta property="cf:page_id" content="58576570">
+<meta property="cf:user_id" content="3942404">
+<meta property="cf:funnel_id" content="">
+<meta property="cf:funnel_step_id" content="">
+<meta property="cf:visitor_id" content="">
+
+<script src="//www.tiffanysmasterclass.com/assets/userevents/application.js" async></script>
+<script src="//www.tiffanysmasterclass.com/assets/lander.js" defer></script>
+
+<!-- ClickFunnels expects this hidden form to exist for tracking metadata.
+     Their JS reads it and writes utm/affiliate values into it on page load. -->
 
 <!-- Meta Pixel Code -->
 <script>
@@ -989,6 +1091,13 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 
 </head>
 <body>
+
+<!-- ClickFunnels metadata form — populated by application.js on page load.
+     Hidden, never displayed. Required for proper attribution tracking. -->
+<form id="cfAR" style="display:none" aria-hidden="true">
+  <input type="hidden" name="cf_uvid" id="cf_uvid_global">
+</form>
+
 
 <!-- ============ NAV ============ -->
 <nav class="nav">
@@ -1042,6 +1151,29 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
     <span>Build Anywhere</span>
   </div>
 </div>
+
+
+<!-- ============ VIDEO INTRO ============ -->
+<section class="mc-video">
+  <div class="container">
+    <div class="mc-video-header reveal-on-scroll">
+      <div class="section-eyebrow">Two-Minute Preview</div>
+      <h2 class="mc-video-title">Take a look <em>inside the class</em>.</h2>
+      <p class="mc-video-sub">A quick walk-through of what we'll cover, and why this niche actually works.</p>
+    </div>
+    <div class="mc-video-frame reveal-on-scroll">
+      <div class="mc-video-aspect">
+        <iframe
+          src="https://player.vimeo.com/video/802581923"
+          title="Tiffany Haynes Masterclass Intro"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          loading="lazy"></iframe>
+      </div>
+      <div class="mc-video-caption">Press play &mdash; or skip ahead to register below</div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ REVEAL ============ -->
 <section class="mc-reveal">
@@ -1159,46 +1291,49 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       Save your spot below. You'll get a confirmation email, a calendar hold, and a short prep note from me before we begin.
     </p>
     <!--
-  PLACEHOLDER FORM HANDLER — Wire to ClickFunnels at go-live.
+  CLICKFUNNELS WEBINAR REGISTRATION FORM
+  Posts directly to Tiffany's existing ClickFunnels endpoint:
+  https://www.tiffanysmasterclass.com/webinar-registration-page1678444143249
 
-  Tiffany's existing masterclass registration runs on ClickFunnels
-  (confirmed via application.js on tiffanysmasterclass.com).
+  Field names match ClickFunnels convention (contact[first_name] etc).
+  Adds to her existing AutoResponder list "Webinar (Masterclass) registered"
+  (list ID 4). Email automation, webinar flow, post-submit redirect — all
+  handled by ClickFunnels exactly as they work on her existing funnel today.
 
-  TO WIRE: Inspect the form on her live webinar reg page, grab the
-  form `action` URL + input `name` attributes, swap them in here.
-
-  See TRACKING-SNIPPETS.html in this folder for full integration steps.
-
-  Current behavior: submit handler at bottom of file shows success state
-  + fires Facebook Pixel Lead event + logs data to console.
+  Hidden fields capture timezone + UTM attribution (populated by JS at bottom).
+  FB Pixel Lead event fires before submit, also via JS at bottom.
 -->
-<form class="mc-form" id="mc-form">
+<form
+      id="mc-form"
+      class="mc-form"
+      action="https://www.tiffanysmasterclass.com/webinar-registration-page1678444143249"
+      method="POST"
+      data-cf-form-action="true">
+
       <div class="mc-form-row">
         <div class="field">
-          <label>First Name</label>
-          <input type="text" required placeholder="Your first name">
+          <label for="cf_first_name">First Name</label>
+          <input type="text" id="cf_first_name" name="contact[first_name]" required placeholder="Your first name" autocomplete="given-name">
         </div>
         <div class="field">
-          <label>Last Name</label>
-          <input type="text" required placeholder="Your last name">
+          <label for="cf_last_name">Last Name</label>
+          <input type="text" id="cf_last_name" name="contact[last_name]" required placeholder="Your last name" autocomplete="family-name">
         </div>
       </div>
-      <div class="mc-form-row">
-        <div class="field">
-          <label>Email</label>
-          <input type="email" required placeholder="you@example.com">
-        </div>
-        <div class="field">
-          <label>Where you heard about us</label>
-          <select>
-            <option>Instagram</option>
-            <option>TikTok</option>
-            <option>Facebook</option>
-            <option>A friend</option>
-            <option>Other</option>
-          </select>
-        </div>
+      <div class="field" style="margin-bottom: 18px;">
+        <label for="cf_email">Email</label>
+        <input type="email" id="cf_email" name="contact[email]" required placeholder="you@example.com" autocomplete="email">
       </div>
+
+      <!-- ClickFunnels-required hidden fields (auto-populated by JS) -->
+      <input type="hidden" name="cf-state-county-dropdown-feature-enabled" value="true">
+      <input type="hidden" name="contact[time_zone]" id="cf_time_zone" value="">
+      <input type="hidden" name="utm_source" id="cf_utm_source" value="">
+      <input type="hidden" name="utm_medium" id="cf_utm_medium" value="">
+      <input type="hidden" name="utm_campaign" id="cf_utm_campaign" value="">
+      <input type="hidden" name="utm_content" id="cf_utm_content" value="">
+      <input type="hidden" name="utm_term" id="cf_utm_term" value="">
+
       <button type="submit" class="btn-primary">
         Confirm My Seat
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -1206,13 +1341,6 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <p class="mc-form-note">Your information stays with us. No spam, ever.</p>
     </form>
 
-    <!-- Success state — fades in after form submit -->
-    <div class="mc-success" id="mc-success" hidden>
-      <div class="mc-success-icon">&#10003;</div>
-      <h3 class="mc-success-title">You're <em>in</em>.</h3>
-      <p class="mc-success-body">Check your inbox in the next few minutes — confirmation, calendar hold, and a short prep note from me before we begin.</p>
-      <p class="mc-success-meta">If you don't see it, check your spam folder.</p>
-    </div>
   </div>
 </section>
 
@@ -1263,29 +1391,31 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
 
-  // === MASTERCLASS FORM SUBMIT HANDLER ===
-  // Currently a placeholder: shows success state + fires FB Pixel Lead event.
-  // Replace event listener body with real provider integration when ready.
+  // === MASTERCLASS FORM ===
+  // Wired to ClickFunnels webinar registration endpoint.
+  // 1. On page load: capture browser timezone + any UTM params from URL
+  // 2. On submit: fire FB Pixel Lead event, then let form POST to ClickFunnels
+  // 3. ClickFunnels handles: list addition, email automation, redirect to thank-you
   const mcForm = document.getElementById('mc-form');
   if (mcForm) {
-    mcForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(this));
-      console.log('Form submission (placeholder \u2014 wire to real backend):', data);
+    // Populate hidden CF tracking fields on page load
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const tzEl = document.getElementById('cf_time_zone');
+      if (tzEl && tz) tzEl.value = tz;
 
-      // Fire Facebook Pixel Lead event so tracked conversions still register
+      const params = new URLSearchParams(window.location.search);
+      ['source','medium','campaign','content','term'].forEach(function(k) {
+        const el = document.getElementById('cf_utm_' + k);
+        const val = params.get('utm_' + k);
+        if (el && val) el.value = val;
+      });
+    } catch (err) { /* non-fatal — form still works without enrichment */ }
+
+    // Fire FB Pixel Lead event on submit, then let form post naturally
+    mcForm.addEventListener('submit', function() {
       if (window.fbq) fbq('track', 'Lead');
-
-      // Fade form out, fade success state in
-      this.style.opacity = '0';
-      setTimeout(() => {
-        this.hidden = true;
-        const success = document.getElementById('mc-success');
-        success.hidden = false;
-        success.style.opacity = '0';
-        requestAnimationFrame(() => { success.style.opacity = '1'; });
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 400);
+      // No preventDefault() — browser submits to ClickFunnels normally
     });
   }
 </script>
