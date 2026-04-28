@@ -757,6 +757,269 @@ section { position: relative; z-index: 2; }
   .gm-def, .gm-principles, .gm-quote, .gm-practice, .gm-final { padding: 80px 0; }
   .proposal-note { bottom: 16px; left: 16px; right: 16px; max-width: none; }
 }
+
+/* ============ GOD'S MATH PAGE ADDITIONS ============ */
+
+/* Video section — dark frame for the YouTube embed */
+.gm-video {
+  background: var(--charcoal);
+  padding: 100px 0;
+  position: relative;
+}
+.gm-video-eyebrow {
+  text-align: center;
+  font-family: var(--font-utility);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.6;
+  margin-bottom: 24px;
+}
+.gm-video-title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--cream);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 48px;
+  letter-spacing: -0.01em;
+}
+.gm-video-title em {
+  font-style: italic;
+  color: var(--stone-deep);
+}
+.gm-video-frame {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+.gm-video-frame iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Inspired-by section — three stories of revelation */
+.gm-inspired {
+  background: var(--cream-warm);
+  padding: 120px 0;
+}
+.gm-inspired-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 80px;
+}
+.gm-inspired-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.gm-inspired-card {
+  background: var(--cream);
+  padding: 48px 40px;
+  border-left: 3px solid var(--red);
+}
+.gm-inspired-card h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 20px;
+  line-height: 1.25;
+  font-style: italic;
+}
+.gm-inspired-card p {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--charcoal);
+}
+@media (max-width: 900px) {
+  .gm-inspired-grid { grid-template-columns: 1fr; gap: 24px; }
+  .gm-inspired-card { padding: 36px 28px; }
+}
+
+/* God's Math Gear / merch section */
+.gm-gear {
+  background: var(--red);
+  color: var(--cream);
+  padding: 100px 0;
+  text-align: center;
+}
+.gm-gear-eyebrow {
+  font-family: var(--font-utility);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+.gm-gear-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+.gm-gear-title em { font-style: italic; }
+.gm-gear-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 32px;
+  max-width: 700px;
+  margin: 0 auto 48px;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 18px;
+  opacity: 0.9;
+}
+.gm-gear-tags span::before { content: "✦"; margin-right: 12px; opacity: 0.6; }
+.gm-gear-cta {
+  display: inline-block;
+  background: var(--cream);
+  color: var(--red);
+  padding: 18px 44px;
+  font-family: var(--font-utility);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.gm-gear-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+/* "How to Understand" three-step section */
+.gm-understand {
+  background: var(--linen);
+  padding: 120px 0;
+}
+.gm-understand-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 80px;
+}
+.gm-understand-steps {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+.gm-understand-step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.gm-understand-num {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--red);
+  font-style: italic;
+  line-height: 1;
+}
+.gm-understand-content h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 16px;
+  letter-spacing: -0.005em;
+}
+.gm-understand-content p {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--charcoal);
+}
+.gm-understand-content .scripture {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--font-utility);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+}
+@media (max-width: 700px) {
+  .gm-understand-step { grid-template-columns: 1fr; gap: 12px; }
+  .gm-understand-num { font-size: 48px; }
+}
+
+/* Scripture badge for the 4 attributes section */
+.scripture-badge {
+  display: inline-block;
+  font-family: var(--font-utility);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding: 6px 14px;
+  border: 1px solid var(--red);
+  border-radius: 999px;
+}
+
+/* Hero CTAs — dual button layout */
+.gm-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+.gm-hero-cta-primary,
+.gm-hero-cta-secondary {
+  display: inline-block;
+  padding: 16px 36px;
+  font-family: var(--font-utility);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+.gm-hero-cta-primary {
+  background: var(--red);
+  color: var(--cream);
+}
+.gm-hero-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(160,6,5,0.25);
+}
+.gm-hero-cta-secondary {
+  background: transparent;
+  color: var(--charcoal);
+  border: 1.5px solid var(--charcoal);
+}
+.gm-hero-cta-secondary:hover {
+  background: var(--charcoal);
+  color: var(--cream);
+}
+
 </style>
 
 <!-- Meta Pixel Code -->
@@ -793,26 +1056,30 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 <!-- ============ HERO ============ -->
 <section class="gm-hero">
   <div class="gm-hero-inner">
-    <div class="gm-hero-eyebrow">The Framework</div>
+    <div class="gm-hero-eyebrow">A Teaching from Tiffany</div>
     <h1 class="gm-hero-title">God's <em>Math</em>.</h1>
-    <p class="gm-hero-equation">It disrupts. It breaks the rules. It's mind-boggling. <span class="eq">1 + 1 = 10,000.</span></p>
-    <p class="gm-hero-sub">A different equation for what's possible. The supernatural formula where divine partnership creates exponential results — and the operating principle behind everything I teach.</p>
+    <p class="gm-hero-sub">What an honor it will be to teach you about God's Math. As recipient and heir of God's Math I realized that many hadn't tapped into it. I want to be the first to walk you through the supernatural experience of God being a mathematician in your life.</p>
+    <div class="gm-hero-ctas">
+      <a href="http://tiffanyhaynesco.com/god-s-math-part-1" target="_blank" rel="noopener" class="gm-hero-cta-primary">Watch the Training</a>
+      <a href="#understand" class="gm-hero-cta-secondary">Start Here</a>
+    </div>
   </div>
 </section>
 
-<!-- ============ DEFINITION ============ -->
-<section class="gm-def">
+<!-- ============ VIDEO ============ -->
+<section class="gm-video">
   <div class="container">
-    <div class="gm-def-grid">
-      <div class="reveal-on-scroll">
-        <h2 class="gm-def-title">What is <em>God's Math</em>?</h2>
-      </div>
-      <div class="gm-def-body reveal-on-scroll">
-        <p class="lede">It's the math that doesn't add up — until it does.</p>
-        <p>Earthly math says one plus one equals two. Effort plus time equals output. Capital plus labor equals return. The numbers track. The results are predictable.</p>
-        <p>God's Math doesn't follow that rule. It says one act of obedience can produce a return ten thousand times what you put in. It says the woman who tithes from the bottom can build wealth that no spreadsheet predicted. It says the small business with the right partnership outpaces the funded one with the right consultant.</p>
-        <p>That's the framework I run my businesses on. Not in place of strategy — alongside it. Not against the work — through the work. Every system, every hire, every offer is built knowing that the math is supposed to break.</p>
-      </div>
+    <div class="gm-video-eyebrow">Real Talk</div>
+    <h2 class="gm-video-title">Hear the revelation in <em>Tiffany's own voice</em>.</h2>
+    <div class="gm-video-frame">
+      <iframe
+        src="https://www.youtube.com/embed/I37ahtoZyWY?rel=0&showinfo=0"
+        title="God's Math — Tiffany Haynes"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
     </div>
   </div>
 </section>
@@ -820,110 +1087,147 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 <!-- ============ MARQUEE ============ -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>1 + 1 = 10,000</span>
     <span>It Disrupts</span>
     <span>It Breaks the Rules</span>
+    <span>It's Mind Boggling</span>
     <span>It's Supernatural</span>
-    <span>1 + 1 = 10,000</span>
     <span>It Disrupts</span>
     <span>It Breaks the Rules</span>
+    <span>It's Mind Boggling</span>
     <span>It's Supernatural</span>
   </div>
 </div>
 
-<!-- ============ PRINCIPLES ============ -->
-<section class="gm-principles">
+<!-- ============ HOW TO UNDERSTAND ============ -->
+<section class="gm-understand" id="understand">
   <div class="container">
-    <div class="gm-principles-header reveal-on-scroll">
-      <div class="section-eyebrow">The Principles</div>
-      <h2 class="section-title">Four ways the math <em>breaks</em>.</h2>
+    <div class="gm-understand-header reveal-on-scroll">
+      <div class="section-eyebrow">The Foundation</div>
+      <h2 class="section-title">To understand <em>God's Math</em>...</h2>
     </div>
-    <div class="gm-principles-grid">
-      <div class="principle-card reveal-on-scroll">
-        <div class="principle-symbol">+</div>
-        <h3 class="principle-title">Multiplication where there should be <em>addition</em>.</h3>
-        <p class="principle-body">When you partner with God in your work, the output exceeds the input. The hours you put in get multiplied. The effort gets stretched further than it should. Every CEO I know who operates this way says the same thing: I cannot explain how this got built.</p>
+    <div class="gm-understand-steps">
+      <div class="gm-understand-step reveal-on-scroll">
+        <div class="gm-understand-num">01</div>
+        <div class="gm-understand-content">
+          <h3>Forget what you know.</h3>
+          <p>You first need to abandon everything you learned in school. Your man-made calculator won't be necessary, and your human logic is not invited.</p>
+          <span class="scripture">Isaiah 55:8&ndash;9</span>
+        </div>
       </div>
-      <div class="principle-card reveal-on-scroll">
-        <div class="principle-symbol">−</div>
-        <h3 class="principle-title">Subtraction that <em>creates</em> abundance.</h3>
-        <p class="principle-body">Tithing. Sabbath. Saying no. The world calls them losses. God's Math calls them deposits. Every time you give back what was given, the next deposit comes bigger. The math runs in reverse — and somehow you end up with more.</p>
+      <div class="gm-understand-step reveal-on-scroll">
+        <div class="gm-understand-num">02</div>
+        <div class="gm-understand-content">
+          <h3>Understand how you qualify.</h3>
+          <p>As a part of your inheritance there are some perks you qualify for that will ensure your life is set apart from others. God's Math is one of those perks.</p>
+        </div>
       </div>
-      <div class="principle-card reveal-on-scroll">
-        <div class="principle-symbol">×</div>
-        <h3 class="principle-title">Compound returns on <em>obedience</em>.</h3>
-        <p class="principle-body">Small acts of faithfulness compound. The hire you didn't see coming. The client referral that opens a door. The decision you made when no one was watching that pays off three years later. The math is patient. It's also unstoppable.</p>
-      </div>
-      <div class="principle-card reveal-on-scroll">
-        <div class="principle-symbol">=</div>
-        <h3 class="principle-title">A different definition of <em>enough</em>.</h3>
-        <p class="principle-body">The world tells you what success looks like. God's Math redefines the equation entirely. Enough isn't a number — it's a posture. And the moment you stop chasing the wrong sum, the right one tends to arrive.</p>
+      <div class="gm-understand-step reveal-on-scroll">
+        <div class="gm-understand-num">03</div>
+        <div class="gm-understand-content">
+          <h3>Know what you need to start.</h3>
+          <p>God is simple, and He doesn't need much to have a performance of His math in your life. To activate His math, all you need is two.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ BIG QUOTE ============ -->
+<!-- ============ WHAT INSPIRED ============ -->
+<section class="gm-inspired">
+  <div class="container">
+    <div class="gm-inspired-header reveal-on-scroll">
+      <div class="section-eyebrow">The Origin</div>
+      <h2 class="section-title">What inspired <em>this revelation</em>?</h2>
+    </div>
+    <div class="gm-inspired-grid">
+      <div class="gm-inspired-card reveal-on-scroll">
+        <h3>Understanding the power of two.</h3>
+        <p>When studying Ecclesiastes 4:9, it reads "two are better than one." I researched the Greek definition of <em>better</em> and saw it was defined as: prosperity, wealth, precious, favor, benefit.</p>
+      </div>
+      <div class="gm-inspired-card reveal-on-scroll">
+        <h3>Watching the pattern in scripture.</h3>
+        <p>One can chase a thousand, but two can put ten thousand to flight. The energy required to chase something is a vast difference from simply adding one person to put ten thousand to flight. In the Bible, <em>flight</em> means to cause to disappear.</p>
+      </div>
+      <div class="gm-inspired-card reveal-on-scroll">
+        <h3>Looking at my own life.</h3>
+        <p>A decade ago I was filled with uncertainty, my life in shambles. Once I came into agreement with what God had designed for my life, I began to see God's Math reflected in ways that only God Himself can take credit for.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIAL QUOTE ============ -->
 <section class="gm-quote">
   <div class="container">
     <p class="gm-quote-text reveal-on-scroll">
-      Every business I've built was built on the math that didn't add up.<br>
-      <span>And it kept adding up anyway.</span>
+      So good. I definitely put "God's Math" as my screensaver so I can see it everyday.<br>
+      <span>It disrupts. It breaks the rules. It's mind-boggling. It's supernatural.</span>
     </p>
-    <div class="gm-quote-attr reveal-on-scroll">— Tiffany Haynes</div>
+    <div class="gm-quote-attr reveal-on-scroll">- Chenise Lockett</div>
   </div>
 </section>
 
-<!-- ============ IN PRACTICE ============ -->
-<section class="gm-practice">
+<!-- ============ THE 4 ATTRIBUTES ============ -->
+<section class="gm-principles">
   <div class="container">
-    <div class="gm-practice-header reveal-on-scroll">
-      <div>
-        <div class="section-eyebrow">In Practice</div>
-        <h2 class="section-title">What this looks like inside <em>a real business</em>.</h2>
-      </div>
-      <p style="font-family:var(--font-body);font-size:19px;line-height:1.65;color:var(--charcoal);max-width:460px;">
-        God's Math is not a theory I teach. It's the operating system behind every decision I've made — and every result I've watched unfold because of it.
-      </p>
+    <div class="gm-principles-header reveal-on-scroll" style="text-align:center;">
+      <div class="scripture-badge">Deuteronomy 32:30</div>
+      <h2 class="section-title">Four ways God's Math <em>shows up</em>.</h2>
     </div>
-    <div class="gm-practice-list">
-      <div class="practice-item reveal-on-scroll">
-        <div class="practice-num">i</div>
-        <h3 class="practice-title"><em>Hiring</em> by alignment, not by résumé.</h3>
-        <p class="practice-body">The best hires I ever made were not the most credentialed ones on paper. They were the ones the framework kept pointing to. My COO Tristan was my first hire — and is still here years later because the alignment was right from day one.</p>
+    <div class="gm-principles-grid">
+      <div class="principle-card reveal-on-scroll">
+        <div class="principle-symbol">✦</div>
+        <h3 class="principle-title">It <em>disrupts</em>.</h3>
+        <p class="principle-body">It is designed to disrupt patterns and be the example to the world that the cycle ends with you.</p>
       </div>
-      <div class="practice-item reveal-on-scroll">
-        <div class="practice-num">ii</div>
-        <h3 class="practice-title"><em>Pricing</em> from value, not from fear.</h3>
-        <p class="practice-body">Earthly math says price low to win volume. God's Math says price what the work is worth and trust the right clients to find you. Every time I raised prices in obedience to that, the right people showed up.</p>
+      <div class="principle-card reveal-on-scroll">
+        <div class="principle-symbol">✦</div>
+        <h3 class="principle-title">It <em>breaks</em> the rules.</h3>
+        <p class="principle-body">It's outside of standard education. Multiplication as you know it must be redefined.</p>
       </div>
-      <div class="practice-item reveal-on-scroll">
-        <div class="practice-num">iii</div>
-        <h3 class="practice-title"><em>Scaling</em> through release, not through grip.</h3>
-        <p class="practice-body">I scaled from one staff member to thirteen by letting go — of control, of the impulse to do everything myself, of the version of leadership that thinks holding tighter creates more. The looser I held, the bigger it got.</p>
+      <div class="principle-card reveal-on-scroll">
+        <div class="principle-symbol">✦</div>
+        <h3 class="principle-title">It's <em>mind boggling</em>.</h3>
+        <p class="principle-body">When you try to figure it out, you simply cannot. Because it makes no sense.</p>
       </div>
-      <div class="practice-item reveal-on-scroll">
-        <div class="practice-num">iv</div>
-        <h3 class="practice-title"><em>Stewardship</em> as the operating principle.</h3>
-        <p class="practice-body">Everything I've built belongs to God before it belongs to me. That single posture changes how you spend, how you give, how you recover from a hard quarter, and how you celebrate a good one. The math becomes about faithfulness — and the returns follow.</p>
+      <div class="principle-card reveal-on-scroll">
+        <div class="principle-symbol">✦</div>
+        <h3 class="principle-title">It's <em>supernatural</em>.</h3>
+        <p class="principle-body">It attaches to your natural and adds the super that is not of this world. It's Heavenly. It's favor. It's Glory.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FINAL ============ -->
+<!-- ============ GOD'S MATH GEAR ============ -->
+<section class="gm-gear">
+  <div class="container">
+    <div class="gm-gear-eyebrow">Wear the Word</div>
+    <h2 class="gm-gear-title">God's Math <em>Gear</em>.</h2>
+    <div class="gm-gear-tags">
+      <span>It Disrupts</span>
+      <span>It Breaks the Rules</span>
+      <span>It's Mind Boggling</span>
+      <span>It's Supernatural</span>
+    </div>
+    <p style="max-width: 540px; margin: 0 auto 32px; font-family: var(--font-body); font-size: 17px; opacity: 0.9; line-height: 1.6;">Come into agreement and stand on it. Grab your God's Math gear today and carry the revelation with you.</p>
+    <a href="https://merch.godsmath.com/" target="_blank" rel="noopener" class="gm-gear-cta">Grab the Gear</a>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
 <section class="gm-final">
-  <div class="container reveal-on-scroll">
-    <h2>The math is supposed to <em>break</em>.</h2>
-    <p>If you want to see what this looks like applied to a real, scalable, multi-six-figure business — start with the masterclass.</p>
-    <a href="/masterclass" class="btn-primary">
-      Attend the Masterclass
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
-    </a>
+  <div class="container">
+    <div class="reveal-on-scroll">
+      <div class="section-eyebrow">Want to Go Deeper?</div>
+      <h2>Watch the <em>God's Math</em> training.</h2>
+      <p style="max-width: 640px; margin: 24px auto 36px; font-family: var(--font-body); font-size: 19px; line-height: 1.6; color: var(--charcoal);">An incredible 10-part series where you can take the principles of God's Word and go deeper into adding God's Math to your life. Be sure to download the workbook that coincides with each training so you can be a doer and not just a reader.</p>
+      <a href="http://tiffanyhaynesco.com/god-s-math-part-1" target="_blank" rel="noopener" class="gm-hero-cta-primary">Watch the Training</a>
+    </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
+
 <footer class="footer">
   <div class="footer-top">
     <div>
@@ -959,11 +1263,6 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 </footer>
 
 <!-- Proposal note (only on this page since I drafted the content) -->
-<div class="proposal-note" onclick="this.style.display='none'" title="Click to dismiss">
-  Proposal copy — to be reviewed
-  <small>Tiffany's actual God's Math content should replace the body copy on this page. Visual structure stays.</small>
-</div>
-
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
