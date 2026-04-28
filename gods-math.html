@@ -7,7 +7,7 @@
 <meta name="description" content="The supernatural formula where divine partnership creates exponential results. 1 + 1 = 10,000." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Public+Sans:wght@300;400;500;600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* === SHARED DESIGN SYSTEM (inlined from styles.css) === */
 /* ============================================
@@ -1020,6 +1020,65 @@ section { position: relative; z-index: 2; }
   color: var(--cream);
 }
 
+
+/* ============ GOD'S MATH HERO — REDESIGN OVERRIDE ============ */
+/* Replaces the text-based H1 with the actual brand logo image,
+   adds a pencil-sketch math formula layer behind it. */
+
+.gm-hero {
+  min-height: auto;
+  padding: 140px 24px 100px;
+  background: var(--cream-warm);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  z-index: 1;
+}
+.gm-hero::after {
+  /* kill the giant decorative letter from the old design */
+  content: none !important;
+  display: none !important;
+}
+.gm-hero-sketch {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.13;
+  color: var(--charcoal);
+  font-family: 'Caveat', cursive;
+  user-select: none;
+}
+.gm-hero-sketch svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.gm-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+.gm-hero-logo {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto 36px;
+}
+.gm-hero-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 700px) {
+  .gm-hero { padding: 90px 20px 70px; }
+  .gm-hero-logo { max-width: 92%; margin-bottom: 28px; }
+  .gm-hero-sketch { opacity: 0.09; }
+}
+
 </style>
 
 <!-- Meta Pixel Code -->
@@ -1055,11 +1114,107 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 
 <!-- ============ HERO ============ -->
 <section class="gm-hero">
+
+  <!-- Pencil-sketch math layer: equations, scripture refs, and arrows
+       that work toward the logo as the answer/revelation.
+       Decorative; aria-hidden for accessibility. -->
+  <div class="gm-hero-sketch" aria-hidden="true">
+    <svg viewBox="0 0 1400 720" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <filter id="pencil" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3"/>
+          <feDisplacementMap in="SourceGraphic" scale="1.1"/>
+        </filter>
+        <style type="text/css">
+          .sk-text { font-family: 'Caveat', cursive; fill: currentColor; }
+          .sk-stroke { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+          .sk-arrow { stroke-width: 2.4; }
+          .sk-circle { stroke-width: 2.2; fill: none; }
+          .sk-light { stroke-width: 1.4; opacity: 0.7; }
+        </style>
+      </defs>
+
+      <!-- TOP-LEFT: the failed earthly math -->
+      <g transform="translate(80, 90) rotate(-3)" filter="url(#pencil)">
+        <text class="sk-text" font-size="56" font-weight="500">1 + 1 = ?</text>
+        <text class="sk-text" font-size="32" font-style="italic" x="40" y="56">earthly math</text>
+      </g>
+      <g transform="translate(80, 230)" filter="url(#pencil)">
+        <text class="sk-text" font-size="48" font-weight="500" opacity="0.6">1 + 1 = 2</text>
+        <line class="sk-stroke" x1="-10" y1="-12" x2="180" y2="-48" stroke-width="2.8"/>
+        <line class="sk-stroke" x1="-10" y1="-48" x2="180" y2="-12" stroke-width="2.8"/>
+      </g>
+      <path class="sk-stroke sk-arrow" d="M 280 250 Q 380 280 460 320" filter="url(#pencil)"/>
+      <path class="sk-stroke sk-arrow" d="M 450 314 L 462 322 L 452 332" filter="url(#pencil)"/>
+
+      <!-- TOP-RIGHT: scripture + Greek -->
+      <g transform="translate(990, 100) rotate(2)" filter="url(#pencil)">
+        <text class="sk-text" font-size="32" font-weight="600">Eccl. 4:9</text>
+        <text class="sk-text" font-size="36" font-style="italic" x="0" y="48">"two are</text>
+        <text class="sk-text" font-size="36" font-style="italic" x="0" y="88">better than one"</text>
+      </g>
+      <g transform="translate(1050, 245) rotate(-2)" filter="url(#pencil)">
+        <text class="sk-text" font-size="30" font-weight="600">καλός</text>
+        <line class="sk-stroke sk-light" x1="0" y1="14" x2="90" y2="14"/>
+        <text class="sk-text" font-size="22" x="0" y="44">prosperity</text>
+        <text class="sk-text" font-size="22" x="0" y="72">wealth · favor</text>
+      </g>
+      <path class="sk-stroke sk-arrow" d="M 1020 320 Q 880 350 760 380" filter="url(#pencil)"/>
+      <path class="sk-stroke sk-arrow" d="M 770 374 L 760 380 L 770 388" filter="url(#pencil)"/>
+
+      <!-- BOTTOM-LEFT: Deuteronomy -->
+      <g transform="translate(70, 480) rotate(-1)" filter="url(#pencil)">
+        <text class="sk-text" font-size="30" font-weight="600">Deut. 32:30</text>
+        <text class="sk-text" font-size="28" font-style="italic" x="0" y="40">1 chase 1,000</text>
+        <text class="sk-text" font-size="34" font-weight="700" x="0" y="84">→ 2 put 10,000</text>
+        <text class="sk-text" font-size="32" font-style="italic" x="50" y="120">to flight</text>
+      </g>
+
+      <!-- BOTTOM-RIGHT: Isaiah -->
+      <g transform="translate(960, 470) rotate(2)" filter="url(#pencil)">
+        <text class="sk-text" font-size="30" font-weight="600">Isa. 55:8-9</text>
+        <text class="sk-text" font-size="26" font-style="italic" x="0" y="40">"my ways are</text>
+        <text class="sk-text" font-size="26" font-style="italic" x="0" y="72">higher than</text>
+        <text class="sk-text" font-size="26" font-style="italic" x="0" y="104">your ways"</text>
+      </g>
+
+      <!-- CENTER-BOTTOM: the breakthrough equation -->
+      <g transform="translate(540, 600) rotate(-1)" filter="url(#pencil)">
+        <text class="sk-text" font-size="68" font-weight="700">1 + 1 = 10,000</text>
+        <ellipse class="sk-stroke sk-circle" cx="195" cy="-22" rx="240" ry="55" stroke-width="2.5"/>
+        <ellipse class="sk-stroke sk-circle" cx="195" cy="-22" rx="248" ry="60" stroke-width="2" opacity="0.55"/>
+        <text class="sk-text" font-size="56" font-weight="700" x="450" y="0">!</text>
+        <text class="sk-text" font-size="56" font-weight="700" x="478" y="0">!</text>
+      </g>
+
+      <!-- Decorative scribbles -->
+      <g transform="translate(660, 200)" filter="url(#pencil)">
+        <line class="sk-stroke" x1="0" y1="-12" x2="0" y2="12" stroke-width="2"/>
+        <line class="sk-stroke" x1="-12" y1="0" x2="12" y2="0" stroke-width="2"/>
+        <line class="sk-stroke" x1="-9" y1="-9" x2="9" y2="9" stroke-width="1.5"/>
+        <line class="sk-stroke" x1="-9" y1="9" x2="9" y2="-9" stroke-width="1.5"/>
+      </g>
+      <g transform="translate(820, 410)" filter="url(#pencil)">
+        <line class="sk-stroke" x1="0" y1="-10" x2="0" y2="10" stroke-width="1.8"/>
+        <line class="sk-stroke" x1="-10" y1="0" x2="10" y2="0" stroke-width="1.8"/>
+      </g>
+      <text class="sk-text" font-size="44" font-weight="700" x="400" y="180" transform="rotate(-8 400 180)" filter="url(#pencil)">×</text>
+      <text class="sk-text" font-size="40" font-weight="600" x="900" y="380" transform="rotate(5 900 380)" filter="url(#pencil)">∞</text>
+
+      <!-- Arrow pointing UP from "10,000" toward the logo above -->
+      <path class="sk-stroke sk-arrow" d="M 720 580 Q 700 500 700 420" stroke-width="2.5" filter="url(#pencil)"/>
+      <path class="sk-stroke sk-arrow" d="M 692 432 L 700 420 L 708 432" stroke-width="2.5" filter="url(#pencil)"/>
+
+    </svg>
+  </div>
+
   <div class="gm-hero-inner">
-    <div class="gm-hero-eyebrow">A Teaching from Tiffany</div>
-    <h1 class="gm-hero-title">God's <em>Math</em>.</h1>
-    <p class="gm-hero-sub">What an honor it will be to teach you about God's Math. As recipient and heir of God's Math I realized that many hadn't tapped into it. I want to be the first to walk you through the supernatural experience of God being a mathematician in your life.</p>
-    <div class="gm-hero-ctas">
+    <div class="gm-hero-eyebrow reveal-on-scroll">A Teaching from Tiffany</div>
+    <div class="gm-hero-logo reveal-on-scroll">
+      <img src="images/gods-math-logo.png" alt="God's Math. It disrupts. It breaks the rules. It's mind boggling. It's supernatural.">
+    </div>
+    <p class="gm-hero-sub reveal-on-scroll">What an honor it will be to teach you about God's Math. As recipient and heir of God's Math I realized that many hadn't tapped into it. I want to be the first to walk you through the supernatural experience of God being a mathematician in your life.</p>
+    <div class="gm-hero-ctas reveal-on-scroll">
       <a href="http://tiffanyhaynesco.com/god-s-math-part-1" target="_blank" rel="noopener" class="gm-hero-cta-primary">Watch the Training</a>
       <a href="#understand" class="gm-hero-cta-secondary">Start Here</a>
     </div>
