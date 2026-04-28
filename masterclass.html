@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Masterclass — Tiffany Haynes & Co.</title>
+<meta name="description" content="Free masterclass: how to build a multi-six-figure real estate virtual assistant business." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* === SHARED DESIGN SYSTEM (inlined from styles.css) === */
+/* ============================================
+   TIFFANY HAYNES & CO. — Site Stylesheet
+   Brand merge: THCO official palette + warmth
+   from existing tiffanyhaynesco.com
+   ============================================ */
+
+:root {
+  /* Brand colors */
+  --cream:        #FFFDF5;
+  --cream-warm:   #FAF3E5;
+  --linen:        #F4F0EB;
+  --stone:        #E3D3C8;
+  --stone-deep:   #D4BFB1;
+  --red:          #A00605;
+  --red-dark:     #7A0404;
+  --charcoal:     #414141;
+  --charcoal-soft:#6b6b6b;
+  --charcoal-mute:#9a9a9a;
+  --line:         rgba(65, 65, 65, 0.12);
+  --line-soft:    rgba(65, 65, 65, 0.06);
+
+  /* Typography */
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-body:    "EB Garamond", Georgia, serif;
+  --font-ui:      "Public Sans", system-ui, sans-serif;
+
+  /* Layout */
+  --max:    1240px;
+  --max-narrow: 920px;
+  --pad:    40px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--charcoal);
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Subtle paper grain over everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.25  0 0 0 0 0.25  0 0 0 0 0.25  0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ============ NAVIGATION ============ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 253, 245, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-mark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 19px;
+  letter-spacing: 0.02em;
+  font-style: italic;
+  color: var(--charcoal);
+}
+.nav-mark span {
+  font-style: normal;
+  font-weight: 300;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-link {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  position: relative;
+  transition: color 0.2s;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--red);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+.nav-link.active {
+  color: var(--red);
+}
+.nav-cta {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--red);
+  padding: 12px 22px;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+.nav-cta:hover {
+  background: var(--red-dark);
+  transform: translateY(-1px);
+}
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--charcoal);
+  transition: 0.3s;
+}
+
+/* ============ COMMON SECTIONS ============ */
+section { position: relative; z-index: 2; }
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+.container-narrow {
+  max-width: var(--max-narrow);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.section-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.section-eyebrow::before {
+  content: "";
+  height: 1px;
+  width: 40px;
+  background: var(--red);
+}
+.section-eyebrow.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(36px, 4.8vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--charcoal);
+  font-variation-settings: "opsz" 144;
+}
+.section-title em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.btn-primary {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: var(--red);
+  color: var(--cream);
+  padding: 18px 34px;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.btn-primary:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+}
+.btn-primary svg { transition: transform 0.3s ease; }
+.btn-primary:hover svg { transform: translateX(4px); }
+
+.btn-ghost {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  border: 1px solid var(--charcoal);
+  padding: 14px 28px;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-ghost:hover {
+  background: var(--charcoal);
+  color: var(--cream);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  padding: 80px 40px 40px;
+  background: var(--charcoal);
+  color: var(--cream);
+  position: relative;
+  z-index: 2;
+}
+.footer-top {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 253, 245, 0.12);
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+.footer-brand em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--stone);
+}
+.footer-tag {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255, 253, 245, 0.7);
+  max-width: 380px;
+}
+.footer-col h4 {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: rgba(255, 253, 245, 0.7);
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--cream); }
+
+.footer-bottom {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 245, 0.5);
+}
+
+/* ============ SCROLL REVEAL ============ */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ MARQUEE ============ */
+.marquee {
+  background: var(--charcoal);
+  color: var(--cream);
+  overflow: hidden;
+  padding: 22px 0;
+  position: relative;
+  z-index: 2;
+}
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll 38s linear infinite;
+  gap: 60px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+}
+.marquee-track span {
+  display: inline-flex;
+  align-items: center;
+  gap: 60px;
+}
+.marquee-track span::after {
+  content: "✦";
+  font-style: normal;
+  color: var(--red);
+  font-size: 14px;
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ============ RESPONSIVE NAV + GLOBAL ============ */
+@media (max-width: 900px) {
+  .nav { padding: 14px 22px; }
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 22px;
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-110%);
+    transition: transform 0.3s ease;
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-toggle { display: flex; }
+
+  .footer { padding: 60px 22px 30px; }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-bottom: 40px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  .container, .container-narrow { padding: 0 22px; }
+  :root { --pad: 22px; }
+}
+
+
+/* === PAGE-SPECIFIC === */
+
+/* ============ MASTERCLASS — page-specific ============ */
+
+/* Hero */
+.mc-hero {
+  min-height: 100vh;
+  padding: 140px 40px 80px;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-items: center;
+  background: var(--cream);
+}
+.mc-hero-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 40px;
+}
+.mc-hero-rail {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 30px;
+}
+.mc-hero-rail span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+}
+.mc-hero-rail span::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 60px;
+  background: var(--charcoal);
+  margin-right: 18px;
+  vertical-align: middle;
+}
+.mc-hero-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.mc-hero-eyebrow::after {
+  content: "";
+  height: 1px;
+  width: 80px;
+  background: var(--red);
+}
+.mc-hero-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(48px, 7vw, 110px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-bottom: 36px;
+  font-variation-settings: "opsz" 144;
+}
+.mc-hero-title em { font-style: italic; font-weight: 400; }
+.mc-hero-sub {
+  font-family: var(--font-body);
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.55;
+  color: var(--charcoal);
+  max-width: 580px;
+  margin-bottom: 48px;
+}
+.mc-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.mc-hero-meta {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+}
+.mc-hero-meta strong {
+  color: var(--charcoal);
+  font-weight: 500;
+}
+
+/* Reveal */
+.mc-reveal {
+  padding: 140px 0 120px;
+  background: var(--cream);
+}
+.mc-reveal-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 100px;
+}
+.mc-reveal-right {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--charcoal);
+  max-width: 460px;
+}
+.three-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+.three-item {
+  padding: 56px 36px 56px 0;
+  border-right: 1px solid var(--line);
+}
+.three-item:last-child { border-right: none; padding-right: 0; }
+.three-item:not(:first-child) { padding-left: 36px; }
+.three-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 88px;
+  line-height: 1;
+  color: var(--red);
+  margin-bottom: 28px;
+  font-variation-settings: "opsz" 144;
+}
+.three-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.15;
+  margin-bottom: 18px;
+  color: var(--charcoal);
+}
+.three-body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--charcoal);
+}
+
+/* Tiffany */
+.mc-tiffany {
+  padding: 140px 0;
+  background: var(--linen);
+}
+.mc-tiffany-grid {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: 80px;
+  align-items: stretch;
+}
+.mc-tiffany-image {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--stone) 0%, var(--stone-deep) 100%);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mc-tiffany-image::before {
+  content: "TH";
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 220px;
+  color: var(--cream);
+  opacity: 0.5;
+  line-height: 1;
+}
+.mc-tiffany-tag {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--charcoal);
+  padding: 8px 14px;
+  border-radius: 2px;
+}
+.mc-tiffany-content { display: flex; flex-direction: column; justify-content: center; }
+.mc-tiffany-name {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(48px, 5.5vw, 78px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  color: var(--charcoal);
+}
+.mc-tiffany-name em { font-style: italic; font-weight: 400; }
+.mc-tiffany-bio {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.7;
+  margin-bottom: 22px;
+  color: var(--charcoal);
+}
+.mc-tiffany-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.3;
+  color: var(--red);
+  padding-left: 28px;
+  border-left: 2px solid var(--red);
+  margin-top: 32px;
+}
+
+/* Audience */
+.mc-audience {
+  padding: 140px 0 120px;
+  background: var(--cream);
+}
+.mc-audience-header {
+  text-align: center;
+  margin-bottom: 90px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mc-audience-header .section-eyebrow { justify-content: center; }
+.mc-audience-header .section-eyebrow::before { display: none; }
+.mc-audience-header .section-eyebrow::after {
+  content: "";
+  height: 1px;
+  width: 40px;
+  background: var(--red);
+}
+.mc-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.audience-card {
+  padding: 48px 36px;
+  background: var(--linen);
+  border-radius: 2px;
+  transition: all 0.4s ease;
+  border: 1px solid transparent;
+}
+.audience-card:hover {
+  background: var(--cream);
+  border-color: var(--stone);
+  transform: translateY(-4px);
+}
+.audience-icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+  border: 1px solid var(--charcoal);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--charcoal);
+}
+.audience-card:hover .audience-icon {
+  background: var(--red);
+  color: var(--cream);
+  border-color: var(--red);
+}
+.audience-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: var(--charcoal);
+}
+.audience-body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--charcoal);
+}
+
+/* Stat */
+.mc-stat {
+  padding: 120px 0;
+  background: var(--cream);
+}
+.mc-stat-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.mc-stat-figure {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(96px, 14vw, 220px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--charcoal);
+  font-variation-settings: "opsz" 144;
+}
+.mc-stat-figure .small {
+  font-size: 0.45em;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--red);
+  vertical-align: top;
+}
+.mc-stat-text h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.2;
+  margin-bottom: 22px;
+  color: var(--charcoal);
+}
+.mc-stat-text p {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--charcoal);
+}
+
+/* Testimonial */
+.mc-testimonial {
+  padding: 140px 0;
+  background: var(--charcoal);
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.mc-testimonial::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 600px;
+  line-height: 1;
+  color: rgba(255, 253, 245, 0.04);
+  font-style: italic;
+}
+.mc-testimonial-inner {
+  position: relative;
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+.mc-testimonial-mark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 96px;
+  line-height: 0.5;
+  color: var(--red);
+  margin-bottom: 24px;
+}
+.mc-testimonial-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(26px, 3vw, 42px);
+  line-height: 1.3;
+  margin-bottom: 48px;
+  letter-spacing: -0.01em;
+}
+.mc-testimonial-attr {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 245, 0.7);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.mc-testimonial-attr::before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: var(--red);
+}
+
+/* CTA */
+.mc-cta {
+  padding: 160px 0;
+  background: linear-gradient(180deg, var(--linen) 0%, var(--stone) 100%);
+  position: relative;
+}
+.mc-cta-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 40px;
+}
+.mc-cta-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 24px;
+}
+.mc-cta-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 5.6vw, 78px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  color: var(--charcoal);
+}
+.mc-cta-title em { font-style: italic; font-weight: 400; }
+.mc-cta-sub {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--charcoal);
+  margin-bottom: 48px;
+}
+.mc-form {
+  background: var(--cream);
+  padding: 40px;
+  border-radius: 4px;
+  text-align: left;
+  box-shadow: 0 30px 80px -30px rgba(65, 65, 65, 0.25);
+}
+.mc-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.field { display: flex; flex-direction: column; }
+.field label {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+  margin-bottom: 8px;
+}
+.field input, .field select {
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: var(--charcoal);
+  background: var(--linen);
+  border: 1px solid transparent;
+  padding: 16px 18px;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+.field input:focus, .field select:focus {
+  background: var(--cream);
+  border-color: var(--charcoal);
+}
+.mc-form .btn-primary {
+  width: 100%;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 22px;
+}
+.mc-form-note {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--charcoal-soft);
+  text-align: center;
+  margin-top: 18px;
+}
+
+@media (max-width: 900px) {
+  .mc-hero { padding: 110px 22px 60px; }
+  .mc-hero-inner { grid-template-columns: 1fr; }
+  .mc-hero-rail { display: none; }
+  .mc-reveal { padding: 80px 0; }
+  .mc-reveal-header { grid-template-columns: 1fr; gap: 24px; margin-bottom: 50px; }
+  .three-grid { grid-template-columns: 1fr; }
+  .three-item {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding: 36px 0;
+  }
+  .three-item:not(:first-child) { padding-left: 0; }
+  .three-item:last-child { border-bottom: none; }
+  .mc-tiffany, .mc-audience, .mc-stat, .mc-testimonial, .mc-cta { padding: 80px 0; }
+  .mc-tiffany-grid, .mc-stat-inner { grid-template-columns: 1fr; gap: 40px; }
+  .mc-audience-grid { grid-template-columns: 1fr; gap: 16px; }
+  .mc-form { padding: 28px; }
+  .mc-form-row { grid-template-columns: 1fr; gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a href="/" class="nav-mark">Tiffany <span>Haynes &amp; Co.</span></a>
+  <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/about" class="nav-link">About</a>
+    <a href="/gods-math" class="nav-link">God's Math</a>
+    <a href="/masterclass" class="nav-cta">Attend My Masterclass</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="mc-hero">
+  <div class="mc-hero-inner">
+    <div class="mc-hero-rail">
+      <span>Free Masterclass · Plug &amp; Play</span>
+    </div>
+    <div>
+      <div class="mc-hero-eyebrow">Live · Online · Complimentary</div>
+      <h1 class="mc-hero-title">A quiet corner of <em>real estate</em> is changing lives.</h1>
+      <p class="mc-hero-sub">
+        Inside this free masterclass, I'm walking you through the niche industry I built a passive-income business around — without my own capital, without clocking in, and without sacrificing the life I actually wanted.
+      </p>
+      <div class="mc-hero-actions">
+        <a href="#register" class="btn-primary">
+          Reserve My Seat
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+        <div class="mc-hero-meta">Next session · <strong>Coming Soon</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Passive Income</span>
+    <span>Real Estate</span>
+    <span>Niche Strategy</span>
+    <span>Plug &amp; Play</span>
+    <span>Build Anywhere</span>
+    <span>Passive Income</span>
+    <span>Real Estate</span>
+    <span>Niche Strategy</span>
+    <span>Plug &amp; Play</span>
+    <span>Build Anywhere</span>
+  </div>
+</div>
+
+<!-- ============ REVEAL ============ -->
+<section class="mc-reveal">
+  <div class="container">
+    <div class="mc-reveal-header reveal-on-scroll">
+      <div>
+        <div class="section-eyebrow">Inside The Class</div>
+        <h2 class="section-title">Three things I wish<br>someone had told <em>me</em>.</h2>
+      </div>
+      <div class="mc-reveal-right">
+        I built this masterclass to hand you the framework I had to figure out the slow way. No fluff, no fillers — just the three pieces that move the needle when you're starting in this space.
+      </div>
+    </div>
+    <div class="three-grid">
+      <div class="three-item reveal-on-scroll">
+        <div class="three-num">i</div>
+        <h3 class="three-title">Where to begin.</h3>
+        <p class="three-body">The five-step entry point I use to onboard every new person into this niche. Clear, repeatable, and built so you don't waste your first six months guessing.</p>
+      </div>
+      <div class="three-item reveal-on-scroll">
+        <div class="three-num">ii</div>
+        <h3 class="three-title">Your first client in 30 days.</h3>
+        <p class="three-body">The exact pathway my students follow to land their first paying client within their first month. No cold pitching, no sales gymnastics — just the right doors.</p>
+      </div>
+      <div class="three-item reveal-on-scroll">
+        <div class="three-num">iii</div>
+        <h3 class="three-title">When demand outpaces supply.</h3>
+        <p class="three-body">We turned clients away in the early days. I'll show you how the demand gets built and why this niche is positioned for that kind of momentum.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEET TIFFANY ============ -->
+<section class="mc-tiffany">
+  <div class="container">
+    <div class="mc-tiffany-grid">
+      <div class="mc-tiffany-image reveal-on-scroll">
+        <div class="mc-tiffany-tag">Replace with portrait</div>
+      </div>
+      <div class="mc-tiffany-content reveal-on-scroll">
+        <div class="section-eyebrow">Your Host</div>
+        <h2 class="mc-tiffany-name">Tiffany <em>Haynes</em></h2>
+        <p class="mc-tiffany-bio">
+          My career started inside one of the top land and commercial brokerages in Texas, where I watched eight- and nine-figure deals close every quarter. The deals were impressive. The cost of getting into them — capital, risk, time — wasn't built for the life I wanted.
+        </p>
+        <p class="mc-tiffany-bio">
+          So I went looking for something else. Years of research, missteps, and rebuilding later, I found a model that lets me earn passively, work from anywhere, and stay home with my family. Today I teach that model to women ready to do the same.
+        </p>
+        <p class="mc-tiffany-quote">
+          A different kind of math. The kind that doesn't require risking everything to build something real.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUDIENCE ============ -->
+<section class="mc-audience">
+  <div class="container">
+    <div class="mc-audience-header reveal-on-scroll">
+      <div class="section-eyebrow">Who It's For</div>
+      <h2 class="section-title">If any of this <em>sounds like you</em>,<br>this class was built with you in mind.</h2>
+    </div>
+    <div class="mc-audience-grid">
+      <div class="audience-card reveal-on-scroll">
+        <div class="audience-icon">i</div>
+        <h3 class="audience-title">The ambitious entrepreneur.</h3>
+        <p class="audience-body">You're ready to break into a multi-trillion-dollar industry without spending years and a fortune learning the long way around.</p>
+      </div>
+      <div class="audience-card reveal-on-scroll">
+        <div class="audience-icon">ii</div>
+        <h3 class="audience-title">The passive-income builder.</h3>
+        <p class="audience-body">You want to work from home — or anywhere — with full control over your capacity, your calendar, and the kind of work you take on.</p>
+      </div>
+      <div class="audience-card reveal-on-scroll">
+        <div class="audience-icon">iii</div>
+        <h3 class="audience-title">The real estate professional.</h3>
+        <p class="audience-body">You want to diversify your income with an automated, plug-and-play business model and learn from someone who's already built it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAT ============ -->
+<section class="mc-stat">
+  <div class="container">
+    <div class="mc-stat-inner">
+      <div class="mc-stat-figure reveal-on-scroll">$3.81<span class="small">T</span></div>
+      <div class="mc-stat-text reveal-on-scroll">
+        <h3>The size of the industry this masterclass walks you into.</h3>
+        <p>One of the largest sectors of the global economy — and most of it operates quietly, behind the scenes, in roles that don't require a brokerage license, a marketing budget, or a single dollar of your own capital to begin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIAL ============ -->
+<section class="mc-testimonial">
+  <div class="mc-testimonial-inner reveal-on-scroll">
+    <div class="mc-testimonial-mark">"</div>
+    <p class="mc-testimonial-quote">
+      Tiffany doesn't just teach the model — she shows you the exact pathway. Within thirty days I had my first client. Within six months I'd replaced my full-time income.
+    </p>
+    <div class="mc-testimonial-attr">Jacobi · Class of '24</div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="mc-cta" id="register">
+  <div class="mc-cta-inner reveal-on-scroll">
+    <div class="mc-cta-eyebrow">Reserve Your Seat</div>
+    <h2 class="mc-cta-title">A free seat,<br>at <em>the next class</em>.</h2>
+    <p class="mc-cta-sub">
+      Save your spot below. You'll get a confirmation email, a calendar hold, and a short prep note from me before we begin.
+    </p>
+    <form class="mc-form" onsubmit="event.preventDefault(); alert('Replace with real form handler — Kajabi, Kartra, ConvertKit, etc.');">
+      <div class="mc-form-row">
+        <div class="field">
+          <label>First Name</label>
+          <input type="text" required placeholder="Your first name">
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <input type="text" required placeholder="Your last name">
+        </div>
+      </div>
+      <div class="mc-form-row">
+        <div class="field">
+          <label>Email</label>
+          <input type="email" required placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label>Where you heard about us</label>
+          <select>
+            <option>Instagram</option>
+            <option>TikTok</option>
+            <option>Facebook</option>
+            <option>A friend</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn-primary">
+        Confirm My Seat
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+      <p class="mc-form-note">Your information stays with us. No spam, ever.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Tiffany <em>Haynes &amp; Co.</em></div>
+      <p class="footer-tag">
+        Helping real estate virtual assistants optimize, systematize, and radically grow the revenue of their business.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/gods-math">God's Math</a></li>
+        <li><a href="/masterclass">Masterclass</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/tiffanyhaynesco/" target="_blank">Instagram</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Newsletter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Tiffany Haynes &amp; Co, LLC</span>
+    <span>Making offices more efficient.</span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
