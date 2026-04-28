@@ -1097,7 +1097,200 @@ section { position: relative; z-index: 2; }
 
   .resources-grid { grid-template-columns: 1fr; gap: 40px; }
 }
+
+/* === TAGLINE CTA + INSTAGRAM SECTIONS === */
+.tagline-cta { padding: 0; background: var(--cream); }
+.tagline-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 480px;
+}
+.tagline-image {
+  background: linear-gradient(135deg, var(--stone) 0%, var(--stone-deep) 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tagline-image::before {
+  content: "T";
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 200;
+  font-size: 320px;
+  line-height: 1;
+  color: var(--cream);
+  opacity: 0.5;
+  font-variation-settings: "opsz" 144;
+}
+.tagline-image-tag {
+  position: absolute;
+  top: 24px; left: 24px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--charcoal);
+  padding: 8px 14px;
+  border-radius: 2px;
+}
+.tagline-content {
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--linen);
+}
+.tagline-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.tagline-eyebrow::before {
+  content: "";
+  height: 1px;
+  width: 40px;
+  background: var(--red);
+}
+.tagline-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+  font-variation-settings: "opsz" 144;
+}
+.tagline-title em { font-style: italic; font-weight: 400; color: var(--red); }
+.tagline-body {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--charcoal);
+  margin-bottom: 32px;
+  max-width: 460px;
+}
+
+.instagram-section {
+  padding: 120px 0;
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+}
+.instagram-header { text-align: center; margin-bottom: 60px; }
+.instagram-header .section-eyebrow { justify-content: center; }
+.instagram-header .section-eyebrow::before { display: none; }
+.instagram-header .section-eyebrow::after {
+  content: "";
+  height: 1px;
+  width: 40px;
+  background: var(--red);
+}
+.instagram-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 144;
+}
+.instagram-title em { font-style: italic; font-weight: 400; color: var(--red); }
+.instagram-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+}
+.instagram-handle {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--red);
+  padding-bottom: 4px;
+  transition: gap 0.3s;
+}
+.instagram-handle:hover { gap: 16px; }
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.instagram-tile {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--stone) 0%, var(--cream-warm) 100%);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.instagram-tile:hover { transform: translateY(-4px); }
+.instagram-tile:nth-child(2n) {
+  background: linear-gradient(135deg, var(--stone-deep) 0%, var(--stone) 100%);
+}
+.instagram-tile:nth-child(3n) {
+  background: linear-gradient(135deg, var(--linen) 0%, var(--stone) 100%);
+}
+.instagram-tile:nth-child(4n) {
+  background: linear-gradient(135deg, var(--cream-warm) 0%, var(--stone-deep) 100%);
+}
+.instagram-tile-tag {
+  position: absolute;
+  top: 12px; left: 12px;
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: rgba(65, 65, 65, 0.7);
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+@media (max-width: 900px) {
+  .tagline-grid { grid-template-columns: 1fr; min-height: auto; }
+  .tagline-image { aspect-ratio: 4/3; }
+  .tagline-image::before { font-size: 200px; }
+  .tagline-content { padding: 50px 28px; }
+  .instagram-section { padding: 80px 0; }
+  .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+}
+
 </style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '943376613232304');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
 </head>
 <body>
 
@@ -1302,21 +1495,21 @@ section { position: relative; z-index: 2; }
         <div class="resource-card-tag">Systems &amp; Process</div>
         <h3>Business Systems and Processes — What to Change First</h3>
         <p>How to perfect the operational systems that set you up to actually scale.</p>
-        <a href="#" class="resource-link">Read this →</a>
+        <a href="https://tiffanyhaynesco.com/business-systems" class="resource-link" target="_blank" rel="noopener">Read this →</a>
       </article>
       <article class="resource-card reveal-on-scroll">
         <div class="resource-card-img"><span>ii</span></div>
         <div class="resource-card-tag">Vision &amp; Strategy</div>
         <h3>What Is Your Dream Opportunity?</h3>
         <p>If you could do anything to be successful, what would you actually do? Let's get specific.</p>
-        <a href="#" class="resource-link">Read this →</a>
+        <a href="https://tiffanyhaynesco.com/dream-opp" class="resource-link" target="_blank" rel="noopener">Read this →</a>
       </article>
       <article class="resource-card reveal-on-scroll">
         <div class="resource-card-img"><span>iii</span></div>
         <div class="resource-card-tag">Application</div>
         <h3>How to Apply What You Learn — Immediately</h3>
         <p>Stop consuming. Start implementing. The framework I use to convert insight into action.</p>
-        <a href="#" class="resource-link">Read this →</a>
+        <a href="https://tiffanyhaynesco.com/apply-what-you-learn" class="resource-link" target="_blank" rel="noopener">Read this →</a>
       </article>
     </div>
   </div>
@@ -1334,6 +1527,25 @@ section { position: relative; z-index: 2; }
       Show Me the Way
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
     </a>
+  </div>
+</section>
+
+
+<!-- ============ TAGLINE CTA ============ -->
+<section class="tagline-cta">
+  <div class="tagline-grid">
+    <div class="tagline-image reveal-on-scroll">
+      <div class="tagline-image-tag">Replace with photo</div>
+    </div>
+    <div class="tagline-content reveal-on-scroll">
+      <div class="tagline-eyebrow">Free Resource</div>
+      <h2 class="tagline-title">How to write a tagline <em>you actually love</em> &mdash; in under an hour.</h2>
+      <p class="tagline-body">Whether you have a tagline that needs a makeover, or you don't have one at all, I've got the tips to help you come up with something professional and catchy for your business.</p>
+      <a href="https://tiffanyhaynesco.com/how-to-write-a-tagline" target="_blank" rel="noopener" class="btn-ghost" style="align-self: flex-start;">
+        Tell Me More
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1375,9 +1587,11 @@ section { position: relative; z-index: 2; }
     <div class="footer-col">
       <h4>Connect</h4>
       <ul>
-        <li><a href="https://www.instagram.com/tiffanyhaynesco/" target="_blank">Instagram</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Newsletter</a></li>
+        <li><a href="https://www.instagram.com/tiffanyhaynesco/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.facebook.com/tiffanyhaynesco" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://tiffanyhaynesco.com/contact">Contact</a></li>
+        <li><a href="https://docs.google.com/document/d/1llMfWrZYLt7GC77P3756OBunehEdFMl2q5jdacRG5Rw/edit?usp=sharing" target="_blank" rel="noopener">Privacy Policy</a></li>
+        <li><a href="https://drive.google.com/file/d/1YTa3tpwuC1fT4Bo_jCZ9UWpXvRlwtskr/view?usp=sharing" target="_blank" rel="noopener">Terms &amp; Conditions</a></li>
       </ul>
     </div>
   </div>
