@@ -1536,6 +1536,149 @@ section { position: relative; z-index: 2; }
 }
 .principle-card { position: relative; }
 
+
+/* ============ THE WHOLE PAGE IS A FORMULA ============ */
+
+/* Section-level term markers — small Caveat chips that label each section's
+   role in the master proof. Floats in the top-right corner of the section. */
+.gm-term-marker {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  z-index: 5;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--red);
+  background: rgba(160,6,5,0.06);
+  border: 1px dashed rgba(160,6,5,0.45);
+  border-radius: 999px;
+  padding: 5px 16px 5px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transform: rotate(-1.5deg);
+  pointer-events: none;
+}
+.gm-term-marker .step {
+  font-family: var(--font-utility);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  padding-right: 6px;
+  border-right: 1px solid rgba(160,6,5,0.3);
+}
+.gm-term-marker .role {
+  font-size: 19px;
+  font-style: italic;
+}
+
+/* On dark sections (video) the chip needs a darker bg for legibility */
+.gm-video .gm-term-marker {
+  background: rgba(20,20,28,0.85);
+}
+
+/* Each section needs position:relative for the absolute marker */
+.gm-understand,
+.gm-inspired,
+.gm-principles,
+.gm-final {
+  position: relative;
+}
+
+@media (max-width: 700px) {
+  /* Hide term markers on mobile — too cluttered for narrow viewports */
+  .gm-term-marker { display: none; }
+}
+
+/* ============ THE MASTER EQUATION REVEAL ============ */
+.gm-master-eq {
+  max-width: 920px;
+  margin: 0 auto 80px;
+  padding: 48px 40px 56px;
+  background: var(--cream);
+  border: 1px solid rgba(65,65,65,0.12);
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(65,65,65,0.08);
+}
+.gm-master-eq::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px; right: -1px;
+  height: 6px;
+  background: var(--red);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.gm-master-eq-label {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--red);
+  text-align: center;
+  margin-bottom: 24px;
+  transform: rotate(-1deg);
+}
+.gm-master-eq-label .arrow {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  margin: 0 6px;
+}
+.gm-master-eq-formula {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(20px, 2.6vw, 32px);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--charcoal);
+  text-align: center;
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 144;
+}
+.gm-master-eq-formula .term {
+  display: inline-block;
+  padding: 2px 10px;
+  margin: 0 2px;
+  border-radius: 2px;
+}
+.gm-master-eq-formula .axioms { background: rgba(160,6,5,0.07); color: var(--red); font-style: italic; }
+.gm-master-eq-formula .lemmas { background: rgba(15,76,117,0.06); color: var(--charcoal); font-style: italic; }
+.gm-master-eq-formula .props  { background: rgba(160,6,5,0.04); font-style: italic; color: var(--charcoal); }
+.gm-master-eq-formula .signature {
+  font-family: 'Caveat', cursive;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--red);
+  font-size: 1.25em;
+}
+.gm-master-eq-formula .op {
+  color: var(--red);
+  font-weight: 400;
+  margin: 0 4px;
+}
+.gm-master-eq-caption {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--charcoal);
+  opacity: 0.7;
+  text-align: center;
+  margin-top: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .gm-master-eq { padding: 32px 22px 36px; margin-bottom: 56px; }
+  .gm-master-eq-formula { line-height: 2; }
+  .gm-master-eq-formula .term { padding: 2px 8px; }
+}
+
 </style>
 
 <!-- Meta Pixel Code -->
@@ -1571,6 +1714,10 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 
 <!-- ============ HERO ============ -->
 <section class="gm-hero">
+  <div class="gm-term-marker" aria-hidden="true">
+    <span class="step">STEP 01</span>
+    <span class="role">theorem</span>
+  </div>
 
   <!-- Pencil-sketch math layer: equations, scripture refs, and arrows
        that work toward the logo as the answer/revelation.
@@ -1680,6 +1827,10 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 
 <!-- ============ VIDEO — editorial composition ============ -->
 <section class="gm-video">
+  <div class="gm-term-marker" aria-hidden="true">
+    <span class="step">STEP 02</span>
+    <span class="role">observation</span>
+  </div>
   <div class="gm-video-grid">
 
     <!-- LEFT: title rail + editorial copy + handwritten note -->
@@ -1832,6 +1983,10 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 
 <!-- ============ HOW TO UNDERSTAND ============ -->
 <section class="gm-understand" id="understand">
+  <div class="gm-term-marker" aria-hidden="true">
+    <span class="step">STEP 03</span>
+    <span class="role">given</span>
+  </div>
   <div class="container">
     <div class="gm-understand-header reveal-on-scroll">
       <div class="section-eyebrow">The Foundation</div>
@@ -1878,6 +2033,10 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 
 <!-- ============ WHAT INSPIRED ============ -->
 <section class="gm-inspired">
+  <div class="gm-term-marker" aria-hidden="true">
+    <span class="step">STEP 04</span>
+    <span class="role">where</span>
+  </div>
   <div class="container">
     <div class="gm-inspired-header reveal-on-scroll">
       <div class="section-eyebrow">The Origin</div>
@@ -1916,6 +2075,10 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 
 <!-- ============ THE 4 ATTRIBUTES ============ -->
 <section class="gm-principles">
+  <div class="gm-term-marker" aria-hidden="true">
+    <span class="step">STEP 05</span>
+    <span class="role">properties</span>
+  </div>
   <div class="container">
     <div class="gm-principles-header reveal-on-scroll" style="text-align:center;">
       <div class="scripture-badge">Deuteronomy 32:30</div>
@@ -1968,7 +2131,34 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 
 <!-- ============ FINAL CTA ============ -->
 <section class="gm-final">
+  <div class="gm-term-marker" aria-hidden="true">
+    <span class="step">STEP 06</span>
+    <span class="role">QED → ∞</span>
+  </div>
   <div class="container">
+
+    <!-- THE WHOLE EQUATION — the page resolved to one line of math. -->
+    <div class="gm-master-eq reveal-on-scroll" aria-label="Summary equation">
+      <div class="gm-master-eq-label">
+        The whole teaching <span class="arrow">↦</span> as a formula
+      </div>
+      <div class="gm-master-eq-formula">
+        <span class="op">f</span>(<em>faith</em>)
+        <span class="op">×</span>
+        <span class="term axioms">forget · qualify · two</span>
+        <span class="op">×</span>
+        <span class="term lemmas">power · pattern · life</span>
+        <br>
+        <span class="op">∴</span>
+        <span class="term props">it disrupts · breaks · boggles · supernatural</span>
+        <span class="op">=</span>
+        <span class="signature">1 + 1 = 10,000</span>
+      </div>
+      <div class="gm-master-eq-caption">
+        Eight sections. One proof. One signature equation. This is what God's Math means in practice.
+      </div>
+    </div>
+
     <div class="reveal-on-scroll">
       <div class="section-eyebrow">Want to Go Deeper?</div>
       <h2>Watch the <em>God's Math</em> training.</h2>
