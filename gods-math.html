@@ -1079,6 +1079,463 @@ section { position: relative; z-index: 2; }
   .gm-hero-sketch { opacity: 0.09; }
 }
 
+
+/* ============ VIDEO SECTION — EDITORIAL REDESIGN ============ */
+/* Replaces "big video on dark background" with a composed two-column scene. */
+
+.gm-video {
+  /* Layered backdrop:
+     1. Warm red glow behind the video (right side only, never under text)
+     2. Subtle radial dark gradient for atmosphere
+     3. Graph paper grid lines (very low opacity) — the math notebook substrate
+     4. Solid near-black base */
+  background:
+    radial-gradient(ellipse 60% 50% at 78% 55%, rgba(160,6,5,0.10) 0%, transparent 70%),
+    radial-gradient(circle at 25% 50%, #1a1a22 0%, #13131a 75%),
+    repeating-linear-gradient(0deg,  rgba(253,251,245,0.025) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(90deg, rgba(253,251,245,0.025) 0 1px, transparent 1px 56px),
+    #13131a;
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+/* Subtle paper-grain noise overlay */
+.gm-video::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.92 0 0 0 0 0.85 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.gm-video-grid {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* LEFT column — vertical eyebrow rail + editorial title */
+.gm-video-text { position: relative; }
+.gm-video-rail {
+  position: absolute;
+  top: 0;
+  left: -50px;
+  height: 200px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gm-video-rail span {
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  font-family: var(--font-utility);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+.gm-video-rail span::before,
+.gm-video-rail span::after {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--red);
+  opacity: 0.6;
+}
+.gm-video-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.2vw, 56px);
+  font-weight: 200;
+  line-height: 1.1;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  margin-bottom: 28px;
+  font-variation-settings: "opsz" 144;
+}
+.gm-video-text h2 em {
+  font-style: italic;
+  color: var(--red);
+  font-weight: 300;
+}
+.gm-video-text p {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(253, 251, 245, 0.82);
+  max-width: 380px;
+  margin-bottom: 24px;
+}
+.gm-video-handwrite {
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--red);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transform: rotate(-2deg);
+  margin-top: 8px;
+}
+.gm-video-handwrite svg {
+  width: 80px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+/* RIGHT column — the video with offset poster + corner brackets */
+.gm-video-stage {
+  position: relative;
+  isolation: isolate;
+}
+/* Brand-red offset block behind the video, pinned-poster effect */
+.gm-video-stage::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: var(--red);
+  z-index: 0;
+  border-radius: 2px;
+}
+.gm-video-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  background: #000;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+/* Poster-mode (before play) */
+.gm-video-poster {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.4s ease;
+}
+.gm-video-poster::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.25), rgba(160,6,5,0.18));
+  pointer-events: none;
+}
+.gm-video-frame:hover .gm-video-poster { filter: brightness(0.85); }
+.gm-video-play {
+  position: relative;
+  z-index: 2;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--red);
+  border: 3px solid var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+}
+.gm-video-play::before {
+  /* Triangle play icon */
+  content: '';
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 18px 0 18px 30px;
+  border-color: transparent transparent transparent var(--cream);
+  margin-left: 6px;
+}
+.gm-video-frame:hover .gm-video-play {
+  transform: scale(1.08);
+  box-shadow: 0 18px 40px rgba(160,6,5,0.5);
+}
+.gm-video-frame iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Corner brackets — film/photo frame markers */
+.gm-video-bracket {
+  position: absolute;
+  width: 32px; height: 32px;
+  border-color: var(--red);
+  border-style: solid;
+  z-index: 3;
+  pointer-events: none;
+}
+.gm-video-bracket.tl { top: -8px; left: -8px; border-width: 2px 0 0 2px; }
+.gm-video-bracket.tr { top: -8px; right: -8px; border-width: 2px 2px 0 0; }
+.gm-video-bracket.bl { bottom: -8px; left: -8px; border-width: 0 0 2px 2px; }
+.gm-video-bracket.br { bottom: -8px; right: -8px; border-width: 0 2px 2px 0; }
+
+/* Below-video metadata strip */
+.gm-video-meta {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-utility);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(253, 251, 245, 0.55);
+}
+.gm-video-meta span:first-child { color: var(--red); }
+
+/* Mobile breakpoint */
+@media (max-width: 900px) {
+  .gm-video { padding: 80px 0; }
+  .gm-video-grid { grid-template-columns: 1fr; gap: 56px; }
+  .gm-video-rail { display: none; }
+  .gm-video-stage::before { top: 12px; left: 12px; }
+  .gm-video-bracket { width: 24px; height: 24px; }
+  .gm-video-handwrite { font-size: 22px; }
+}
+
+
+/* ============ VIDEO — MATHEMATICAL FRAME OVERLAY ============ */
+
+/* Override: drop the small angular corner brackets — large math brackets do the job now */
+.gm-video-bracket { display: none !important; }
+
+/* Function notation ABOVE the video: f(press play) = */
+.gm-video-equation {
+  font-family: 'Caveat', cursive;
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.gm-video-equation-top {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  margin-left: 8px;
+  transform: rotate(-1deg);
+}
+.gm-video-equation-top em {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--cream);
+  background: var(--red);
+  padding: 2px 12px;
+  border-radius: 999px;
+  font-size: 26px;
+}
+.gm-video-equation-bottom {
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 28px;
+  justify-content: flex-end;
+  margin-right: 8px;
+  transform: rotate(1.2deg);
+}
+.gm-video-equation-bottom em {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--cream);
+}
+.gm-video-therefore {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--red);
+}
+
+/* Hand-drawn square brackets flanking the video [ ... ] */
+.gm-video-mathrow {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.gm-bracket {
+  flex-shrink: 0;
+  width: 36px;
+  align-self: stretch;
+  color: var(--red);
+  position: relative;
+  z-index: 5;
+}
+.gm-bracket svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.gm-video-mathrow .gm-video-stage-inner {
+  flex: 1;
+  position: relative;
+}
+
+/* Floating sigma chip — top-right of the video stage */
+.gm-video-sigma {
+  position: absolute;
+  top: -28px;
+  right: 30px;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #13131a;
+  padding: 4px 14px;
+  border: 1px dashed rgba(160,6,5,0.5);
+  border-radius: 999px;
+  z-index: 6;
+  transform: rotate(2deg);
+}
+.gm-video-sigma .symbol {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Coordinate axis — small sketch in the lower-left of the section */
+.gm-video-axis {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  width: 110px;
+  height: 110px;
+  color: rgba(160,6,5,0.35);
+  pointer-events: none;
+  z-index: 1;
+}
+.gm-video-axis svg { width: 100%; height: 100%; }
+@media (max-width: 900px) {
+  .gm-video-axis { display: none; }
+  .gm-video-equation-top { font-size: 24px; }
+  .gm-video-equation-top em { font-size: 20px; }
+  .gm-video-equation-bottom { font-size: 24px; }
+  .gm-bracket { width: 22px; }
+  .gm-video-sigma { font-size: 18px; right: 10px; }
+}
+
+
+/* ============ FINAL: brackets replace the red offset block ============ */
+/* The math brackets [ ] now do the framing work. The old red offset rectangle
+   would conflict (red on red) and was anchored to the wrong stage element
+   after the equations were added above and below. */
+.gm-video-stage::before { display: none !important; }
+
+/* ============ CENTERING FIX: video fills the bracket span fully ============ */
+/* The original .gm-video-frame had max-width:960px + margin:0 auto.
+   That caps the frame inside the wider stage-inner, leaving asymmetric gap.
+   Brackets flank stage-inner edges, so the frame must FILL stage-inner. */
+.gm-video-mathrow .gm-video-frame {
+  max-width: none !important;
+  margin: 0 !important;
+  width: 100%;
+}
+
+/* ============ BRANDED ACCENTS — God's Math only ============ */
+
+/* Marquee — sparkle separators between phrases (replace generic spacing) */
+.gm-marquee-spark {
+  color: var(--red);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  opacity: 0.7;
+  margin: 0 8px;
+}
+
+/* "To Understand" steps — connecting arrows between numbered steps */
+.gm-step-connector {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  color: var(--red);
+  text-align: center;
+  margin: -28px 0 -28px 40px;
+  transform: rotate(-2deg);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.gm-step-connector svg {
+  width: 64px; height: 24px;
+  flex-shrink: 0;
+}
+.gm-step-resolution {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--red);
+  text-align: center;
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  transform: rotate(-1deg);
+}
+.gm-step-resolution .stamp {
+  border: 2px solid var(--red);
+  border-radius: 999px;
+  padding: 4px 18px;
+  font-style: italic;
+}
+@media (max-width: 700px) {
+  .gm-step-connector { margin: 4px 0 4px 16px; font-size: 22px; }
+  .gm-step-connector svg { width: 48px; }
+  .gm-step-resolution { font-size: 26px; flex-wrap: wrap; }
+}
+
+/* "What Inspired" cards — operator stamps in top-right corner */
+.gm-inspired-card {
+  position: relative;
+}
+.gm-card-stamp {
+  position: absolute;
+  top: 14px; right: 18px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 32px;
+  color: var(--red);
+  opacity: 0.4;
+  font-weight: 300;
+  pointer-events: none;
+}
+
+/* "4 Attributes" cards — Caveat counter chips */
+.gm-attr-counter {
+  position: absolute;
+  top: 16px; right: 18px;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--red);
+  opacity: 0.65;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+.principle-card { position: relative; }
+
 </style>
 
 <!-- Meta Pixel Code -->
@@ -1221,35 +1678,155 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
   </div>
 </section>
 
-<!-- ============ VIDEO ============ -->
+<!-- ============ VIDEO — editorial composition ============ -->
 <section class="gm-video">
-  <div class="container">
-    <div class="gm-video-eyebrow">Real Talk</div>
-    <h2 class="gm-video-title">Hear the revelation in <em>Tiffany's own voice</em>.</h2>
-    <div class="gm-video-frame">
-      <iframe
-        src="https://www.youtube.com/embed/I37ahtoZyWY?rel=0&showinfo=0"
-        title="God's Math — Tiffany Haynes"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
+  <div class="gm-video-grid">
+
+    <!-- LEFT: title rail + editorial copy + handwritten note -->
+    <div class="gm-video-text reveal-on-scroll">
+      <div class="gm-video-rail"><span>Real Talk</span></div>
+      <h2>Hear the revelation in <em>her own voice</em>.</h2>
+      <p>Before you read another word, listen first. Some things land different when you hear the conviction behind them.</p>
+      <div class="gm-video-handwrite">
+        <svg viewBox="0 0 80 30" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M 4 18 Q 24 6 50 14 Q 64 18 72 16"/>
+          <path d="M 64 10 L 72 16 L 66 22"/>
+        </svg>
+        press play
+      </div>
     </div>
+
+    <!-- RIGHT: video stage as a mathematical expression -->
+    <div class="gm-video-stage reveal-on-scroll">
+
+      <!-- Function notation: the video is what gets returned when you press play -->
+      <div class="gm-video-equation gm-video-equation-top" aria-hidden="true">
+        f(<em>press play</em>) =
+      </div>
+
+      <!-- Math row: [ left bracket ] + video frame + [ right bracket ] -->
+      <div class="gm-video-mathrow">
+        <div class="gm-bracket gm-bracket-left" aria-hidden="true">
+          <svg viewBox="0 0 36 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="bracketJitter" x="-2%" y="-1%" width="104%" height="102%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="2"/>
+                <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+              </filter>
+            </defs>
+            <path d="M 32 6 L 8 6 L 8 394 L 32 394"
+                  fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  filter="url(#bracketJitter)"/>
+          </svg>
+        </div>
+
+        <div class="gm-video-stage-inner">
+          <div class="gm-video-frame" data-yt="I37ahtoZyWY" role="button" tabindex="0" aria-label="Play God's Math teaching video">
+            <div class="gm-video-poster" style="background-image: url('https://img.youtube.com/vi/I37ahtoZyWY/maxresdefault.jpg')">
+              <div class="gm-video-play" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <!-- Floating sigma chip: ∑ of revelation -->
+          <div class="gm-video-sigma" aria-hidden="true">
+            <span class="symbol">∑</span> <span>revelation</span>
+          </div>
+        </div>
+
+        <div class="gm-bracket gm-bracket-right" aria-hidden="true">
+          <svg viewBox="0 0 36 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 4 6 L 28 6 L 28 394 L 4 394"
+                  fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  filter="url(#bracketJitter)"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Therefore: the result of pressing play -->
+      <div class="gm-video-equation gm-video-equation-bottom" aria-hidden="true">
+        <span class="gm-video-therefore">∴</span>
+        <em>a teaching that disrupts</em>
+      </div>
+
+      <div class="gm-video-meta">
+        <span>God's Math · A Teaching</span>
+        <span>YouTube</span>
+      </div>
+    </div>
+
   </div>
+
+  <!-- Decorative coordinate-axis sketch: bottom-left, low opacity, sets the
+       'we are doing math here' tone without adding cognitive load. -->
+  <div class="gm-video-axis" aria-hidden="true">
+    <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="axisJitter" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/>
+          <feDisplacementMap in="SourceGraphic" scale="1"/>
+        </filter>
+      </defs>
+      <g filter="url(#axisJitter)" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round">
+        <!-- Y axis (vertical, with arrowhead) -->
+        <line x1="20" y1="100" x2="20" y2="10"/>
+        <path d="M 14 16 L 20 8 L 26 16"/>
+        <!-- X axis (horizontal, with arrowhead) -->
+        <line x1="10" y1="90" x2="100" y2="90"/>
+        <path d="M 94 84 L 102 90 L 94 96"/>
+        <!-- Tick marks on Y -->
+        <line x1="16" y1="30" x2="24" y2="30"/>
+        <line x1="16" y1="55" x2="24" y2="55"/>
+        <line x1="16" y1="75" x2="24" y2="75"/>
+        <!-- Tick marks on X -->
+        <line x1="40" y1="86" x2="40" y2="94"/>
+        <line x1="60" y1="86" x2="60" y2="94"/>
+        <line x1="80" y1="86" x2="80" y2="94"/>
+        <!-- Curve (a parabola-ish growth line) -->
+        <path d="M 22 88 Q 50 86 70 50 T 95 14" stroke-width="1.8" opacity="0.85"/>
+      </g>
+      <!-- Caveat label "y = f(faith)" -->
+      <text x="42" y="22" font-family="Caveat, cursive" font-size="13" font-weight="600" fill="currentColor" filter="url(#axisJitter)">y = f(faith)</text>
+    </svg>
+  </div>
+
+  <!-- YouTube facade: only load the iframe SDK when the user actually clicks.
+       Saves ~500KB+ on initial pageload while still keeping the video native. -->
+  <script>
+    document.querySelectorAll('.gm-video-frame[data-yt]').forEach(function(frame) {
+      function activate() {
+        var id = frame.dataset.yt;
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&showinfo=0';
+        iframe.title = "God's Math — Tiffany Haynes";
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        var poster = frame.querySelector('.gm-video-poster');
+        if (poster) poster.remove();
+        frame.appendChild(iframe);
+        frame.style.cursor = 'default';
+      }
+      frame.addEventListener('click', activate);
+      frame.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+      });
+    });
+  </script>
+
 </section>
 
-<!-- ============ MARQUEE ============ -->
+<!-- ============ MARQUEE — branded with sparkle separators ============ -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>It Disrupts</span>
-    <span>It Breaks the Rules</span>
-    <span>It's Mind Boggling</span>
-    <span>It's Supernatural</span>
-    <span>It Disrupts</span>
-    <span>It Breaks the Rules</span>
-    <span>It's Mind Boggling</span>
-    <span>It's Supernatural</span>
+    <span>It Disrupts</span><span class="gm-marquee-spark">✦</span>
+    <span>It Breaks the Rules</span><span class="gm-marquee-spark">✦</span>
+    <span>It's Mind Boggling</span><span class="gm-marquee-spark">✦</span>
+    <span>It's Supernatural</span><span class="gm-marquee-spark">✦</span>
+    <span>It Disrupts</span><span class="gm-marquee-spark">✦</span>
+    <span>It Breaks the Rules</span><span class="gm-marquee-spark">✦</span>
+    <span>It's Mind Boggling</span><span class="gm-marquee-spark">✦</span>
+    <span>It's Supernatural</span><span class="gm-marquee-spark">✦</span>
   </div>
 </div>
 
@@ -1269,6 +1846,10 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
           <span class="scripture">Isaiah 55:8&ndash;9</span>
         </div>
       </div>
+      <div class="gm-step-connector reveal-on-scroll" aria-hidden="true">
+        <svg viewBox="0 0 64 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><path d="M 4 14 Q 20 4 40 12 Q 50 16 58 12"/><path d="M 50 6 L 58 12 L 52 18"/></svg>
+        <span>then</span>
+      </div>
       <div class="gm-understand-step reveal-on-scroll">
         <div class="gm-understand-num">02</div>
         <div class="gm-understand-content">
@@ -1276,12 +1857,20 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
           <p>As a part of your inheritance there are some perks you qualify for that will ensure your life is set apart from others. God's Math is one of those perks.</p>
         </div>
       </div>
+      <div class="gm-step-connector reveal-on-scroll" aria-hidden="true">
+        <svg viewBox="0 0 64 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><path d="M 4 14 Q 20 4 40 12 Q 50 16 58 12"/><path d="M 50 6 L 58 12 L 52 18"/></svg>
+        <span>then</span>
+      </div>
       <div class="gm-understand-step reveal-on-scroll">
         <div class="gm-understand-num">03</div>
         <div class="gm-understand-content">
           <h3>Know what you need to start.</h3>
           <p>God is simple, and He doesn't need much to have a performance of His math in your life. To activate His math, all you need is two.</p>
         </div>
+      </div>
+      <div class="gm-step-resolution reveal-on-scroll" aria-hidden="true">
+        =
+        <span class="stamp">revelation</span>
       </div>
     </div>
   </div>
@@ -1296,14 +1885,17 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
     </div>
     <div class="gm-inspired-grid">
       <div class="gm-inspired-card reveal-on-scroll">
+        <span class="gm-card-stamp" aria-hidden="true">×</span>
         <h3>Understanding the power of two.</h3>
         <p>When studying Ecclesiastes 4:9, it reads "two are better than one." I researched the Greek definition of <em>better</em> and saw it was defined as: prosperity, wealth, precious, favor, benefit.</p>
       </div>
       <div class="gm-inspired-card reveal-on-scroll">
+        <span class="gm-card-stamp" aria-hidden="true">→</span>
         <h3>Watching the pattern in scripture.</h3>
         <p>One can chase a thousand, but two can put ten thousand to flight. The energy required to chase something is a vast difference from simply adding one person to put ten thousand to flight. In the Bible, <em>flight</em> means to cause to disappear.</p>
       </div>
       <div class="gm-inspired-card reveal-on-scroll">
+        <span class="gm-card-stamp" aria-hidden="true">=</span>
         <h3>Looking at my own life.</h3>
         <p>A decade ago I was filled with uncertainty, my life in shambles. Once I came into agreement with what God had designed for my life, I began to see God's Math reflected in ways that only God Himself can take credit for.</p>
       </div>
@@ -1331,21 +1923,25 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
     </div>
     <div class="gm-principles-grid">
       <div class="principle-card reveal-on-scroll">
+        <span class="gm-attr-counter" aria-hidden="true">01 / 04</span>
         <div class="principle-symbol">✦</div>
         <h3 class="principle-title">It <em>disrupts</em>.</h3>
         <p class="principle-body">It is designed to disrupt patterns and be the example to the world that the cycle ends with you.</p>
       </div>
       <div class="principle-card reveal-on-scroll">
+        <span class="gm-attr-counter" aria-hidden="true">02 / 04</span>
         <div class="principle-symbol">✦</div>
         <h3 class="principle-title">It <em>breaks</em> the rules.</h3>
         <p class="principle-body">It's outside of standard education. Multiplication as you know it must be redefined.</p>
       </div>
       <div class="principle-card reveal-on-scroll">
+        <span class="gm-attr-counter" aria-hidden="true">03 / 04</span>
         <div class="principle-symbol">✦</div>
         <h3 class="principle-title">It's <em>mind boggling</em>.</h3>
         <p class="principle-body">When you try to figure it out, you simply cannot. Because it makes no sense.</p>
       </div>
       <div class="principle-card reveal-on-scroll">
+        <span class="gm-attr-counter" aria-hidden="true">04 / 04</span>
         <div class="principle-symbol">✦</div>
         <h3 class="principle-title">It's <em>supernatural</em>.</h3>
         <p class="principle-body">It attaches to your natural and adds the super that is not of this world. It's Heavenly. It's favor. It's Glory.</p>
