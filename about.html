@@ -716,6 +716,279 @@ section { position: relative; z-index: 2; }
   .quiz-grid { grid-template-columns: 1fr; gap: 24px; }
   .origin, .gallery, .about-quote, .facts, .quiz, .about-cta { padding: 80px 0; }
 }
+
+/* ============ ABOUT PAGE ENHANCEMENTS — photo layouts ============ */
+
+/* Hero with portrait — split layout */
+.about-hero-with-photo {
+  background: var(--cream-warm);
+  padding: 120px 0 100px;
+  overflow: hidden;
+}
+.about-hero-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-hero-text .about-hero-eyebrow {
+  font-family: var(--font-utility);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+.about-hero-text h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5.5vw, 72px);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--charcoal);
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+.about-hero-text h1 em { font-style: italic; color: var(--red); }
+.about-hero-text p {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--charcoal);
+  max-width: 540px;
+}
+.about-hero-photo {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+}
+.about-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+@media (max-width: 900px) {
+  .about-hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-hero-with-photo { padding: 80px 0 60px; }
+}
+
+/* Story sections — image-text-image patterns */
+.story-section {
+  padding: 120px 0;
+  background: var(--cream);
+}
+.story-section.alt-bg { background: var(--linen); }
+.story-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+.story-grid.flipped { grid-template-columns: 1.2fr 1fr; }
+.story-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.story-photos.single { grid-template-columns: 1fr; }
+.story-photo {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+.story-photo.tall { aspect-ratio: 3/4; }
+.story-photo.offset { transform: translateY(40px); }
+.story-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.story-photo:hover img { transform: scale(1.04); }
+.story-text-eyebrow {
+  font-family: var(--font-utility);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.story-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--charcoal);
+  letter-spacing: -0.015em;
+  margin-bottom: 28px;
+}
+.story-text h2 em { font-style: italic; color: var(--red); }
+.story-text p {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--charcoal);
+  margin-bottom: 20px;
+}
+@media (max-width: 900px) {
+  .story-section { padding: 80px 0; }
+  .story-grid, .story-grid.flipped { grid-template-columns: 1fr; gap: 48px; }
+  .story-photos.single, .story-photos { grid-template-columns: 1fr 1fr; }
+  .story-photo.offset { transform: none; }
+}
+
+/* Family gallery — 5-photo grid for kiddos / spouse / COO */
+.family-section {
+  padding: 100px 0;
+  background: var(--cream-warm);
+}
+.family-intro {
+  max-width: 760px;
+  margin: 0 auto 64px;
+  padding: 0 32px;
+  text-align: center;
+}
+.family-intro p {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--charcoal);
+}
+.family-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.family-tile {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+.family-tile img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.family-tile:hover img { transform: scale(1.04); }
+.family-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 24px 20px 20px;
+  background: linear-gradient(to top, rgba(65,65,65,0.92), rgba(65,65,65,0));
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+}
+.family-tile.wide { grid-column: span 2; aspect-ratio: 8/5; }
+@media (max-width: 900px) {
+  .family-grid { grid-template-columns: 1fr 1fr; }
+  .family-tile.wide { grid-column: span 2; aspect-ratio: 8/5; }
+}
+@media (max-width: 600px) {
+  .family-grid { grid-template-columns: 1fr; }
+  .family-tile.wide { grid-column: 1; aspect-ratio: 4/5; }
+}
+
+/* Full-bleed parallax — vbs-155 team photo background */
+.parallax-quote {
+  position: relative;
+  min-height: 540px;
+  background-image: url('images/vbs-155.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 32px;
+}
+.parallax-quote::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(65,65,65,0.78), rgba(160,6,5,0.55));
+}
+.parallax-quote-inner {
+  position: relative;
+  max-width: 800px;
+  z-index: 1;
+}
+.parallax-quote .eyebrow {
+  font-family: var(--font-utility);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.85;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.parallax-quote h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+}
+.parallax-quote h2 em { font-style: italic; }
+@media (max-width: 700px) {
+  .parallax-quote { background-attachment: scroll; min-height: 420px; }
+}
+
+/* Fun facts — image-flanked layout */
+.facts-with-photos {
+  padding: 120px 0;
+  background: var(--cream);
+}
+.facts-grid-photo {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 64px;
+  align-items: start;
+}
+.facts-photo-stack {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  position: sticky;
+  top: 100px;
+}
+.facts-photo {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+.facts-photo img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 900px) {
+  .facts-with-photos { padding: 80px 0; }
+  .facts-grid-photo { grid-template-columns: 1fr; gap: 48px; }
+  .facts-photo-stack { position: static; grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+}
+
 </style>
 
 <!-- Meta Pixel Code -->
@@ -750,110 +1023,124 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 </nav>
 
 <!-- ============ HERO ============ -->
-<section class="about-hero">
-  <div class="about-hero-inner">
+<section class="about-hero-with-photo">
+  <div class="about-hero-grid">
+    <div class="about-hero-text reveal-on-scroll">
+      <div class="about-hero-eyebrow">About</div>
+      <h1>The goal is to <em>have</em> it all,<br>not to <em>do</em> it all.</h1>
+      <p>I have tried to manage it all on my own, and I have created systems and hierarchy that supported my clients and allowed me to work on my business and not in it. I am showing others how to do the same.</p>
+    </div>
+    <div class="about-hero-photo reveal-on-scroll">
+      <img src="images/11.jpg" alt="Tiffany Haynes" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY 1: ONCE UPON A TIME ============ -->
+<section class="story-section">
+  <div class="story-grid">
+    <div class="story-photos reveal-on-scroll">
+      <div class="story-photo tall">
+        <img src="images/img_0681.jpg" alt="Tiffany Haynes" loading="lazy">
+      </div>
+      <div class="story-photo tall offset">
+        <img src="images/selfie3.jpg" alt="Tiffany at work" loading="lazy">
+      </div>
+    </div>
+    <div class="story-text reveal-on-scroll">
+      <div class="story-text-eyebrow">Once Upon a Time</div>
+      <h2>From corporate to <em>seven figures</em>.</h2>
+      <p>I went from corporate to solopreneur, to entrepreneur, to seven-figure earner teaching CEOs how to do the same.</p>
+      <p>When my career began, I worked as a broker's assistant to one of the most successful land commercial brokers in Texas. Collin County was the fastest-growing county in the country.</p>
+      <p>During my time at the company, large developments and acreages of land were listed and sold for upwards of $200 million a year. This fast-paced client-facing role gave me the opportunity to learn firsthand about land development, planning and zoning procedures, condemnation hearings, marketing, and branding for high-end commercial and retail projects. It provided me with a deeper understanding of the legal processes of conveying real estate.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY 2: BUILDING VBS ============ -->
+<section class="story-section alt-bg">
+  <div class="story-grid flipped">
+    <div class="story-text reveal-on-scroll">
+      <div class="story-text-eyebrow">Building VBS</div>
+      <h2>One staff member became <em>thirteen</em>. In four years.</h2>
+      <p>That experience created the foundation to move into risk management for a corporate bank, and eventually to launch my first company: <strong>VBS Real Estate</strong>. The real estate virtual assistant company grew from a staff of one to thirteen in just four short years, where we assist agents in transaction coordination, listing support, and marketing.</p>
+      <p>Being a self-professed business book junkie, I now train real estate agents, assistants, and entrepreneurs on the innovative and business-minded strategies I have learned over the years.</p>
+    </div>
+    <div class="story-photos reveal-on-scroll">
+      <div class="story-photo tall">
+        <img src="images/vbs-112_copy.jpg" alt="Tiffany and Tristan Skiles, COO" loading="lazy">
+      </div>
+      <div class="story-photo tall offset">
+        <img src="images/img_5732.jpg" alt="Tiffany and her husband" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAMILY GALLERY ============ -->
+<section class="family-section">
+  <div class="family-intro reveal-on-scroll">
+    <div class="story-text-eyebrow" style="margin-bottom:16px;">My People</div>
+    <h2 style="font-family:var(--font-display);font-size:clamp(32px,4vw,48px);font-weight:300;line-height:1.15;color:var(--charcoal);letter-spacing:-0.01em;margin-bottom:20px;">The ones who make it <em style="font-style:italic;color:var(--red);">all</em> worth it.</h2>
+    <p>Behind every system, every hire, every client win, there is a family that makes the work make sense.</p>
+  </div>
+  <div class="family-grid">
+    <div class="family-tile reveal-on-scroll">
+      <img src="images/img_2204_2.jpg" alt="Tiffany and her son" loading="lazy">
+      <div class="family-caption">My Kiddos ❤️</div>
+    </div>
+    <div class="family-tile reveal-on-scroll">
+      <img src="images/img_2841.jpg" alt="Zariah's birthday" loading="lazy">
+      <div class="family-caption">Zariah's seventh birthday</div>
+    </div>
+    <div class="family-tile reveal-on-scroll">
+      <img src="images/zariah.jpg" alt="Baby Zariah" loading="lazy">
+      <div class="family-caption">Baby Z, my joy</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FULL-BLEED PARALLAX QUOTE (vbs-155 team photo) ============ -->
+<section class="parallax-quote">
+  <div class="parallax-quote-inner">
+    <div class="eyebrow">Built with a Team</div>
+    <h2>I am widely known for my innovative thinking, meticulous procedural approach, and <em>personalized attention</em>.</h2>
+  </div>
+</section>
+
+<!-- ============ FUN FACTS WITH PHOTOS ============ -->
+<section class="facts-with-photos">
+  <div class="facts-grid-photo">
+    <div class="facts-photo-stack reveal-on-scroll">
+      <div class="facts-photo">
+        <img src="images/img_2816.jpg" alt="Tiffany Haynes" loading="lazy">
+      </div>
+      <div class="facts-photo">
+        <img src="images/untitled_design_2.png" alt="Tiffany's workspace" loading="lazy">
+      </div>
+    </div>
     <div>
-      <div class="about-hero-eyebrow">About Tiffany</div>
-      <h1 class="about-hero-title">A different<br>kind of <em>math</em>.</h1>
-    </div>
-    <div>
-      <p class="about-hero-tagline">
-        The goal is to <em style="font-style:normal;font-weight:500;color:var(--red);">have</em> it all — not to <em style="font-style:normal;font-weight:500;">do</em> it all.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ MARQUEE ============ -->
-<div class="marquee">
-  <div class="marquee-track">
-    <span>Wife</span>
-    <span>Mother</span>
-    <span>CEO</span>
-    <span>Mentor</span>
-    <span>Multi-Six-Figure Operator</span>
-    <span>Wife</span>
-    <span>Mother</span>
-    <span>CEO</span>
-    <span>Mentor</span>
-    <span>Multi-Six-Figure Operator</span>
-  </div>
-</div>
-
-<!-- ============ ORIGIN ============ -->
-<section class="origin">
-  <div class="container">
-    <div class="origin-grid">
-      <div class="reveal-on-scroll">
-        <div class="origin-eyebrow-line">— once upon a time</div>
-        <h2 class="origin-title">From corporate to solopreneur to seven-figure <em>mentor</em>.</h2>
+      <div class="reveal-on-scroll" style="margin-bottom:48px;">
+        <div class="story-text-eyebrow">Super Fun Facts</div>
+        <h2 style="font-family:var(--font-display);font-size:clamp(32px,4vw,48px);font-weight:300;line-height:1.15;color:var(--charcoal);letter-spacing:-0.01em;">Now for the <em style="font-style:italic;color:var(--red);">important</em> stuff.</h2>
       </div>
-      <div class="origin-text reveal-on-scroll">
-        <p>I started my career as a broker's assistant to one of the most successful land commercial brokers in Texas. Collin County was the fastest-growing county in the country at the time. While I was there, large developments and acreages of land were listed and sold for upwards of $200 million a year.</p>
-        <p>That fast-paced, client-facing role gave me a firsthand education in land development, planning, zoning procedures, condemnation hearings, marketing, and branding for high-end commercial and retail projects. It built my deeper understanding of the legal processes of conveying real estate.</p>
-        <p>That experience became the foundation to move into risk management for a corporate bank — and eventually to start my own company: VBS Real Estate. The real estate virtual assistant business grew from a staff of one to thirteen in just four short years. We support agents in transaction coordination, listing support, and marketing.</p>
-        <p>Self-professed business book junkie. Today I train real estate agents, assistants, and entrepreneurs on the strategies that actually moved the needle for me.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ GALLERY ============ -->
-<section class="gallery">
-  <div class="container">
-    <div class="gallery-grid">
-      <div class="gallery-item reveal-on-scroll">
-        <div class="gallery-tag">Replace</div>
-        <div class="gallery-caption">Tiffany &amp; Tristan, COO</div>
-      </div>
-      <div class="gallery-item reveal-on-scroll">
-        <div class="gallery-tag">Replace</div>
-        <div class="gallery-caption">Me &amp; Bae</div>
-      </div>
-      <div class="gallery-item reveal-on-scroll">
-        <div class="gallery-tag">Replace</div>
-        <div class="gallery-caption">My Kiddos ❤</div>
-      </div>
-      <div class="gallery-item reveal-on-scroll">
-        <div class="gallery-tag">Replace</div>
-        <div class="gallery-caption">Zariah</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PULL QUOTE ============ -->
-<section class="about-quote">
-  <div class="container reveal-on-scroll">
-    <p class="about-quote-text">
-      Widely known for innovative thinking, a meticulous procedural approach, <span>and personalized attention.</span>
-    </p>
-  </div>
-</section>
-
-<!-- ============ FUN FACTS ============ -->
-<section class="facts">
-  <div class="container">
-    <div class="facts-header reveal-on-scroll">
-      <div class="section-eyebrow">Now for the important stuff</div>
-      <h2 class="facts-title">Super <em>fun facts</em>.</h2>
-    </div>
-    <div class="facts-grid">
-      <div class="fact-item reveal-on-scroll">
-        <div class="fact-num">01</div>
-        <p class="fact-text">My real estate transaction company has processed over <strong style="color:var(--stone);">4,000 contracts</strong>. Still blows my mind.</p>
-      </div>
-      <div class="fact-item reveal-on-scroll">
-        <div class="fact-num">02</div>
-        <p class="fact-text">The best advice I was ever given: <em style="color:var(--stone);">"99% of our problems are our own fault."</em> I've learned to dig deep and take ownership.</p>
-      </div>
-      <div class="fact-item reveal-on-scroll">
-        <div class="fact-num">03</div>
-        <p class="fact-text">I love watching new and fresh films — especially detective and crime-related movies. You better believe I'll be helping you solve the case.</p>
-      </div>
-      <div class="fact-item reveal-on-scroll">
-        <div class="fact-num">04</div>
-        <p class="fact-text">As a mom, wife, and business owner, I've found that <strong style="color:var(--stone);">being present</strong> in all situations beats trying to balance them.</p>
+      <div style="display:flex;flex-direction:column;gap:40px;">
+        <div class="reveal-on-scroll" style="border-left:3px solid var(--red);padding-left:24px;">
+          <h3 style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--charcoal);margin-bottom:10px;font-style:italic;">Over 4,000 contracts processed.</h3>
+          <p style="font-family:var(--font-body);font-size:17px;line-height:1.7;color:var(--charcoal);">My real estate transaction company has processed over 4,000 contracts. Still blows my mind.</p>
+        </div>
+        <div class="reveal-on-scroll" style="border-left:3px solid var(--red);padding-left:24px;">
+          <h3 style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--charcoal);margin-bottom:10px;font-style:italic;">The best advice I ever got.</h3>
+          <p style="font-family:var(--font-body);font-size:17px;line-height:1.7;color:var(--charcoal);">"99% of our problems are our own fault." That single sentence taught me to dig deep and take ownership of every situation.</p>
+        </div>
+        <div class="reveal-on-scroll" style="border-left:3px solid var(--red);padding-left:24px;">
+          <h3 style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--charcoal);margin-bottom:10px;font-style:italic;">Detective movies, all day.</h3>
+          <p style="font-family:var(--font-body);font-size:17px;line-height:1.7;color:var(--charcoal);">I love new and fresh films, especially anything detective or crime-related. You better believe I will be helping you solve the case.</p>
+        </div>
+        <div class="reveal-on-scroll" style="border-left:3px solid var(--red);padding-left:24px;">
+          <h3 style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--charcoal);margin-bottom:10px;font-style:italic;">Presence over balance.</h3>
+          <p style="font-family:var(--font-body);font-size:17px;line-height:1.7;color:var(--charcoal);">As a mom, wife, and business owner, I have found that being present in all situations is better than chasing some idea of balance.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -862,68 +1149,37 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 <!-- ============ THE QUIZ ============ -->
 <section class="quiz">
   <div class="container">
-    <div class="quiz-header reveal-on-scroll">
+    <div class="reveal-on-scroll" style="text-align:center;margin-bottom:64px;">
       <div class="section-eyebrow">The Quiz</div>
-      <h2 class="section-title">Rapid-fire — <em>just for fun</em>.</h2>
+      <h2 class="section-title">Ten quick things <em>about me</em>.</h2>
     </div>
     <div class="quiz-grid">
-      <div class="quiz-item reveal-on-scroll">
-        <div class="quiz-q">Where I was born</div>
-        <div class="quiz-a">Vicenza, Italy</div>
-      </div>
-      <div class="quiz-item reveal-on-scroll">
-        <div class="quiz-q">Childhood theme</div>
-        <div class="quiz-a">Moving — military brat</div>
-      </div>
-      <div class="quiz-item reveal-on-scroll">
-        <div class="quiz-q">Bucket list location</div>
-        <div class="quiz-a">Dubai</div>
-      </div>
-      <div class="quiz-item reveal-on-scroll">
-        <div class="quiz-q">Alternate universe job</div>
-        <div class="quiz-a">Homicide detective. I would've been legendary.</div>
-      </div>
-      <div class="quiz-item reveal-on-scroll">
-        <div class="quiz-q">Favorite place I've been</div>
-        <div class="quiz-a">Honolulu, Hawaii</div>
-      </div>
-      <div class="quiz-item reveal-on-scroll">
-        <div class="quiz-q">Drink of choice</div>
-        <div class="quiz-a">Spindrift</div>
-      </div>
-      <div class="quiz-item reveal-on-scroll">
-        <div class="quiz-q">Can't live without</div>
-        <div class="quiz-a">Pentel Energel Liquid Gel Ink Pen — the best</div>
-      </div>
-      <div class="quiz-item reveal-on-scroll">
-        <div class="quiz-q">Favorite business book</div>
-        <div class="quiz-a">E-Myth, Michael Gerber</div>
-      </div>
-      <div class="quiz-item reveal-on-scroll">
-        <div class="quiz-q">Beach or mountains</div>
-        <div class="quiz-a">What's a mountain?</div>
-      </div>
-      <div class="quiz-item reveal-on-scroll">
-        <div class="quiz-q">Favorite show to binge</div>
-        <div class="quiz-a">Chicago Fire</div>
-      </div>
+      <div class="quiz-item reveal-on-scroll"><div class="quiz-q">Where I was born</div><div class="quiz-a">Vicenza, Italy</div></div>
+      <div class="quiz-item reveal-on-scroll"><div class="quiz-q">Childhood theme</div><div class="quiz-a">Moving. I was a military brat.</div></div>
+      <div class="quiz-item reveal-on-scroll"><div class="quiz-q">Bucket list location</div><div class="quiz-a">Dubai</div></div>
+      <div class="quiz-item reveal-on-scroll"><div class="quiz-q">Alternate universe job</div><div class="quiz-a">Homicide detective. I would have been legendary.</div></div>
+      <div class="quiz-item reveal-on-scroll"><div class="quiz-q">Favorite place I've been</div><div class="quiz-a">Honolulu, Hawaii</div></div>
+      <div class="quiz-item reveal-on-scroll"><div class="quiz-q">Drink of choice</div><div class="quiz-a">Spindrift</div></div>
+      <div class="quiz-item reveal-on-scroll"><div class="quiz-q">Can't live without</div><div class="quiz-a">Pentel Energel Liquid Gel Ink Pen. Seriously the best pen.</div></div>
+      <div class="quiz-item reveal-on-scroll"><div class="quiz-q">Favorite business book</div><div class="quiz-a">If I had to pick one, The E-Myth by Michael Gerber.</div></div>
+      <div class="quiz-item reveal-on-scroll"><div class="quiz-q">Beach vs. mountains</div><div class="quiz-a">What is a mountain?</div></div>
+      <div class="quiz-item reveal-on-scroll"><div class="quiz-q">Favorite show to binge</div><div class="quiz-a">Chicago Fire</div></div>
     </div>
   </div>
 </section>
 
-<!-- ============ ABOUT CTA ============ -->
+<!-- ============ CTA ============ -->
 <section class="about-cta">
-  <div class="container reveal-on-scroll">
-    <h2>Ready to <em>move forward</em>?</h2>
-    <p>The masterclass is where I share the actual model — start to scale, no fluff.</p>
-    <a href="/masterclass" class="btn-primary">
-      Show Me the Way
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
-    </a>
+  <div class="container">
+    <div class="reveal-on-scroll" style="text-align:center;">
+      <h2>Now you know me. <em>Let me know you.</em></h2>
+      <p style="max-width:540px;margin:24px auto 36px;font-family:var(--font-body);font-size:19px;line-height:1.6;color:var(--charcoal);">The masterclass is the best way to see what we can build together.</p>
+      <a href="masterclass.html" class="btn-primary">Attend the Masterclass</a>
+    </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
+
 <footer class="footer">
   <div class="footer-top">
     <div>
