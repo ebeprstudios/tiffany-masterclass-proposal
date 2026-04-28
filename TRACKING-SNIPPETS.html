@@ -1,38 +1,76 @@
 <!--
   ============================================================
-  TRACKING & INTEGRATION SNIPPETS
-  Tiffany Haynes & Co. — Production go-live checklist
+  TRACKING & INTEGRATION REFERENCE
+  Tiffany Haynes & Co. — Status doc
   ============================================================
 
-  This file is a REFERENCE — not deployed. It contains every script
-  pulled from the existing tiffanyhaynesco.com + tiffanysmasterclass.com
-  stack, ready to paste into the production HTML when go-live happens.
+  This file is a REFERENCE — not deployed. It tracks what's already
+  wired into the proposal site and what still needs to be installed
+  when we go live on tiffanyhaynesco.com.
 
-  DO NOT add these to the proposal preview site. They'll pollute
-  Tiffany's real analytics with review-session traffic and trigger
-  retargeting against herself.
+  Current state at a glance:
 
-  When ready to launch:
-    1. Add Hotjar + Clarity + GTM snippets to all 4 page <head> blocks
-    2. Wire the masterclass form to ClickFunnels (instructions at bottom)
-    3. Verify PushCrew status — likely dormant
-    4. Push to GitHub, Vercel auto-deploys
-    5. Point tiffanyhaynesco.com DNS at the Vercel deployment
+    INSTALLED & FIRING:
+      - Facebook Pixel (all 4 pages)
+      - ClickFunnels integration (masterclass page only)
+
+    READY TO INSTALL AT GO-LIVE:
+      - Hotjar (heatmaps, recordings)
+      - Microsoft Clarity (heatmaps, recordings)
+      - Google Tag Manager (need container ID from Tiffany)
+
+    NEEDS VERIFICATION FROM TIFFANY:
+      - PushCrew / VWO Engage (probably dormant)
+
+  Why we're holding off on Hotjar/Clarity/GTM during proposal review:
+  loading them now means every preview pageview pollutes Tiffany's
+  real analytics with review-session data. We add them at the same
+  moment we point tiffanyhaynesco.com DNS at the new site.
   ============================================================
 -->
 
 
-<!-- ====== ALREADY INSTALLED ====== -->
 
-<!-- Facebook Pixel — ID 943376613232304 — FIRING NOW on proposal site -->
-<!-- (Located in <head> of all 4 pages already) -->
-
-
-<!-- ====== TO INSTALL AT GO-LIVE ====== -->
+<!-- ============================================================
+     ALREADY INSTALLED
+     ============================================================ -->
 
 
-<!-- Hotjar — Site 3789527 -->
-<!-- Heatmaps + session recordings, currently active on tiffanyhaynesco.com -->
+<!-- 1. FACEBOOK PIXEL — ID 943376613232304
+     Status: FIRING on all 4 pages right now
+     Location: <head> of index.html, about.html, gods-math.html, masterclass.html
+     Continues working seamlessly when DNS cuts over to tiffanyhaynesco.com -->
+
+
+<!-- 2. CLICKFUNNELS WEBINAR REGISTRATION — Page ID 58576570
+     Status: FULLY WIRED on masterclass.html only (correct — other pages aren't CF-managed)
+
+     What's loaded:
+       - application.js → UTM/affiliate cookie capture, pageview recording
+       - lander.js → form validation + post-submit redirect logic
+       - cfAR hidden form → receives attribution metadata
+       - 7 CF meta tags identifying page/user/funnel context
+
+     What happens on submit:
+       1. Form posts to https://www.tiffanysmasterclass.com/webinar-registration-page1678444143249
+       2. Contact added to her AutoResponder list "Webinar (Masterclass) registered" (id 4)
+       3. Existing email automation triggers (no changes needed on her end)
+       4. Browser redirects to her thank-you page in the funnel
+       5. FB Pixel "Lead" event fires before submit (already wired)
+
+     Hidden fields auto-populated by JS on page load:
+       - contact[time_zone] (browser TZ via Intl.DateTimeFormat)
+       - utm_source, utm_medium, utm_campaign, utm_content, utm_term (from URL params) -->
+
+
+
+<!-- ============================================================
+     READY TO INSTALL AT GO-LIVE
+     Add these to the <head> of all 4 pages when DNS cuts over.
+     ============================================================ -->
+
+
+<!-- 3. HOTJAR — Site 3789527 -->
 <script>
   (function(h,o,t,j,a,r){
     h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -45,8 +83,7 @@
 </script>
 
 
-<!-- Microsoft Clarity — Project k48ud4uhq6 -->
-<!-- Second-source heatmaps + session recordings -->
+<!-- 4. MICROSOFT CLARITY — Project k48ud4uhq6 -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -56,81 +93,72 @@
 </script>
 
 
-<!-- Google Tag Manager — Container ID needed -->
-<!-- ACTION: Erica, log into Tiffany's GTM (tagmanager.google.com) and grab the GTM-XXXXXX ID -->
-<!-- This goes in <head> -->
+<!-- 5. GOOGLE TAG MANAGER — Container ID needed
+     ACTION: Erica/Tiffany, log into tagmanager.google.com and grab the GTM-XXXXXX ID -->
+
+<!-- Goes in <head> -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-XXXXXX');</script>
 
-<!-- Google Tag Manager (noscript) — goes immediately after opening <body> -->
+<!-- Goes immediately after opening <body> -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
-<!-- PushCrew / VWO Engage — VERIFY WITH TIFFANY FIRST -->
-<!-- The pushcrew.js found on her existing site references "subscriberId" and
+
+<!-- ============================================================
+     NEEDS VERIFICATION FROM TIFFANY
+     ============================================================ -->
+
+
+<!-- 6. PUSHCREW / VWO ENGAGE
+     The pushcrew.js found on her existing site references "subscriberId" and
      posts to ClickFunnels. PushCrew rebranded to VWO Engage in ~2019.
      Many sites kept the integration but stopped maintaining it.
+
      ACTION: Ask Tiffany whether push notifications are still active in her
-     marketing stack. If yes, grab her account code and we'll add it. If no,
-     skip it — one less script to load. -->
+     marketing stack. Three possible answers:
 
+       (a) "Yes, I still send pushes" → grab her account code, install it
+       (b) "I forgot I had that" → skip it, one less script to load
+       (c) "What's that?" → definitely skip it
 
-<!--
-  ============================================================
-  MASTERCLASS FORM → CLICKFUNNELS INTEGRATION
-  ============================================================
-
-  The current masterclass form on the proposal site uses a placeholder
-  submit handler (shows success state, fires FB Pixel Lead event).
-
-  Her real masterclass at tiffanysmasterclass.com is ClickFunnels-based.
-  To wire the new form to her existing backend (preserving her email
-  automation, webinar flow, lead nurture — everything):
-
-  1. Open https://www.tiffanysmasterclass.com/webinar-registration in a
-     desktop browser, right-click the registration form, choose "Inspect"
-
-  2. Find the <form> tag and grab two things:
-     a. The form's `action` URL (something like
-        https://app.clickfunnels.com/forms/abc123/responses)
-     b. The exact `name` attributes of each input field
-        (ClickFunnels uses specific names like "userevents[email]")
-
-  3. In masterclass.html, replace the current form action and field names
-     with what was found in step 2.
-
-  4. Remove the JavaScript submit handler at the bottom of masterclass.html
-     OR keep it and let it intercept + POST to ClickFunnels via fetch().
-
-  Easiest path:
-  - Remove the JS handler entirely
-  - Set <form action="..." method="POST"> to the ClickFunnels endpoint
-  - Update each input's `name` attribute
-  - ClickFunnels handles the redirect/thank-you flow on its end
-  - The current FB Pixel Lead event needs to be fired before submit
-    (use a regular submit handler that fires fbq then form.submit())
-
-  Alternative if wanting to keep the inline success state:
-  - Keep the JS handler
-  - Inside the handler, POST data to ClickFunnels via fetch() before
-    showing the success state
-  - This gives full control over the post-submit experience while
-    preserving ClickFunnels as the data destination
-  ============================================================
+     If she says yes, the script will look something like:
+       <script type="text/javascript" src="https://cdn.pushcrew.com/js/[ACCOUNT_CODE].js" async></script>
 -->
 
 
-<!--
-  ============================================================
-  CLOUDFLARE RUM (Real User Monitoring)
-  ============================================================
-  Found in source as v8c78df...js — this is auto-injected by Cloudflare
-  when a domain is proxied through them. No install needed on our end.
-  Will activate automatically when tiffanyhaynesco.com DNS points at
-  Vercel and Cloudflare is the proxy layer.
-  ============================================================
--->
+
+<!-- ============================================================
+     HANDLED AUTOMATICALLY
+     ============================================================ -->
+
+
+<!-- 7. CLOUDFLARE RUM (Real User Monitoring)
+     Auto-injected by Cloudflare when a domain is proxied through them.
+     No install needed on our end. Activates automatically when
+     tiffanyhaynesco.com DNS points at Vercel and Cloudflare is the proxy. -->
+
+
+
+<!-- ============================================================
+     GO-LIVE CHECKLIST (when ready to switch tiffanyhaynesco.com over)
+     ============================================================
+
+     1. Add Hotjar + Clarity snippets to <head> of all 4 pages
+     2. Get GTM container ID from Tiffany; install GTM snippet
+     3. Verify PushCrew status; install or skip
+     4. Run one test masterclass registration end-to-end
+     5. Confirm test contact appears on CF list "Webinar (Masterclass) registered"
+     6. Confirm thank-you redirect works
+     7. Update Vercel domain settings to point at tiffanyhaynesco.com
+     8. Update DNS A/CNAME records at her registrar
+     9. Wait for SSL cert provisioning (~5 min)
+    10. Verify all 4 pages load on the real domain
+    11. Verify FB Pixel still fires on real domain
+    12. Verify Hotjar/Clarity start recording sessions
+
+     ============================================================ -->
