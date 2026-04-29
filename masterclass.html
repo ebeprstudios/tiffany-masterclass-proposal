@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="theme-color" content="#FAF6EF">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Masterclass — Tiffany Haynes & Co.</title>
 <meta name="description" content="Free masterclass: how to build a multi-six-figure real estate virtual assistant business." />
@@ -138,7 +139,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--red);
   padding: 12px 22px;
   border-radius: 999px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .nav-cta:hover {
   background: var(--red-dark);
@@ -219,7 +220,7 @@ section { position: relative; z-index: 2; }
   color: var(--cream);
   padding: 18px 34px;
   border-radius: 999px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -241,7 +242,7 @@ section { position: relative; z-index: 2; }
   border: 1px solid var(--charcoal);
   padding: 14px 28px;
   border-radius: 999px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -660,7 +661,7 @@ section { position: relative; z-index: 2; }
   padding: 48px 36px;
   background: var(--linen);
   border-radius: 2px;
-  transition: all 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
   border: 1px solid transparent;
 }
 .audience-card:hover {
@@ -875,7 +876,7 @@ section { position: relative; z-index: 2; }
   border: 1px solid transparent;
   padding: 16px 18px;
   border-radius: 2px;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
 }
 .field input:focus, .field select:focus {
@@ -3802,7 +3803,7 @@ form#mc-form button[type="submit"] {
   text-transform: uppercase !important;
   border-radius: 999px !important;
   cursor: pointer !important;
-  transition: all 0.3s ease !important;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
   align-items: center !important;
   gap: 12px !important;
 }
@@ -3866,7 +3867,7 @@ form#mc-form button[type="submit"]:hover {
   align-items: center !important;
   gap: 14px !important;
   cursor: pointer !important;
-  transition: all 0.3s ease !important;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
   box-shadow: 0 8px 20px rgba(232,150,130,0.35);
   position: relative;
   z-index: 2;
@@ -4306,6 +4307,43 @@ select:focus-visible {
   outline-offset: 4px;
 }
 
+
+/* ============ VERCEL WEB INTERFACE GUIDELINES ============ */
+/* Pulled from vercel.com/design/guidelines */
+
+/* color-scheme: align scrollbar/UI chrome with theme */
+html { color-scheme: light; }
+
+/* Honor prefers-reduced-motion — vestibular accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* scroll-margin-top — anchor links don't hide under sticky nav (~80px) */
+section[id], h1[id], h2[id], h3[id], #main-content, #register, #understand {
+  scroll-margin-top: 100px;
+}
+
+/* touch-action: manipulation — prevents 300ms tap delay & double-tap zoom on controls */
+a, button, .btn-primary, .btn-ghost, .nav-cta, .nav-toggle,
+.gm-hero-cta-primary, .gm-hero-cta-secondary,
+.mc-house-cta-button, input[type="submit"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(26, 26, 46, 0.15);
+}
+
+/* tabular-nums — clean comparison alignment for stat numbers */
+.stat-number, .stat, .count, .metric, time, .date,
+[class*="stat-"], [class*="-num"], [class*="count-"] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
 </style>
 
 <!-- ====== CLICKFUNNELS INTEGRATION ====== -->
@@ -4487,7 +4525,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 
       <!-- Handwritten architectural notes in brand red ink -->
       <g font-family="Caveat, cursive" fill="#C97560" font-size="20" font-weight="600" opacity="0.7">
-        <text x="62" y="340" font-size="15">9 yrs · 1000s contracts</text>
+        <text x="62" y="340" font-size="15">9&nbsp;yrs · 1000s&nbsp;contracts</text>
         <text x="220" y="155">N</text>
         <text x="900" y="105" font-size="15">team: 1 → 13</text>
         <text x="930" y="490" font-size="14">scaling →</text>
@@ -4647,7 +4685,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 
         <!-- Handwritten architectural notes in peach ink -->
         <g font-family="Caveat, cursive" fill="#C97560" font-weight="600" opacity="0.78">
-          <text x="550" y="25" font-size="15" text-anchor="middle">9 yrs · 1000s of contracts</text>
+          <text x="550" y="25" font-size="15" text-anchor="middle">9&nbsp;yrs · 1000s of&nbsp;contracts</text>
           <text x="35" y="455" font-size="15" transform="rotate(-90 35 455)" text-anchor="middle">scaling 1 → 13</text>
           <text x="855" y="40" font-size="14">+ steady income</text>
         </g>
@@ -4743,8 +4781,8 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       </div>
       <div class="three-item reveal-on-scroll">
         <div class="three-num">ii</div>
-        <h3 class="three-title">Your first client in 30 days.</h3>
-        <p class="three-body">The exact pathway my students follow to land their first paying client within their first month. No cold pitching, no sales gymnastics. Just the right doors.</p>
+        <h3 class="three-title">Your first client in 30&nbsp;days.</h3>
+        <p class="three-body">The exact pathway my students follow to land their first paying client within their first&nbsp;month. No cold pitching, no sales gymnastics. Just the right doors.</p>
       </div>
       <div class="three-item reveal-on-scroll">
         <div class="three-num">iii</div>

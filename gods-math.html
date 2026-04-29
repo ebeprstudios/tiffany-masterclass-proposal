@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="theme-color" content="#FAF6EF">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>God's Math — Tiffany Haynes & Co.</title>
 <meta name="description" content="The supernatural formula where God's partnership creates exponential results. 1 + 1 = 10,000." />
@@ -138,7 +139,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--red);
   padding: 12px 22px;
   border-radius: 999px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .nav-cta:hover {
   background: var(--red-dark);
@@ -219,7 +220,7 @@ section { position: relative; z-index: 2; }
   color: var(--cream);
   padding: 18px 34px;
   border-radius: 999px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -241,7 +242,7 @@ section { position: relative; z-index: 2; }
   border: 1px solid var(--charcoal);
   padding: 14px 28px;
   border-radius: 999px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -1364,7 +1365,7 @@ section { position: relative; z-index: 2; }
   color: var(--red);
 }
 
-/* Hand-drawn square brackets flanking the video [ ... ] */
+/* Hand-drawn square brackets flanking the video [ … ] */
 .gm-video-mathrow {
   position: relative;
   display: flex;
@@ -1992,6 +1993,43 @@ select:focus-visible {
   outline-offset: 4px;
 }
 
+
+/* ============ VERCEL WEB INTERFACE GUIDELINES ============ */
+/* Pulled from vercel.com/design/guidelines */
+
+/* color-scheme: align scrollbar/UI chrome with theme */
+html { color-scheme: light; }
+
+/* Honor prefers-reduced-motion — vestibular accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* scroll-margin-top — anchor links don't hide under sticky nav (~80px) */
+section[id], h1[id], h2[id], h3[id], #main-content, #register, #understand {
+  scroll-margin-top: 100px;
+}
+
+/* touch-action: manipulation — prevents 300ms tap delay & double-tap zoom on controls */
+a, button, .btn-primary, .btn-ghost, .nav-cta, .nav-toggle,
+.gm-hero-cta-primary, .gm-hero-cta-secondary,
+.mc-house-cta-button, input[type="submit"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(26, 26, 46, 0.15);
+}
+
+/* tabular-nums — clean comparison alignment for stat numbers */
+.stat-number, .stat, .count, .metric, time, .date,
+[class*="stat-"], [class*="-num"], [class*="count-"] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
 </style>
 
 <!-- Meta Pixel Code -->
@@ -2354,7 +2392,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
   <div class="container">
     <div class="gm-understand-header reveal-on-scroll">
       <div class="section-eyebrow">The Foundation</div>
-      <h2 class="section-title">To understand <em>God's Math</em>...</h2>
+      <h2 class="section-title">To understand <em>God's Math</em>…</h2>
     </div>
     <div class="gm-understand-steps">
       <div class="gm-understand-step reveal-on-scroll">

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="theme-color" content="#FAF6EF">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>About — Tiffany Haynes & Co.</title>
 <meta name="description" content="From corporate to solopreneur to seven-figure mentor. Tiffany Haynes' story." />
@@ -138,7 +139,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--red);
   padding: 12px 22px;
   border-radius: 999px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .nav-cta:hover {
   background: var(--red-dark);
@@ -219,7 +220,7 @@ section { position: relative; z-index: 2; }
   color: var(--cream);
   padding: 18px 34px;
   border-radius: 999px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -241,7 +242,7 @@ section { position: relative; z-index: 2; }
   border: 1px solid var(--charcoal);
   padding: 14px 28px;
   border-radius: 999px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -1302,6 +1303,43 @@ select:focus-visible {
   outline-offset: 4px;
 }
 
+
+/* ============ VERCEL WEB INTERFACE GUIDELINES ============ */
+/* Pulled from vercel.com/design/guidelines */
+
+/* color-scheme: align scrollbar/UI chrome with theme */
+html { color-scheme: light; }
+
+/* Honor prefers-reduced-motion — vestibular accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* scroll-margin-top — anchor links don't hide under sticky nav (~80px) */
+section[id], h1[id], h2[id], h3[id], #main-content, #register, #understand {
+  scroll-margin-top: 100px;
+}
+
+/* touch-action: manipulation — prevents 300ms tap delay & double-tap zoom on controls */
+a, button, .btn-primary, .btn-ghost, .nav-cta, .nav-toggle,
+.gm-hero-cta-primary, .gm-hero-cta-secondary,
+.mc-house-cta-button, input[type="submit"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(26, 26, 46, 0.15);
+}
+
+/* tabular-nums — clean comparison alignment for stat numbers */
+.stat-number, .stat, .count, .metric, time, .date,
+[class*="stat-"], [class*="-num"], [class*="count-"] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
 </style>
 
 <!-- Meta Pixel Code -->
@@ -1408,7 +1446,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <h2>From corporate to <em>seven figures</em>.</h2>
       <p>I went from corporate to solopreneur, to entrepreneur, to seven-figure earner teaching CEOs how to do the same.</p>
       <p>When my career began, I worked as a broker's assistant to one of the most successful land commercial brokers in Texas. Collin County was the fastest-growing county in the country.</p>
-      <p>During my time at the company, large developments and acreages of land were listed and sold for upwards of $200 million a year. This fast-paced client-facing role gave me the opportunity to learn firsthand about land development, planning and zoning procedures, condemnation hearings, marketing, and branding for high-end commercial and retail projects. It provided me with a deeper understanding of the legal processes of conveying real estate.</p>
+      <p>During my time at the company, large developments and acreages of land were listed and sold for upwards of $200&nbsp;million a year. This fast-paced client-facing role gave me the opportunity to learn firsthand about land development, planning and zoning procedures, condemnation hearings, marketing, and branding for high-end commercial and retail projects. It provided me with a deeper understanding of the legal processes of conveying real estate.</p>
     </div>
   </div>
 </section>
@@ -1482,8 +1520,8 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       </div>
       <div style="display:flex;flex-direction:column;gap:40px;">
         <div class="reveal-on-scroll" style="border-left:3px solid var(--red);padding-left:24px;">
-          <h3 style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--charcoal);margin-bottom:10px;font-style:italic;">Over 4,000 contracts processed.</h3>
-          <p style="font-family:var(--font-body);font-size:17px;line-height:1.7;color:var(--charcoal);">My real estate transaction company has processed over 4,000 contracts. Still blows my mind.</p>
+          <h3 style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--charcoal);margin-bottom:10px;font-style:italic;">Over 4,000&nbsp;contracts processed.</h3>
+          <p style="font-family:var(--font-body);font-size:17px;line-height:1.7;color:var(--charcoal);">My real estate transaction company has processed over 4,000&nbsp;contracts. Still blows my mind.</p>
         </div>
         <div class="reveal-on-scroll" style="border-left:3px solid var(--red);padding-left:24px;">
           <h3 style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--charcoal);margin-bottom:10px;font-style:italic;">The best advice I ever got.</h3>
@@ -1530,7 +1568,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
     <div class="reveal-on-scroll" style="text-align:center;">
       <h2>Now you know me. <em>Let me know you.</em></h2>
       <p style="max-width:540px;margin:24px auto 36px;font-family:var(--font-body);font-size:19px;line-height:1.6;color:var(--charcoal);">The masterclass is the best way to see what we can build together.</p>
-      <a href="masterclass.html" class="btn-primary">Attend the Masterclass</a>
+      <a href="masterclass" class="btn-primary">Attend the Masterclass</a>
     </div>
   </div>
 </section>
