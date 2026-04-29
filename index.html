@@ -556,21 +556,6 @@ section { position: relative; z-index: 2; }
   box-shadow: 0 24px 60px rgba(26, 26, 46, 0.18);
   filter: saturate(1.05);
 }
-/* Editorial flourish — small "est." caption beneath portrait */
-.greeting-portrait::after {
-  content: 'photographed by Desiree Roberts';
-  position: absolute;
-  bottom: -28px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-family: var(--font-utility);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--charcoal);
-  opacity: 0.45;
-}
 .greeting-eyebrow {
   font-family: var(--font-display);
   font-style: italic;
@@ -1127,7 +1112,6 @@ section { position: relative; z-index: 2; }
     margin: 0 auto;
     aspect-ratio: 4 / 5;
   }
-  .greeting-portrait::after { bottom: -22px; }
   .level-up-header {
     grid-template-columns: 1fr; gap: 24px; margin-bottom: 50px;
   }
