@@ -3753,6 +3753,192 @@ section { position: relative; }
   display: block;
 }
 
+
+/* ============ HOUSE BLUEPRINT — match Erica's mockup composition ============ */
+/* Video sits centered in the LOWER HALF of the house, with full roof above */
+
+.mc-video-house {
+  /* Shift video down: more top padding (room for full roof), 
+     less bottom padding (foundation hugs close to video) */
+  padding: 32% 17% 12% 17% !important;
+  max-width: 1080px !important;
+}
+@media (min-width: 1200px) {
+  .mc-video-house {
+    padding: 30% 16% 11% 16% !important;
+  }
+}
+@media (max-width: 900px) {
+  .mc-video-house {
+    padding: 36% 12% 12% 12% !important;
+  }
+}
+
+.mc-video-house .mc-video-frame {
+  max-width: 600px !important;
+  margin: 0 auto !important;
+}
+
+
+/* ============ REGISTER BUTTON — guaranteed visible + peach ============ */
+/* Belt-and-suspenders override so no earlier rule can hide the submit button */
+.mc-form button[type="submit"],
+.mc-form .btn-primary,
+form#mc-form button[type="submit"] {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  justify-content: center !important;
+  background: var(--peach) !important;
+  color: var(--cream) !important;
+  border: none !important;
+  padding: 22px !important;
+  margin-top: 8px !important;
+  font-family: var(--font-ui) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  border-radius: 999px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+.mc-form button[type="submit"]:hover,
+.mc-form .btn-primary:hover,
+form#mc-form button[type="submit"]:hover {
+  background: var(--peach-dk) !important;
+  transform: translateY(-2px) !important;
+}
+
+
+/* ============ REGISTER CTA UNDER THE HOUSE ============ */
+/* Sits below the house outline with two handwritten arrows pointing in */
+
+.mc-house-cta {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 80px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+/* The handwritten "↓ register below ↓" intro */
+.mc-house-cta-intro {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--peach-dk);
+  line-height: 1;
+  margin-bottom: 6px;
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+
+/* The button container — relative for arrow positioning */
+.mc-house-cta-button-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The button itself — big peach pill */
+.mc-house-cta-button {
+  background: var(--peach) !important;
+  color: var(--cream) !important;
+  font-family: var(--font-utility) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  padding: 22px 48px !important;
+  border-radius: 999px !important;
+  border: none !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 8px 20px rgba(232,150,130,0.35);
+  position: relative;
+  z-index: 2;
+}
+.mc-house-cta-button:hover {
+  background: var(--peach-dk) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(232,150,130,0.45);
+}
+.mc-house-cta-button svg {
+  transition: transform 0.3s ease;
+}
+.mc-house-cta-button:hover svg {
+  transform: translateX(6px);
+}
+
+/* The two handwritten arrows — peach, hand-drawn turbulence */
+.mc-house-cta-arrow {
+  position: absolute;
+  top: 50%;
+  width: 110px;
+  height: 60px;
+  pointer-events: none;
+  color: var(--peach-dk);
+  z-index: 1;
+}
+.mc-house-cta-arrow svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+/* Left arrow — anchored to the left of the button, pointing right */
+.mc-house-cta-arrow.left {
+  right: calc(100% + 12px);
+  transform: translateY(-50%) rotate(-4deg);
+}
+/* Right arrow — anchored to the right of the button, pointing left */
+.mc-house-cta-arrow.right {
+  left: calc(100% + 12px);
+  transform: translateY(-50%) rotate(4deg) scaleX(-1);
+}
+
+/* Below-button caption: "free · live · online" */
+.mc-house-cta-meta {
+  font-family: var(--font-utility);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  opacity: 0.55;
+  margin-top: 4px;
+}
+.mc-house-cta-meta::before,
+.mc-house-cta-meta::after {
+  content: ' · ';
+  opacity: 0.6;
+}
+
+/* Mobile: hide the arrows (no horizontal room) but keep handwritten note */
+@media (max-width: 700px) {
+  .mc-house-cta {
+    padding: 24px 24px 48px;
+  }
+  .mc-house-cta-arrow { display: none; }
+  .mc-house-cta-button {
+    padding: 18px 32px !important;
+    font-size: 12px !important;
+  }
+  .mc-house-cta-intro { font-size: 24px; }
+}
+
 </style>
 
 <!-- ====== CLICKFUNNELS INTEGRATION ====== -->
@@ -4059,6 +4245,54 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
         ← the masterclass
       </div>
     </div>
+
+    <!-- ===== REGISTER CTA — under the house outline ===== -->
+    <div class="mc-house-cta">
+      <div class="mc-house-cta-intro">↓ reserve your seat ↓</div>
+      <div class="mc-house-cta-button-wrap">
+
+        <!-- LEFT handwritten arrow pointing right -->
+        <div class="mc-house-cta-arrow left" aria-hidden="true">
+          <svg viewBox="0 0 110 60" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <defs>
+              <filter id="ctaArrowL" x="-2%" y="-5%" width="104%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.4" numOctaves="2" seed="5"/>
+                <feDisplacementMap in="SourceGraphic" scale="1.3"/>
+              </filter>
+            </defs>
+            <g filter="url(#ctaArrowL)">
+              <!-- Sweeping shaft from left, curving toward button -->
+              <path d="M 8 14 Q 40 4 70 22 Q 88 32 100 30"/>
+              <!-- Arrowhead pointing right -->
+              <path d="M 92 22 L 102 30 L 94 38"/>
+            </g>
+          </svg>
+        </div>
+
+        <a href="https://www.tiffanysmasterclass.com/webinar-registration-page1678444143249#open-popup"
+           class="mc-house-cta-button"
+           target="_blank"
+           rel="noopener noreferrer">
+          Reserve Your Seat
+          <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
+            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+        </a>
+
+        <!-- RIGHT handwritten arrow pointing left (mirrored copy of left) -->
+        <div class="mc-house-cta-arrow right" aria-hidden="true">
+          <svg viewBox="0 0 110 60" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <g filter="url(#ctaArrowL)">
+              <path d="M 8 14 Q 40 4 70 22 Q 88 32 100 30"/>
+              <path d="M 92 22 L 102 30 L 94 38"/>
+            </g>
+          </svg>
+        </div>
+
+      </div>
+      <div class="mc-house-cta-meta">free · live · online</div>
+    </div>
+
   </div>
 </section>
 
