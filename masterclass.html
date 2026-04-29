@@ -400,7 +400,6 @@ section { position: relative; z-index: 2; }
   :root { --pad: 22px; }
 }
 
-
 /* === PAGE-SPECIFIC === */
 
 /* ============ MASTERCLASS — page-specific ============ */
@@ -971,7 +970,6 @@ section { position: relative; z-index: 2; }
   margin: 0 auto;
 }
 
-
 /* === VIDEO SECTION === */
 .mc-video {
   padding: 120px 0;
@@ -1054,7 +1052,6 @@ section { position: relative; z-index: 2; }
   .mc-video { padding: 70px 0; }
   .mc-video-frame { padding: 0 16px; }
 }
-
 
 /* ============================================================
    MASTERCLASS PAGE → Real Estate VA Business BLUEPRINT
@@ -1337,7 +1334,6 @@ section { position: relative; }
   padding-top: 14px;
 }
 
-
 /* ============ MASTERCLASS PEACH OVERRIDES ============ */
 /* The peachy pink is the masterclass page's signature color
    (carried over from her old Showit site CTA button).
@@ -1487,7 +1483,6 @@ section { position: relative; }
   .mc-open-house-detail:last-child { border-bottom: none; }
 }
 
-
 /* ============ FINAL PEACH SWAP — every masterclass red → peach ============ */
 .mc-hero-eyebrow { color: var(--peach-dk) !important; }
 .mc-hero-eyebrow::after { background: var(--peach) !important; }
@@ -1547,7 +1542,6 @@ section { position: relative; }
 .mc-hero::before {
   /* Already neutral charcoal, no change needed */
 }
-
 
 /* ============ VIDEO INSIDE A HOUSE BLUEPRINT ============ */
 
@@ -1636,7 +1630,6 @@ section { position: relative; }
   }
 }
 
-
 /* ============ REVEAL "three-*" classes — peach swap ============ */
 /* The reveal section uses three-num / three-item / three-title classes
    (not mc-reveal-*). Scope to .mc-reveal to keep the change masterclass-only. */
@@ -1662,6 +1655,2102 @@ section { position: relative; }
 }
 .mc-reveal .section-eyebrow::after {
   background: var(--peach) !important;
+}
+
+/* ============ OPEN HOUSE GUESTBOOK · REVIEWS GRID ============ */
+
+.mc-reviews {
+  padding: 100px 0 110px;
+  background: var(--cream);
+  position: relative;
+}
+
+.mc-reviews-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 64px;
+  padding: 0 24px;
+}
+.mc-reviews-eyebrow {
+  font-family: var(--font-utility);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--peach-dk);
+  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.mc-reviews-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.2;
+  color: var(--charcoal);
+  margin-bottom: 18px;
+}
+.mc-reviews-sub {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--charcoal);
+  opacity: 0.75;
+}
+
+.mc-reviews-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.mc-review {
+  background: var(--cream);
+  border: 1.5px solid rgba(65,65,65,0.18);
+  padding: 36px 32px 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.mc-review:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(232,150,130,0.18);
+}
+/* Peach top stripe */
+.mc-review::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: var(--peach);
+}
+
+.mc-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+.mc-review-num {
+  font-family: var(--font-utility);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--cream);
+  background: var(--charcoal);
+  padding: 5px 12px;
+  border-radius: 0;
+}
+.mc-review-stars {
+  color: var(--peach);
+  font-size: 16px;
+  letter-spacing: 0.05em;
+}
+.mc-review-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--charcoal);
+  margin: 0 0 28px;
+  flex: 1;
+  position: relative;
+  padding-left: 18px;
+}
+.mc-review-quote::before {
+  content: '"';
+  position: absolute;
+  top: -12px; left: -4px;
+  font-size: 56px;
+  font-family: var(--font-display);
+  color: var(--peach);
+  opacity: 0.55;
+  line-height: 1;
+  font-style: normal;
+}
+
+.mc-review-attr {
+  border-top: 1.5px dashed rgba(65,65,65,0.2);
+  padding-top: 18px;
+}
+.mc-review-signature {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--peach-dk);
+  line-height: 1;
+  margin-bottom: 6px;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+}
+.mc-review-class {
+  font-family: var(--font-utility);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  opacity: 0.6;
+}
+
+/* Featured review (bigger, spans 2 cols on wider screens) — optional emphasis */
+.mc-review.featured {
+  background: var(--peach-lt);
+  border-color: var(--peach);
+}
+.mc-review.featured::before {
+  background: var(--peach-dk);
+  height: 6px;
+}
+
+/* Small architectural decoration — house glyph at top of section */
+.mc-reviews-house-glyph {
+  display: block;
+  font-size: 28px;
+  margin-bottom: 12px;
+  color: var(--peach-dk);
+}
+
+@media (max-width: 980px) {
+  .mc-reviews-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .mc-review:last-child {
+    grid-column: 1 / -1;
+    max-width: 540px;
+    justify-self: center;
+  }
+}
+@media (max-width: 700px) {
+  .mc-reviews { padding: 70px 0 80px; }
+  .mc-reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .mc-review:last-child { max-width: none; }
+}
+
+/* ============ FEATURED VIDEO TESTIMONIAL (Jacobi) ============ */
+.mc-reviews-featured {
+  max-width: 880px;
+  margin: 0 auto 64px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.mc-reviews-featured-video {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: var(--charcoal);
+  overflow: hidden;
+  border: 1.5px solid var(--charcoal);
+  /* Polaroid feel: slight tilt + peach offset shadow */
+  transform: rotate(-1.8deg);
+  box-shadow:
+    6px 6px 0 var(--peach),
+    0 12px 32px rgba(65,65,65,0.18);
+  transition: transform 0.3s ease;
+}
+.mc-reviews-featured-video:hover {
+  transform: rotate(-1.8deg) scale(1.02);
+}
+.mc-reviews-featured-video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+/* Tiny "VIDEO" tag pinned to the top-left corner of the polaroid */
+.mc-reviews-featured-video::before {
+  content: '▶ VIDEO';
+  position: absolute;
+  top: 10px; left: 10px;
+  font-family: var(--font-utility);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--cream);
+  background: rgba(160,6,5,0.9);
+  padding: 4px 9px;
+  z-index: 3;
+  border-radius: 0;
+}
+
+.mc-reviews-featured-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mc-reviews-featured-stamp {
+  display: inline-block;
+  font-family: var(--font-utility);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--peach-dk);
+  border: 1.5px solid var(--peach);
+  padding: 5px 12px;
+  border-radius: 99px;
+  align-self: flex-start;
+}
+.mc-reviews-featured-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 32px;
+  color: var(--charcoal);
+  line-height: 1.15;
+  margin: 0;
+}
+.mc-reviews-featured-desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--charcoal);
+  opacity: 0.78;
+  margin: 0;
+}
+.mc-reviews-featured-handwritten {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: var(--peach-dk);
+  font-weight: 600;
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+
+/* ============ AUTO-SCROLLING TESTIMONIAL MARQUEE ============ */
+.mc-reviews-marquee {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  position: relative;
+  padding: 28px 0 8px;
+}
+/* Edge fades so cards don't abruptly clip at the viewport edge */
+.mc-reviews-marquee::before,
+.mc-reviews-marquee::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 100px;
+  z-index: 5;
+  pointer-events: none;
+}
+.mc-reviews-marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--cream) 0%, var(--cream) 30%, transparent 100%);
+}
+.mc-reviews-marquee::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--cream) 0%, var(--cream) 30%, transparent 100%);
+}
+
+.mc-reviews-marquee-track {
+  display: flex;
+  gap: 22px;
+  width: max-content;
+  animation: scrollReviews 110s linear infinite;
+  padding: 8px 0;
+}
+.mc-reviews-marquee:hover .mc-reviews-marquee-track {
+  animation-play-state: paused;
+}
+@keyframes scrollReviews {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Marquee testimonial card — paper note style */
+.mc-review-card {
+  flex: 0 0 340px;
+  background: var(--cream);
+  border: 1.5px solid rgba(65,65,65,0.16);
+  padding: 22px 24px 18px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(65,65,65,0.04);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.mc-review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(232,150,130,0.18);
+  border-color: var(--peach);
+}
+/* Comment bubble glyph in the top-left, like the screenshot */
+.mc-review-card-icon {
+  font-size: 14px;
+  color: var(--charcoal);
+  opacity: 0.5;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+.mc-review-card-quote {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--charcoal);
+  margin: 0 0 18px;
+  flex: 1;
+}
+.mc-review-card-attr {
+  border-top: 1px dashed rgba(65,65,65,0.18);
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.mc-review-card-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--peach-dk);
+  line-height: 1.2;
+}
+.mc-review-card-name .verified {
+  display: inline-block;
+  width: 12px; height: 12px;
+  background: var(--peach);
+  color: var(--cream);
+  border-radius: 50%;
+  font-size: 9px;
+  font-style: normal;
+  font-family: var(--font-utility);
+  text-align: center;
+  line-height: 12px;
+  font-weight: 700;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.mc-review-card-date {
+  font-family: var(--font-utility);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  opacity: 0.55;
+  white-space: nowrap;
+}
+
+/* Mobile responsive */
+@media (max-width: 800px) {
+  .mc-reviews-featured {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    text-align: center;
+    max-width: 380px;
+  }
+  .mc-reviews-featured-stamp { align-self: center; }
+  .mc-reviews-featured-video { transform: rotate(-2deg); margin: 0 auto; }
+  .mc-review-card { flex: 0 0 280px; }
+}
+
+/* Hide the OLD 3-up grid styles (no longer used) */
+.mc-reviews-grid { display: none !important; }
+
+/* ============ TWO-ROW SCROLLING TESTIMONIAL MARQUEE ============ */
+
+/* Override the prior 3-up grid styles in favor of the marquee layout */
+.mc-reviews { padding: 100px 0 110px; }
+.mc-reviews-grid {
+  /* override prior grid layout */
+  display: block !important;
+  max-width: none !important;
+  padding: 0 !important;
+}
+
+.mc-marquee {
+  overflow: hidden;
+  position: relative;
+  padding: 14px 0;
+  /* Edge-fade so cards drift in and out softly at each side */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+.mc-marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  will-change: transform;
+}
+.mc-marquee-track.left { animation: marqueeLeft 105s linear infinite; }
+.mc-marquee-track.right { animation: marqueeRight 105s linear infinite; }
+
+.mc-marquee:hover .mc-marquee-track,
+.mc-marquee:focus-within .mc-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marqueeRight {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Reduce motion preference — stop the animations */
+@media (prefers-reduced-motion: reduce) {
+  .mc-marquee-track.left,
+  .mc-marquee-track.right { animation: none; }
+}
+
+/* Individual review card in the marquee */
+.mc-mq-card {
+  flex: 0 0 380px;
+  background: var(--cream);
+  border: 1.5px solid rgba(65,65,65,0.18);
+  padding: 28px 26px 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 290px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.mc-mq-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--peach);
+}
+.mc-mq-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(232,150,130,0.18);
+}
+
+.mc-mq-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+  gap: 10px;
+}
+.mc-mq-card-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mc-mq-card-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--charcoal);
+  line-height: 1.1;
+}
+.mc-mq-card-verified {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--peach);
+  color: var(--cream);
+  font-size: 10px;
+  font-weight: 700;
+}
+.mc-mq-card-stars {
+  color: var(--peach);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.mc-mq-card-date {
+  font-family: var(--font-utility);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  opacity: 0.5;
+  margin-bottom: 14px;
+}
+.mc-mq-card-quote {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--charcoal);
+  flex: 1;
+  position: relative;
+  padding-left: 14px;
+  /* Cap to ~7 lines, fade out the bottom */
+  max-height: 175px;
+  overflow: hidden;
+}
+.mc-mq-card-quote::before {
+  content: '"';
+  position: absolute;
+  top: -10px; left: -3px;
+  font-family: var(--font-display);
+  font-size: 42px;
+  color: var(--peach);
+  opacity: 0.5;
+  line-height: 1;
+  font-style: normal;
+}
+.mc-mq-card-quote::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 36px;
+  background: linear-gradient(to bottom, transparent, var(--cream));
+  pointer-events: none;
+}
+
+/* The Jacobi VIDEO card — visually distinct in the marquee */
+.mc-mq-video {
+  flex: 0 0 380px;
+  background: var(--charcoal);
+  border: 1.5px solid var(--charcoal);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 290px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.mc-mq-video::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--peach);
+  z-index: 3;
+}
+.mc-mq-video-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--charcoal);
+  background-size: cover;
+  background-position: center;
+  flex: 1;
+}
+.mc-mq-video-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.mc-mq-video-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--peach);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--cream);
+  transition: transform 0.2s;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+.mc-mq-video:hover .mc-mq-video-play {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+.mc-mq-video-play::after {
+  content: '';
+  width: 0; height: 0;
+  border-left: 18px solid var(--cream);
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  margin-left: 4px;
+}
+.mc-mq-video-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 14px 16px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-utility);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream);
+  z-index: 2;
+}
+.mc-mq-video-overlay .yt-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 12px;
+  background: #FF0000;
+  border-radius: 2px;
+  color: white;
+  font-size: 7px;
+}
+.mc-mq-video-caption {
+  background: var(--charcoal);
+  color: var(--cream);
+  padding: 14px 16px 16px;
+  border-top: 1px solid rgba(255,253,245,0.1);
+}
+.mc-mq-video-caption-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.mc-mq-video-caption-sub {
+  font-family: var(--font-utility);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--peach);
+  font-weight: 700;
+}
+
+/* When loaded (after click) — replace facade with iframe */
+.mc-mq-video.playing .mc-mq-video-thumb { display: none; }
+.mc-mq-video.playing .mc-mq-video-overlay { display: none; }
+.mc-mq-video.playing iframe { display: block; }
+.mc-mq-video iframe {
+  display: none;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 0;
+  flex: 1;
+}
+
+/* Mobile: faster scroll, smaller cards */
+@media (max-width: 700px) {
+  .mc-mq-card,
+  .mc-mq-video { flex-basis: 320px; min-height: 260px; }
+  .mc-marquee-track.left { animation-duration: 75s; }
+  .mc-marquee-track.right { animation-duration: 75s; }
+  .mc-mq-card { padding: 22px 22px 20px; }
+}
+
+/* ============ MARQUEE LOOP FIX ============ */
+/* Replace gap with margin-right on cards so the seamless loop math
+   works out at exactly -50% translate (gap was leaving an offset). */
+.mc-marquee-track {
+  gap: 0 !important;
+}
+.mc-marquee-track > * {
+  margin-right: 24px;
+}
+
+/* ============ JACOBI · FEATURED VIDEO REVIEW ============ */
+
+.mc-featured-review {
+  max-width: 720px;
+  margin: 0 auto 80px;
+  padding: 0 24px;
+  text-align: center;
+  position: relative;
+}
+
+.mc-featured-review-eyebrow {
+  font-family: var(--font-utility);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--peach-dk);
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.mc-featured-review-eyebrow::before,
+.mc-featured-review-eyebrow::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--peach);
+}
+
+.mc-featured-review-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.25;
+  color: var(--charcoal);
+  margin-bottom: 28px;
+}
+.mc-featured-review-title em { color: var(--peach-dk); font-style: italic; }
+
+/* Video frame — clean charcoal-bordered card with the YouTube facade inside */
+.mc-jacobi-frame {
+  position: relative;
+  border: 1.5px solid var(--charcoal);
+  background: var(--charcoal);
+  cursor: pointer;
+  margin: 0 auto;
+  max-width: 600px;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 10px 30px rgba(65,65,65,0.18);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.mc-jacobi-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(232,150,130,0.25);
+}
+
+/* Peach top stripe matching other featured elements */
+.mc-jacobi-frame::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--peach);
+  z-index: 3;
+}
+
+.mc-jacobi-thumb {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+  background-size: cover;
+  background-position: center;
+}
+.mc-jacobi-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mc-jacobi-yt-label {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-utility);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream);
+  z-index: 2;
+}
+.mc-jacobi-yt-label .yt-glyph {
+  width: 18px;
+  height: 12px;
+  background: #FF0000;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 7px;
+}
+
+.mc-jacobi-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--peach);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--cream);
+  z-index: 2;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
+}
+.mc-jacobi-frame:hover .mc-jacobi-play { transform: translate(-50%, -50%) scale(1.06); }
+.mc-jacobi-play::after {
+  content: '';
+  width: 0; height: 0;
+  border-left: 24px solid var(--cream);
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  margin-left: 5px;
+}
+
+/* When loaded — replace facade with iframe */
+.mc-jacobi-frame.playing .mc-jacobi-thumb,
+.mc-jacobi-frame.playing .mc-jacobi-play,
+.mc-jacobi-frame.playing .mc-jacobi-yt-label { display: none; }
+.mc-jacobi-frame iframe {
+  display: none;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.mc-jacobi-frame.playing iframe { display: block; }
+
+/* Handwritten "press play!" callout — positioned BELOW the video, arrow up */
+.mc-jacobi-handwrite {
+  margin-top: 28px;
+  position: relative;
+  display: inline-block;
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--peach-dk);
+  transform: rotate(-2deg);
+  padding-top: 32px;
+}
+/* SVG arrow pointing UP from the text to the video, sketchy hand-drawn */
+.mc-jacobi-handwrite::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: 50%;
+  width: 60px;
+  height: 36px;
+  transform: translateX(-50%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 36' fill='none' stroke='%23C97560' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M 30 34 Q 28 18 18 6'/%3E%3Cpath d='M 12 14 L 18 6 L 26 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Caption below the handwriting */
+.mc-jacobi-caption {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--charcoal);
+}
+.mc-jacobi-caption .stars { color: var(--peach); font-size: 14px; letter-spacing: 0.04em; }
+.mc-jacobi-caption .class-tag {
+  font-family: var(--font-utility);
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  opacity: 0.6;
+  padding: 4px 10px;
+  border: 1px solid rgba(65,65,65,0.2);
+  border-radius: 0;
+}
+
+@media (max-width: 700px) {
+  .mc-featured-review { margin-bottom: 56px; }
+  .mc-jacobi-frame { max-width: 100%; }
+  .mc-jacobi-handwrite { font-size: 22px; padding-top: 28px; }
+  .mc-jacobi-caption { flex-wrap: wrap; gap: 8px; }
+}
+
+/* ============ FEATURED JACOBI VIDEO TESTIMONIAL ============ */
+/* Standalone callout block above the testimonial marquee.
+   Architectural detail view with peach corner brackets + handwritten press play. */
+
+.mc-jacobi-feature {
+  max-width: 880px;
+  margin: 0 auto 64px;
+  padding: 0 56px;
+  position: relative;
+}
+
+/* Architectural header label */
+.mc-jacobi-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  font-family: var(--font-utility);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  opacity: 0.7;
+}
+.mc-jacobi-header::before,
+.mc-jacobi-header::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 1px;
+  background: var(--charcoal);
+  opacity: 0.4;
+}
+.mc-jacobi-header-mark {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--peach-dk);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  margin-left: 2px;
+  transform: translateY(-2px);
+}
+
+/* Frame container — holds video + corner brackets + handwritten note */
+.mc-jacobi-frame {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Corner brackets (4 corners) — hand-drawn drafting marks in peach */
+.mc-jacobi-corner {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  pointer-events: none;
+  z-index: 4;
+  color: var(--peach);
+}
+.mc-jacobi-corner svg { width: 100%; height: 100%; }
+.mc-jacobi-corner.tl { top: -16px; left: -16px; }
+.mc-jacobi-corner.tr { top: -16px; right: -16px; transform: scaleX(-1); }
+.mc-jacobi-corner.bl { bottom: -16px; left: -16px; transform: scaleY(-1); }
+.mc-jacobi-corner.br { bottom: -16px; right: -16px; transform: scale(-1, -1); }
+
+/* "press play" handwritten note + sketchy arrow */
+.mc-jacobi-handwrite {
+  position: absolute;
+  left: -120px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-4deg);
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--peach-dk);
+  z-index: 5;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.mc-jacobi-handwrite svg {
+  display: block;
+  width: 88px;
+  height: 26px;
+  color: var(--peach-dk);
+  margin-top: 2px;
+}
+
+/* Video itself — YouTube facade until clicked */
+.mc-jacobi-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--charcoal);
+  cursor: pointer;
+  overflow: hidden;
+  border: 1.5px solid var(--charcoal);
+  display: block;
+  z-index: 1;
+}
+.mc-jacobi-video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.mc-jacobi-video .play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--peach);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--cream);
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.mc-jacobi-video:hover .play-btn {
+  transform: translate(-50%, -50%) scale(1.06);
+  box-shadow: 0 12px 32px rgba(232,150,130,0.5);
+}
+.mc-jacobi-video .play-btn::after {
+  content: '';
+  width: 0; height: 0;
+  border-left: 24px solid var(--cream);
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  margin-left: 6px;
+}
+.mc-jacobi-video.playing img,
+.mc-jacobi-video.playing .play-btn { display: none; }
+.mc-jacobi-video iframe {
+  display: none;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.mc-jacobi-video.playing iframe { display: block; }
+
+/* YouTube ribbon top-left */
+.mc-jacobi-ribbon {
+  position: absolute;
+  top: 16px; left: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.55);
+  color: var(--cream);
+  font-family: var(--font-utility);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  z-index: 3;
+  border-radius: 2px;
+}
+.mc-jacobi-ribbon .yt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 14px;
+  background: #FF0000;
+  border-radius: 3px;
+  color: white;
+  font-size: 8px;
+}
+
+/* Caption below the video — name + class + dimension marks */
+.mc-jacobi-caption {
+  margin-top: 24px;
+  text-align: center;
+  position: relative;
+}
+.mc-jacobi-caption-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--charcoal);
+  margin-bottom: 4px;
+}
+.mc-jacobi-caption-meta {
+  font-family: var(--font-utility);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--peach-dk);
+}
+.mc-jacobi-caption-meta::before,
+.mc-jacobi-caption-meta::after {
+  content: ' · ';
+  opacity: 0.6;
+}
+
+/* Dimension bracket below caption — architectural touch */
+.mc-jacobi-dimension {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 18px;
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  color: var(--peach-dk);
+  font-weight: 500;
+  opacity: 0.8;
+}
+.mc-jacobi-dimension::before,
+.mc-jacobi-dimension::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 1px;
+  background: var(--peach);
+  opacity: 0.5;
+}
+
+/* Mobile: shrink padding, drop the side handwriting (move below) */
+@media (max-width: 800px) {
+  .mc-jacobi-feature { padding: 0 20px; }
+  .mc-jacobi-handwrite {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: rotate(-2deg);
+    text-align: center;
+    margin: 0 auto 14px;
+    display: block;
+    width: 100%;
+  }
+  .mc-jacobi-handwrite svg {
+    margin: 0 auto;
+    transform: rotate(90deg);
+  }
+}
+
+
+/* ============ TESTIMONIAL SECTION → BLUEPRINT TREATMENT ============ */
+
+/* Cream-warm "blueprint paper" base */
+.mc-reviews {
+  background: var(--cream-warm) !important;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Faint blueprint grid overlay */
+.mc-reviews::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(0deg, rgba(65,65,65,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(65,65,65,0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Make all section content sit above the grid */
+.mc-reviews > * { position: relative; z-index: 1; }
+
+/* Architectural corner brackets at the section edges (4 corners) */
+.mc-reviews-corner {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  pointer-events: none;
+  z-index: 1;
+  color: var(--charcoal);
+  opacity: 0.45;
+}
+.mc-reviews-corner svg { width: 100%; height: 100%; }
+.mc-reviews-corner.tl { top: 32px; left: 32px; }
+.mc-reviews-corner.tr { top: 32px; right: 32px; transform: scaleX(-1); }
+.mc-reviews-corner.bl { bottom: 32px; left: 32px; transform: scaleY(-1); }
+.mc-reviews-corner.br { bottom: 32px; right: 32px; transform: scale(-1, -1); }
+
+/* Compass rose decoration */
+.mc-reviews-compass {
+  position: absolute;
+  top: 80px; right: 64px;
+  width: 64px;
+  height: 64px;
+  opacity: 0.3;
+  color: var(--charcoal);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Marquee cards get a more architectural, drafting-style border */
+.mc-mq-card {
+  background: var(--cream) !important;
+  border: 1.5px solid rgba(65,65,65,0.28) !important;
+}
+/* Subtle drafting-style corner tick on each marquee card */
+.mc-mq-card::after {
+  content: '';
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 10px;
+  height: 10px;
+  border-top: 1.2px solid rgba(65,65,65,0.35);
+  border-right: 1.2px solid rgba(65,65,65,0.35);
+  pointer-events: none;
+}
+
+/* ============ JACOBI VIDEO — smaller, tilted, off-center ============ */
+
+/* Reset old layout — shrink to a polaroid-style callout */
+.mc-jacobi-feature {
+  max-width: 1080px;
+  margin: 0 auto 48px;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: minmax(360px, 460px) 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* The feature header sits as a small label above the layout */
+.mc-jacobi-header {
+  grid-column: 1 / -1;
+  margin-bottom: 32px;
+  justify-self: start;
+}
+
+/* The video frame: pinned-polaroid feel — tilted, hard-shadow offset */
+.mc-jacobi-frame {
+  position: relative;
+  isolation: isolate;
+  background: var(--cream);
+  padding: 14px 14px 18px;
+  /* Hard-shadow offset like the hero MLS listing card */
+  box-shadow: 8px 8px 0 var(--charcoal);
+  border: 1.5px solid var(--charcoal);
+  /* Slight tilt — like a photo casually pinned to a blueprint */
+  transform: rotate(-2.5deg);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.mc-jacobi-frame:hover {
+  transform: rotate(-1deg) translateY(-3px);
+}
+
+/* The corner brackets shrink and reposition to fit the tilted polaroid */
+.mc-jacobi-corner {
+  width: 30px !important;
+  height: 30px !important;
+}
+.mc-jacobi-corner.tl { top: -10px !important; left: -10px !important; }
+.mc-jacobi-corner.tr { top: -10px !important; right: -10px !important; }
+.mc-jacobi-corner.bl { bottom: -10px !important; left: -10px !important; }
+.mc-jacobi-corner.br { bottom: -10px !important; right: -10px !important; }
+
+/* The "press play" handwriting — repositioned to top-right of the polaroid */
+.mc-jacobi-handwrite {
+  position: absolute !important;
+  left: auto !important;
+  top: -52px !important;
+  right: -40px !important;
+  transform: rotate(8deg) !important;
+  font-size: 26px !important;
+  z-index: 6;
+}
+.mc-jacobi-handwrite svg {
+  width: 70px !important;
+  height: 22px !important;
+  transform: rotate(60deg) translateX(8px);
+}
+
+/* Smaller play button on the smaller video */
+.mc-jacobi-video .play-btn {
+  width: 64px !important;
+  height: 64px !important;
+  border-width: 3px !important;
+}
+.mc-jacobi-video .play-btn::after {
+  border-left: 17px solid var(--cream) !important;
+  border-top: 10px solid transparent !important;
+  border-bottom: 10px solid transparent !important;
+  margin-left: 4px !important;
+}
+
+/* RIGHT COLUMN: Featured Testimony copy block */
+.mc-jacobi-copy {
+  padding: 0;
+}
+.mc-jacobi-copy-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-utility);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--peach-dk);
+  margin-bottom: 18px;
+}
+.mc-jacobi-copy-eyebrow::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: var(--peach);
+}
+.mc-jacobi-copy-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(28px, 3.5vw, 38px);
+  line-height: 1.2;
+  color: var(--charcoal);
+  margin-bottom: 18px;
+}
+.mc-jacobi-copy-title .underline {
+  background-image: linear-gradient(transparent 70%, rgba(232,150,130,0.4) 70%);
+  background-repeat: no-repeat;
+}
+.mc-jacobi-copy-quote {
+  font-family: var(--font-body);
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+  opacity: 0.85;
+}
+.mc-jacobi-copy-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 18px;
+  border-top: 1.5px dashed rgba(65,65,65,0.25);
+}
+.mc-jacobi-copy-meta .name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--charcoal);
+}
+.mc-jacobi-copy-meta .stars {
+  color: var(--peach);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+.mc-jacobi-copy-meta .class {
+  font-family: var(--font-utility);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--peach-dk);
+  margin-top: 4px;
+}
+
+/* The dimension caption is no longer needed — hide it (was below video) */
+.mc-jacobi-caption,
+.mc-jacobi-dimension { display: none !important; }
+
+/* Mobile: stack copy below video, lessen tilt for readability */
+@media (max-width: 800px) {
+  .mc-jacobi-feature {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 0 20px;
+  }
+  .mc-jacobi-frame {
+    transform: rotate(-1.5deg);
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .mc-jacobi-handwrite {
+    right: -20px !important;
+    top: -42px !important;
+  }
+  .mc-jacobi-copy {
+    text-align: center;
+  }
+  .mc-jacobi-copy-meta {
+    align-items: center;
+  }
+  .mc-reviews-corner { display: none; }
+  .mc-reviews-compass { display: none; }
+}
+
+
+/* ============ JACOBI POLAROID LAYOUT FIX ============ */
+/* Resolve the rotation-into-next-column bleed visible in 4/28 review.
+   Smaller polaroid + wider gap + handwriting kept inside the polaroid. */
+
+.mc-jacobi-feature {
+  /* Wider gap so rotated polaroid corners don't reach into the copy column */
+  gap: 96px !important;
+  /* Cap the polaroid column so it can't grow beyond its allocated width */
+  grid-template-columns: 360px 1fr !important;
+  align-items: start !important;
+}
+
+.mc-jacobi-frame {
+  /* Smaller polaroid — ~3 inches smaller in total visual footprint */
+  max-width: 340px !important;
+  /* Less aggressive tilt so corners stay tighter */
+  transform: rotate(-2deg) !important;
+  /* Slightly less padding for a more proportional smaller frame */
+  padding: 12px 12px 14px !important;
+}
+
+/* Right column: defensive against any overflow */
+.mc-jacobi-copy {
+  min-width: 0 !important;
+}
+
+/* "press play" handwriting — repositioned INSIDE the polaroid bounds.
+   Top-left corner above the play button, rotated -8°, so the arrow
+   curls down toward the play button without ever reaching the next column. */
+.mc-jacobi-handwrite {
+  position: absolute !important;
+  /* Anchored to the top-left of the polaroid frame */
+  top: -36px !important;
+  left: 12px !important;
+  right: auto !important;
+  transform: rotate(-8deg) !important;
+  font-size: 24px !important;
+  z-index: 6;
+  text-align: left !important;
+}
+.mc-jacobi-handwrite svg {
+  width: 56px !important;
+  height: 22px !important;
+  /* Arrow curls down-right toward the play button below */
+  transform: rotate(45deg) translate(4px, 6px) !important;
+}
+
+/* Smaller play button proportional to smaller polaroid */
+.mc-jacobi-video .play-btn {
+  width: 56px !important;
+  height: 56px !important;
+}
+.mc-jacobi-video .play-btn::after {
+  border-left: 14px solid var(--cream) !important;
+  border-top: 9px solid transparent !important;
+  border-bottom: 9px solid transparent !important;
+  margin-left: 3px !important;
+}
+
+/* Smaller YouTube ribbon */
+.mc-jacobi-ribbon {
+  padding: 5px 9px !important;
+  font-size: 9px !important;
+  top: 12px !important;
+  left: 12px !important;
+}
+.mc-jacobi-ribbon .yt {
+  width: 18px !important;
+  height: 11px !important;
+  font-size: 7px !important;
+}
+
+/* Mobile: stack as before, but with the new smaller dimensions */
+@media (max-width: 800px) {
+  .mc-jacobi-feature {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+  .mc-jacobi-frame {
+    max-width: 340px !important;
+    margin: 0 auto !important;
+  }
+  .mc-jacobi-handwrite {
+    top: -32px !important;
+    left: 8px !important;
+  }
+}
+
+
+/* ============ JACOBI FRAME — remove polaroid effect ============ */
+.mc-jacobi-frame {
+  /* Strip polaroid styling: no tilt, no hard shadow, no cream paper border */
+  transform: none !important;
+  box-shadow: 0 8px 24px rgba(65,65,65,0.12) !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+.mc-jacobi-frame:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 14px 32px rgba(232,150,130,0.2) !important;
+}
+
+/* Corner brackets reposition for the now-flat frame (back to flush corners) */
+.mc-jacobi-corner {
+  width: 32px !important;
+  height: 32px !important;
+}
+.mc-jacobi-corner.tl { top: -12px !important; left: -12px !important; }
+.mc-jacobi-corner.tr { top: -12px !important; right: -12px !important; }
+.mc-jacobi-corner.bl { bottom: -12px !important; left: -12px !important; }
+.mc-jacobi-corner.br { bottom: -12px !important; right: -12px !important; }
+
+/* ============ "press play" — bottom-right of the video ============ */
+.mc-jacobi-handwrite {
+  position: absolute !important;
+  /* Anchored to bottom-right outside corner of the video */
+  bottom: -42px !important;
+  right: -8px !important;
+  top: auto !important;
+  left: auto !important;
+  transform: rotate(8deg) !important;
+  font-size: 26px !important;
+  z-index: 6;
+  text-align: right !important;
+  white-space: nowrap;
+}
+.mc-jacobi-handwrite svg {
+  width: 64px !important;
+  height: 24px !important;
+  /* Arrow curls UP-LEFT toward the play button (center of video) */
+  transform: rotate(-135deg) translate(-4px, 8px) !important;
+  margin-left: auto !important;
+  margin-right: 6px !important;
+  display: block !important;
+}
+
+/* ============ TIGHTEN VERTICAL SPACING — pull marquee 5 rows up ============ */
+/* Reduce the bottom margin of the Jacobi feature block.
+   Was 64px (mc-jacobi-feature has margin: 0 auto 48px in earlier override,
+   then 64px inherited from earlier rule). Cut to a much tighter ~10px
+   so the marquee row 1 starts visually right under the feature. */
+.mc-jacobi-feature {
+  margin-bottom: 12px !important;
+}
+
+/* Reduce marquee track padding-top */
+.mc-marquee {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+/* Reduce reviews-header bottom margin so all section spacing tightens */
+.mc-reviews-header {
+  margin-bottom: 40px !important;
+}
+
+
+/* ============ VIDEO INSIDE HOUSE — proper proportional sizing ============ */
+/* The video should be a window into the main room — visibly inside the
+   house outline, with the roof, walls, door, and foundation all showing
+   around it. */
+
+.mc-video-house {
+  /* More padding all around so the house wraps and frames the video */
+  padding: 30% 18% 14% 18% !important;
+  /* Cap the overall house at a reasonable size so it doesn't go too wide */
+  max-width: 980px !important;
+}
+
+/* The video itself caps at a smaller max-width so it sits as the centerpiece */
+.mc-video-house .mc-video-frame {
+  max-width: 640px !important;
+  margin: 0 auto !important;
+}
+
+/* On wider screens, give the video a touch more room without overpowering */
+@media (min-width: 1200px) {
+  .mc-video-house {
+    padding: 28% 16% 13% 16% !important;
+  }
+  .mc-video-house .mc-video-frame {
+    max-width: 700px !important;
+  }
+}
+
+/* Tablet — slightly less aggressive padding so video stays usable */
+@media (max-width: 900px) {
+  .mc-video-house {
+    padding: 32% 12% 14% 12% !important;
+  }
+  .mc-video-house .mc-video-frame {
+    max-width: 560px !important;
+  }
+}
+
+/* Mobile — already overridden in earlier rules; further refine */
+@media (max-width: 600px) {
+  .mc-video-house {
+    padding: 30% 8% 14% 8% !important;
+  }
+  .mc-video-house .mc-video-frame {
+    max-width: none !important;
+  }
+}
+
+
+/* ============ REVIEWS SECTION — BALANCED SPACING ============ */
+
+/* Tighten section top padding */
+.mc-reviews {
+  padding: 70px 0 90px !important;
+}
+
+/* Reviews header — pull title closer to eyebrow, tighten subtitle gap */
+.mc-reviews-header {
+  margin-bottom: 28px !important;
+  max-width: 720px !important;
+}
+.mc-reviews-eyebrow {
+  margin-bottom: 10px !important;
+}
+.mc-reviews-title {
+  margin-bottom: 12px !important;
+  font-size: clamp(28px, 3.2vw, 38px) !important;
+  line-height: 1.2 !important;
+}
+.mc-reviews-sub {
+  font-size: 15px !important;
+  max-width: 540px !important;
+  margin: 0 auto !important;
+  line-height: 1.55 !important;
+}
+
+/* Detail A header — tighter gap above and below */
+.mc-jacobi-feature .mc-jacobi-header {
+  margin-top: 18px !important;
+  margin-bottom: 16px !important;
+}
+
+/* ============ JACOBI VIDEO — REMOVE DROP SHADOW ============ */
+.mc-jacobi-frame {
+  /* Strip the soft shadow that was leaving a halo under the video */
+  box-shadow: none !important;
+}
+.mc-jacobi-frame:hover {
+  /* Hover state: just a subtle lift, no shadow */
+  box-shadow: 0 6px 18px rgba(232,150,130,0.18) !important;
+}
+
+/* ============ HOUSE VIDEO SECTION FIXES ============ */
+
+/* Hide the "Press play, or skip ahead to register below." caption.
+   The handwritten "press play" note is enough. */
+.mc-video-house .mc-video-caption {
+  display: none !important;
+}
+
+/* Move the video DOWN inside the house wrapper:
+   - Increase top padding (more roof breathing room above)
+   - Reduce bottom padding (less foundation space below) */
+.mc-video-house {
+  padding: 38% 18% 8% 18% !important;
+}
+@media (min-width: 1200px) {
+  .mc-video-house {
+    padding: 36% 16% 7% 16% !important;
+  }
+}
+@media (max-width: 900px) {
+  .mc-video-house {
+    padding: 40% 12% 8% 12% !important;
+  }
+}
+@media (max-width: 600px) {
+  .mc-video-house {
+    padding: 38% 8% 8% 8% !important;
+  }
+}
+
+
+/* ============ PRESS PLAY — MASTER OVERRIDE ============ */
+/* This block is intentionally placed last so it wins the cascade against
+   all 6 prior .mc-jacobi-handwrite iterations. */
+
+.mc-jacobi-handwrite {
+  /* Position INSIDE the video frame, anchored bottom-right */
+  position: absolute !important;
+  bottom: 16px !important;
+  right: 16px !important;
+  top: auto !important;
+  left: auto !important;
+
+  /* Composition: arrow on top, label below */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 2px !important;
+
+  /* Reset any inherited transforms */
+  transform: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+
+  /* Container properties */
+  z-index: 6;
+  pointer-events: none;
+  color: var(--peach) !important;
+
+  /* Don't accidentally clip text by inheriting overflow:hidden */
+  overflow: visible !important;
+  white-space: nowrap !important;
+}
+
+.mc-jacobi-handwrite .mc-jacobi-arrow {
+  /* The new SVG arrow — fixed dimensions, native curve direction (up-left) */
+  display: block !important;
+  width: 56px !important;
+  height: 48px !important;
+  /* No rotation transforms — geometry is built into the path */
+  transform: none !important;
+  margin: 0 !important;
+  /* Position the arrow so its "tail" (where the text sits beside it) is on the right */
+  align-self: flex-end !important;
+}
+
+.mc-jacobi-handwrite .mc-jacobi-arrow-label {
+  /* The "press play" text — appears below the arrow */
+  display: inline-block !important;
+  font-family: 'Caveat', cursive !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  color: var(--peach) !important;
+  line-height: 1 !important;
+  /* Subtle tilt for casual feel — not so much that it breaks readability */
+  transform: rotate(-4deg) !important;
+  transform-origin: right center !important;
+  /* Pull the label slightly under the arrow's tail */
+  margin-top: -2px !important;
+  margin-right: 4px !important;
+  /* Small text-shadow cushion against dark video bg for legibility */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+
+/* The video container needs overflow:visible so the badge can sit at the
+   exact corner without being clipped (in case earlier rules set hidden). */
+.mc-jacobi-video {
+  overflow: visible !important;
+}
+
+/* But the actual video thumbnail/iframe should stay clipped within itself */
+.mc-jacobi-video > img,
+.mc-jacobi-video > iframe {
+  /* No special handling needed — they fill the container naturally */
+}
+
+/* On mobile, scale slightly down */
+@media (max-width: 800px) {
+  .mc-jacobi-handwrite {
+    bottom: 12px !important;
+    right: 12px !important;
+  }
+  .mc-jacobi-handwrite .mc-jacobi-arrow {
+    width: 48px !important;
+    height: 40px !important;
+  }
+  .mc-jacobi-handwrite .mc-jacobi-arrow-label {
+    font-size: 22px !important;
+  }
+}
+
+
+/* ============ PRESS PLAY → ON CREAM, OUTSIDE VIDEO ============ */
+/* Final positioning: handwriting lives in the cream space BELOW and to the
+   RIGHT of the video bottom edge — visually between the video and the
+   testimony copy on the right column. */
+
+.mc-jacobi-frame {
+  /* Allow handwriting to extend below the video without clipping */
+  overflow: visible !important;
+  /* Add bottom padding to create the cream space where press play will sit */
+  padding-bottom: 60px !important;
+}
+
+.mc-jacobi-handwrite {
+  /* Position relative to .mc-jacobi-frame (the cream wrapper),
+     anchored bottom-right OUTSIDE the dark video area */
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 8px !important;
+  top: auto !important;
+  left: auto !important;
+
+  /* Layout: arrow + label inline, small composition */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 0 !important;
+
+  transform: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+
+  z-index: 6;
+  pointer-events: none;
+  color: var(--peach-dk) !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+}
+
+.mc-jacobi-handwrite .mc-jacobi-arrow {
+  display: block !important;
+  /* Arrow now smaller and points DOWN-LEFT toward the video bottom edge above */
+  width: 48px !important;
+  height: 32px !important;
+  transform: none !important;
+  margin: 0 6px 2px 0 !important;
+  align-self: flex-end !important;
+  /* Flip vertically so the curve goes from upper-right (text) up-and-left
+     to point at the video above */
+  transform: scaleY(-1) !important;
+}
+
+.mc-jacobi-handwrite .mc-jacobi-arrow-label {
+  display: inline-block !important;
+  font-family: 'Caveat', cursive !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: var(--peach-dk) !important;
+  line-height: 1 !important;
+  transform: rotate(-3deg) !important;
+  transform-origin: right center !important;
+  margin: 0 4px 0 0 !important;
+  /* No text shadow needed — sits on cream now */
+  text-shadow: none !important;
+}
+
+/* The video container — overflow can be hidden again since handwrite is its sibling, not inside it */
+.mc-jacobi-video {
+  overflow: hidden !important;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  .mc-jacobi-frame {
+    padding-bottom: 50px !important;
+  }
+  .mc-jacobi-handwrite .mc-jacobi-arrow {
+    width: 42px !important;
+    height: 28px !important;
+  }
+  .mc-jacobi-handwrite .mc-jacobi-arrow-label {
+    font-size: 24px !important;
+  }
+}
+
+/* ============ FIX 2: Tighten gap to marquee ============ */
+.mc-jacobi-feature {
+  margin-bottom: 0 !important;
+}
+.mc-marquee {
+  padding-top: 24px !important;
+  padding-bottom: 0 !important;
+}
+/* Last marquee should have its bottom margin */
+.mc-reviews .mc-marquee:last-of-type {
+  padding-bottom: 4px !important;
+}
+
+
+/* ============ SINGLE ROW SCROLL DURATION ============ */
+/* With 8 cards instead of 4, double the duration to keep the same scroll speed */
+.mc-marquee-track.left { animation-duration: 180s !important; }
+@media (max-width: 700px) {
+  .mc-marquee-track.left { animation-duration: 130s !important; }
+}
+
+
+/* ============ DEFINITIVE LAYOUT FIXES ============ */
+
+/* FIX 1: .mc-jacobi-frame becomes a flex column so video + press play
+   stack naturally with NO overlap possibility */
+.mc-jacobi-frame {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  padding-bottom: 0 !important;  /* No more padding hack — flex handles spacing */
+  position: relative !important;
+}
+
+/* The video sits as the first flex child, normal flow */
+.mc-jacobi-frame > .mc-jacobi-video {
+  position: relative !important;
+  width: 100% !important;
+  flex-shrink: 0 !important;
+}
+
+/* Press play is now a NORMAL flex child below the video — not absolute */
+.mc-jacobi-handwrite {
+  position: relative !important;
+  bottom: auto !important;
+  right: auto !important;
+  top: auto !important;
+  left: auto !important;
+  /* Layout the arrow + label as a row, anchored to the right side */
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  /* Spacing above (room from video) + small bottom space */
+  margin: 14px 8px 0 0 !important;
+  padding: 0 !important;
+  /* Visual properties */
+  z-index: 6;
+  pointer-events: none;
+  color: var(--peach-dk) !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+}
+
+.mc-jacobi-handwrite .mc-jacobi-arrow {
+  display: block !important;
+  width: 44px !important;
+  height: 30px !important;
+  /* Flip vertically — arrow now points UP toward the video */
+  transform: scaleY(-1) !important;
+  margin: 0 !important;
+}
+
+.mc-jacobi-handwrite .mc-jacobi-arrow-label {
+  display: inline-block !important;
+  font-family: 'Caveat', cursive !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  color: var(--peach-dk) !important;
+  line-height: 1 !important;
+  transform: rotate(-3deg) !important;
+  transform-origin: left center !important;
+  margin: 0 !important;
+  text-shadow: none !important;
+}
+
+/* The corner brackets need to move to wrap just the VIDEO portion now,
+   not the whole frame (otherwise the bottom-left/right corners would be
+   below the press play). Reposition them to anchor on the video. */
+.mc-jacobi-corner {
+  z-index: 4 !important;
+}
+.mc-jacobi-corner.tl,
+.mc-jacobi-corner.tr,
+.mc-jacobi-corner.bl,
+.mc-jacobi-corner.br {
+  /* Make the corners hug the VIDEO element, not the whole flex frame.
+     Since they're absolute children of .mc-jacobi-frame, anchor them
+     to its top-left/top-right and to bottom of just the video. */
+}
+/* Top corners stay at frame top (which IS video top in flex) */
+.mc-jacobi-corner.tl { top: -12px !important; left: -12px !important; bottom: auto !important; }
+.mc-jacobi-corner.tr { top: -12px !important; right: -12px !important; bottom: auto !important; }
+/* Bottom corners need to anchor to the BOTTOM OF THE VIDEO (not frame bottom)
+   We can't easily do this with CSS alone since video height is dynamic.
+   Instead, simplest approach: move corners INTO the .mc-jacobi-video element. */
+/* See JS approach below — for now, compute video-bottom approximately */
+.mc-jacobi-corner.bl { bottom: auto !important; top: calc((100% - 56px) * 9 / 16 - 4px) !important; left: -12px !important; }
+.mc-jacobi-corner.br { bottom: auto !important; top: calc((100% - 56px) * 9 / 16 - 4px) !important; right: -12px !important; }
+/* Note: 56px is approx press play height; (100% - 56) * 9/16 = video bottom. 
+   This is fragile though. Better approach: just hide bottom corners or move
+   them inside .mc-jacobi-video. Simplest: hide bottom corners cleanly. */
+.mc-jacobi-corner.bl,
+.mc-jacobi-corner.br {
+  display: none !important;
+}
+
+/* FIX 2: Center the video inside the house blueprint */
+.mc-video-house .mc-video-frame {
+  margin: 0 auto !important;
+}
+
+
+/* ============ PRESS PLAY — REMOVED ============ */
+.mc-jacobi-handwrite,
+.mc-jacobi-handwrite *,
+.mc-jacobi-arrow,
+.mc-jacobi-arrow-label {
+  display: none !important;
+}
+
+/* Restore corner brackets to clean 4-corner layout on the video frame
+   (had been hiding bottom corners to accommodate press play) */
+.mc-jacobi-corner.bl,
+.mc-jacobi-corner.br {
+  display: block !important;
+}
+.mc-jacobi-corner.bl {
+  top: auto !important;
+  bottom: -12px !important;
+  left: -12px !important;
+}
+.mc-jacobi-corner.br {
+  top: auto !important;
+  bottom: -12px !important;
+  right: -12px !important;
+}
+
+/* The flex column on .mc-jacobi-frame is no longer needed without press play.
+   Restore to position:relative with no special padding */
+.mc-jacobi-frame {
+  display: block !important;
+  padding-bottom: 0 !important;
+}
+
+
+/* ============ CORNER BRACKETS — FINAL POSITION FIX ============ */
+/* Override all earlier broken rules. Anchor brackets to the video edges. */
+
+.mc-jacobi-corner {
+  display: block !important;
+  position: absolute !important;
+  width: 36px !important;
+  height: 36px !important;
+  z-index: 4 !important;
+}
+
+/* Top-left */
+.mc-jacobi-corner.tl {
+  top: -12px !important;
+  left: -12px !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+}
+
+/* Top-right */
+.mc-jacobi-corner.tr {
+  top: -12px !important;
+  right: -12px !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: scaleX(-1) !important;
+}
+
+/* Bottom-left */
+.mc-jacobi-corner.bl {
+  bottom: -12px !important;
+  left: -12px !important;
+  top: auto !important;
+  right: auto !important;
+  transform: scaleY(-1) !important;
+}
+
+/* Bottom-right */
+.mc-jacobi-corner.br {
+  bottom: -12px !important;
+  right: -12px !important;
+  top: auto !important;
+  left: auto !important;
+  transform: scale(-1, -1) !important;
+}
+
+
+/* ============ CORNER BRACKETS — REMOVED ============ */
+.mc-jacobi-corner,
+.mc-jacobi-corner.tl,
+.mc-jacobi-corner.tr,
+.mc-jacobi-corner.bl,
+.mc-jacobi-corner.br {
+  display: none !important;
+}
+
+
+/* ============ HOST PORTRAIT — real photo ============ */
+
+/* Hide the TH text placeholder + the "Replace with portrait" tag */
+.mc-tiffany-image::before { display: none !important; }
+.mc-tiffany-image .mc-tiffany-tag { display: none !important; }
+
+/* The image fills the container */
+.mc-tiffany-image {
+  /* Slightly taller aspect ratio for the portrait orientation source */
+  aspect-ratio: 4/5 !important;
+  background: var(--charcoal) !important;
+}
+.mc-tiffany-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Frame composition: upper-center prioritizes Tiffany seated and the
+     "Built From The Breaking" backdrop above her. The source is shot at
+     a low angle so center-30% top crops nicely */
+  object-position: center 30%;
+  display: block;
 }
 
 </style>
@@ -1706,7 +3795,6 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 <form id="cfAR" style="display:none" aria-hidden="true">
   <input type="hidden" name="cf_uvid" id="cf_uvid_global">
 </form>
-
 
 <!-- ============ NAV ============ -->
 <nav class="nav">
@@ -1861,7 +3949,6 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
   </div>
 </div>
 
-
 <!-- ============ VIDEO INTRO ============ -->
 <section class="mc-video">
   <span class="mc-section-marker" aria-hidden="true">PLAN 02 / walkthrough</span>
@@ -1909,13 +3996,6 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
             <line x1="980" y1="828" x2="1050" y2="845"/>
           </g>
 
-          <!-- Door (bottom center, where you "walk in") -->
-          <path d="M 490 820 L 490 730 L 580 730 L 580 820" stroke-width="2"/>
-          <!-- Door knob -->
-          <circle cx="568" cy="775" r="2.5" fill="#414141"/>
-          <!-- Door swing arc (showing the door opening inward) -->
-          <path d="M 490 820 Q 490 730 580 730" stroke-dasharray="3,5" stroke-width="1.3" opacity="0.45"/>
-
           <!-- Chimney on the right roof slope -->
           <path d="M 820 200 L 820 130 L 870 130 L 870 226" stroke-width="2"/>
           <!-- Smoke wisps -->
@@ -1957,13 +4037,8 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
         <g font-family="Caveat, cursive" fill="#C97560" font-weight="600" opacity="0.78">
           <text x="550" y="25" font-size="15" text-anchor="middle">9 yrs · 1000s of contracts</text>
           <text x="35" y="455" font-size="15" transform="rotate(-90 35 455)" text-anchor="middle">scaling 1 → 13</text>
-          <text x="540" y="855" font-size="17" text-anchor="middle">↑ where you walk in</text>
           <text x="855" y="40" font-size="14">+ steady income</text>
         </g>
-
-        <!-- Peach callout arrow pointing from "where you walk in" up to the door -->
-        <path d="M 540 845 Q 540 832 535 825" stroke="#C97560" stroke-width="1.6"
-              fill="none" opacity="0.6" stroke-linecap="round" filter="url(#houseWobble)"/>
       </svg>
 
       <!-- The video iframe sits as the main room of the house -->
@@ -2026,7 +4101,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
   <div class="container">
     <div class="mc-tiffany-grid">
       <div class="mc-tiffany-image reveal-on-scroll">
-        <div class="mc-tiffany-tag">Replace with portrait</div>
+        <img src="images/host-portrait.jpg" alt="Tiffany Haynes on stage at Built From The Breaking" loading="lazy">
       </div>
       <div class="mc-tiffany-content reveal-on-scroll">
         <div class="section-eyebrow">Your Host</div>
@@ -2087,16 +4162,374 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
   </div>
 </section>
 
-<!-- ============ TESTIMONIAL ============ -->
-<section class="mc-testimonial">
-  <div class="mc-testimonial-inner reveal-on-scroll">
-    <div class="mc-testimonial-mark">"</div>
-    <p class="mc-testimonial-quote">
-      Tiffany doesn't just teach the model — she shows you the exact pathway. Within thirty days I had my first client. Within six months I'd replaced my full-time income.
-    </p>
-    <div class="mc-testimonial-attr">Jacobi · Class of '24</div>
+<!-- ============ OPEN HOUSE GUESTBOOK · REVIEWS ============ -->
+<section class="mc-reviews">
+
+  <!-- Architectural blueprint decorations (4 corner brackets + compass) -->
+  <div class="mc-reviews-corner tl" aria-hidden="true">
+    <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <defs>
+        <filter id="rcWobble"><feTurbulence type="fractalNoise" baseFrequency="0.25" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="1.2"/></filter>
+      </defs>
+      <path d="M 6 36 L 6 6 L 36 6" filter="url(#rcWobble)"/>
+    </svg>
   </div>
+  <div class="mc-reviews-corner tr" aria-hidden="true">
+    <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M 6 36 L 6 6 L 36 6"/>
+    </svg>
+  </div>
+  <div class="mc-reviews-corner bl" aria-hidden="true">
+    <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M 6 36 L 6 6 L 36 6"/>
+    </svg>
+  </div>
+  <div class="mc-reviews-corner br" aria-hidden="true">
+    <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M 6 36 L 6 6 L 36 6"/>
+    </svg>
+  </div>
+  <div class="mc-reviews-compass" aria-hidden="true">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+      <circle cx="32" cy="32" r="22"/>
+      <line x1="32" y1="14" x2="32" y2="50"/>
+      <line x1="14" y1="32" x2="50" y2="32"/>
+      <path d="M 32 14 L 36 28 L 32 26 L 28 28 Z" fill="currentColor"/>
+    </svg>
+  </div>
+  <div class="mc-reviews-header reveal-on-scroll">
+    <div class="mc-reviews-eyebrow">
+      <span aria-hidden="true">⌂</span> Open House Guestbook
+    </div>
+    <h2 class="mc-reviews-title">What past attendees are saying.</h2>
+    <p class="mc-reviews-sub">Real reviews from real estate VAs who walked through the masterclass and built their businesses on the other side. Hover the scroll to pause.</p>
+  </div>
+
+  <!-- ===== FEATURED JACOBI VIDEO TESTIMONIAL — pinned polaroid + copy ===== -->
+  <div class="mc-jacobi-feature reveal-on-scroll">
+
+    <!-- Architectural label across the top -->
+    <div class="mc-jacobi-header">
+      Detail A · Virtual Walkthrough
+      <span class="mc-jacobi-header-mark">— Jacobi's tour</span>
+    </div>
+
+    <!-- LEFT COLUMN: tilted polaroid video -->
+    <div class="mc-jacobi-frame">
+
+      <!-- Hand-drawn peach corner brackets at all 4 corners -->
+      <div class="mc-jacobi-corner tl" aria-hidden="true">
+        <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <defs>
+            <filter id="cornerWobble"><feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="1"/></filter>
+          </defs>
+          <path d="M 4 22 L 4 4 L 22 4" filter="url(#cornerWobble)"/>
+        </svg>
+      </div>
+      <div class="mc-jacobi-corner tr" aria-hidden="true">
+        <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <path d="M 4 22 L 4 4 L 22 4"/>
+        </svg>
+      </div>
+      <div class="mc-jacobi-corner bl" aria-hidden="true">
+        <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <path d="M 4 22 L 4 4 L 22 4"/>
+        </svg>
+      </div>
+      <div class="mc-jacobi-corner br" aria-hidden="true">
+        <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <path d="M 4 22 L 4 4 L 22 4"/>
+        </svg>
+      </div>
+
+      <!-- The YouTube facade — replaced with iframe on click -->
+      <div class="mc-jacobi-video" data-video-id="JACOBI_VIDEO_ID" onclick="loadJacobiFeatureVideo(this)" tabindex="0" role="button" aria-label="Play Jacobi's video testimonial">
+        <div class="mc-jacobi-ribbon">
+          <span class="yt">▶</span>
+          <span>Watch on YouTube</span>
+        </div>
+        <!-- Placeholder gradient until video ID is wired in. Once you replace
+             JACOBI_VIDEO_ID, the thumbnail can be swapped for:
+             <img src="https://img.youtube.com/vi/REAL_ID/maxresdefault.jpg" ...> -->
+        <img src="" alt="" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#2a2a2a,#0e0e10)';this.parentNode.style.minHeight='280px';">
+        <div class="play-btn" aria-hidden="true"></div>
+      </div>
+
+    </div>
+
+    <!-- Caption below -->
+    <div class="mc-jacobi-caption">
+      <div class="mc-jacobi-caption-name">Jacobi</div>
+      <div class="mc-jacobi-caption-meta">★ ★ ★ ★ ★ &nbsp;Class of '24</div>
+    </div>
+
+    <!-- RIGHT COLUMN: Featured Testimony copy -->
+    <div class="mc-jacobi-copy">
+      <div class="mc-jacobi-copy-eyebrow">★ Featured Testimony</div>
+      <h3 class="mc-jacobi-copy-title">Watch <span class="underline">Jacobi</span> share<br>how the masterclass<br>changed everything.</h3>
+      <p class="mc-jacobi-copy-quote">Tiffany doesn't just teach the model, she shows you the exact pathway. Within thirty days I had my first client. Within six months I'd replaced my full-time income.</p>
+      <div class="mc-jacobi-copy-meta">
+        <span class="name">Jacobi</span>
+        <span class="stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+        <span class="class">Class of '24 · Verified Attendee</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Row 1 → scrolls right-to-left -->
+  <div class="mc-marquee">
+    <div class="mc-marquee-track left">
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Heather</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">30 Dec 2023</div>
+      <blockquote class="mc-mq-card-quote">The Plug &amp; Play Masterclass is the first training webinar where I felt like the content was something that was achievable and possible for me. I didn't feel like I was being cheated or sold a dream. I am excited for what is next to come and truly see a financial breakthrough for me and my family. Thank you Tiffany for sharing your cheat codes with the community.</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">ReNita Williams</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">07 Dec 2023</div>
+      <blockquote class="mc-mq-card-quote">I am excitedly surprised on the wealth of gems you provided. This was the first webinar/masterclass that actually had me excited afterwards! I am eager to begin this journey! Thank you!</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Charra Jones</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">22 Dec 2023</div>
+      <blockquote class="mc-mq-card-quote">Tiffany the webinar was absolutely great! You provided so much information that made it so simple to understand and your energy kept me interested. Thank you for sharing! The fact that you provide a mentorship program is truly amazing.</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Vanessa Frost</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">05 Jan 2024</div>
+      <blockquote class="mc-mq-card-quote">I loved the Masterclass. It was very informative and made me realize how I can use all my skill sets to make money.</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Joi</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">09 Jan 2024</div>
+      <blockquote class="mc-mq-card-quote">Tiffany's knowledge, transparency, ingenuity and professionalism with down to earth relatability is refreshing. The way she has scaled transaction coordinating services into such a lucrative, duplicatable business is extremely impressive. Her step by step system is one of a kind.</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Melanie Johnson</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">30 Dec 2023</div>
+      <blockquote class="mc-mq-card-quote">Greetings! I THOROUGHLY enjoyed the masterclass and have never been more inspired to pursue an endeavor in my life! Tiffany is engaging, sincere, sharp, and humble, all in one. A beautiful spirit! Looking forward to joining an elite network of passionate Real Estate professionals!</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Susan Jones</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">29 Dec 2023</div>
+      <blockquote class="mc-mq-card-quote">Your class was terrific and very informative. You should be the model for master class teaching. Great energy, and also very professional. You are a great instructor. I feel very confident that I will learn to master this course. Let's go. I'm so ready!!</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Vinickie Daniel</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">30 Dec 2023</div>
+      <blockquote class="mc-mq-card-quote">The class was phenomenal and provided excellent instruction and information. Tiffany you inspired me and gave me hope for my future and I can't wait to get started on my new future.</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Heather</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">30 Dec 2023</div>
+      <blockquote class="mc-mq-card-quote">The Plug &amp; Play Masterclass is the first training webinar where I felt like the content was something that was achievable and possible for me. I didn't feel like I was being cheated or sold a dream. I am excited for what is next to come and truly see a financial breakthrough for me and my family. Thank you Tiffany for sharing your cheat codes with the community.</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">ReNita Williams</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">07 Dec 2023</div>
+      <blockquote class="mc-mq-card-quote">I am excitedly surprised on the wealth of gems you provided. This was the first webinar/masterclass that actually had me excited afterwards! I am eager to begin this journey! Thank you!</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Charra Jones</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">22 Dec 2023</div>
+      <blockquote class="mc-mq-card-quote">Tiffany the webinar was absolutely great! You provided so much information that made it so simple to understand and your energy kept me interested. Thank you for sharing! The fact that you provide a mentorship program is truly amazing.</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Vanessa Frost</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">05 Jan 2024</div>
+      <blockquote class="mc-mq-card-quote">I loved the Masterclass. It was very informative and made me realize how I can use all my skill sets to make money.</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Joi</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">09 Jan 2024</div>
+      <blockquote class="mc-mq-card-quote">Tiffany's knowledge, transparency, ingenuity and professionalism with down to earth relatability is refreshing. The way she has scaled transaction coordinating services into such a lucrative, duplicatable business is extremely impressive. Her step by step system is one of a kind.</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Melanie Johnson</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">30 Dec 2023</div>
+      <blockquote class="mc-mq-card-quote">Greetings! I THOROUGHLY enjoyed the masterclass and have never been more inspired to pursue an endeavor in my life! Tiffany is engaging, sincere, sharp, and humble, all in one. A beautiful spirit! Looking forward to joining an elite network of passionate Real Estate professionals!</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Susan Jones</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">29 Dec 2023</div>
+      <blockquote class="mc-mq-card-quote">Your class was terrific and very informative. You should be the model for master class teaching. Great energy, and also very professional. You are a great instructor. I feel very confident that I will learn to master this course. Let's go. I'm so ready!!</blockquote>
+    </article>
+    
+    <article class="mc-mq-card">
+      <div class="mc-mq-card-head">
+        <div class="mc-mq-card-author">
+          <span class="mc-mq-card-name">Vinickie Daniel</span>
+          <span class="mc-mq-card-verified" aria-label="Verified attendee">✓</span>
+        </div>
+        <span class="mc-mq-card-stars" aria-label="5 out of 5">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="mc-mq-card-date">30 Dec 2023</div>
+      <blockquote class="mc-mq-card-quote">The class was phenomenal and provided excellent instruction and information. Tiffany you inspired me and gave me hope for my future and I can't wait to get started on my new future.</blockquote>
+    </article>
+    
+    
+    </div>
+  </div>
+
+  
 </section>
+
+<script>
+// Lazy-load Jacobi's YouTube embed only on click
+// Featured-block click handler (above the marquee)
+function loadJacobiFeatureVideo(el) {
+  var videoId = el.getAttribute('data-video-id');
+  if (!videoId || videoId === 'JACOBI_VIDEO_ID') {
+    alert("Jacobi's video ID needs to be wired up. Replace JACOBI_VIDEO_ID with the real YouTube video ID.");
+    return;
+  }
+  var iframe = document.createElement('iframe');
+  iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+  iframe.title = "Jacobi's Video Testimonial";
+  iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+  iframe.allowFullscreen = true;
+  el.appendChild(iframe);
+  el.classList.add('playing');
+}
+
+// Original marquee handler (no longer used since Jacobi was promoted to feature,
+// but kept in case it's referenced anywhere)
+function loadJacobiVideo(el) {
+  var videoId = el.getAttribute('data-video-id');
+  if (!videoId || videoId === 'JACOBI_VIDEO_ID') {
+    alert("Jacobi's video ID needs to be wired up. Replace JACOBI_VIDEO_ID in the HTML with the real YouTube video ID.");
+    return;
+  }
+  var iframe = document.createElement('iframe');
+  iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+  iframe.title = "Jacobi's Video Testimonial";
+  iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+  iframe.allowFullscreen = true;
+  el.appendChild(iframe);
+  el.classList.add('playing');
+  // Auto-load thumbnail when video ID is real
+  var thumb = el.querySelector('.mc-jacobi-thumb');
+  if (thumb && videoId !== 'JACOBI_VIDEO_ID') {
+    thumb.style.backgroundImage = 'url(https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg)';
+  }
+}
+// Pre-load thumbnail on page render if video ID is set
+document.addEventListener('DOMContentLoaded', function() {
+  var frame = document.querySelector('.mc-jacobi-frame');
+  if (!frame) return;
+  var id = frame.getAttribute('data-video-id');
+  if (id && id !== 'JACOBI_VIDEO_ID') {
+    var thumb = frame.querySelector('.mc-jacobi-thumb');
+    if (thumb) thumb.style.backgroundImage = 'url(https://img.youtube.com/vi/' + id + '/maxresdefault.jpg)';
+  }
+});
+</script>
 
 <!-- ============ CTA ============ -->
 <section class="mc-cta" id="register">
@@ -2130,7 +4563,6 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
   </div>
 
   <span class="mc-section-marker" aria-hidden="true">PLAN 07 / open house</span>
-  
 
   <div class="mc-cta-inner reveal-on-scroll">
     <div class="mc-cta-eyebrow">Reserve Your Seat</div>
