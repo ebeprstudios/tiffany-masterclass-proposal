@@ -1408,6 +1408,167 @@ section { position: relative; z-index: 2; }
 }
 
 
+
+/* ============================================================
+   12-COLUMN GRID SYSTEM — applied to home page
+   ============================================================ */
+
+:root {
+  --grid-max:     1280px;
+  --grid-cols:    12;
+  --grid-gutter:  24px;
+  --grid-pad:     32px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --grid-pad:     24px;
+    --grid-gutter:  16px;
+  }
+}
+@media (max-width: 600px) {
+  :root {
+    --grid-pad:     20px;
+  }
+}
+
+/* Container override — use grid foundation */
+.container {
+  max-width: var(--grid-max) !important;
+  padding: 0 var(--grid-pad) !important;
+}
+
+/* HERO ──────────────────────────────────────────────────────── */
+/* Text spans cols 1-7, photo cols 8-12 */
+.home-hero-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, 1fr) !important;
+  gap: var(--grid-gutter) !important;
+  max-width: var(--grid-max) !important;
+  padding: 0 var(--grid-pad) !important;
+  margin: 0 auto !important;
+  align-items: center !important;
+}
+.home-hero-text {
+  grid-column: 1 / 8 !important;
+}
+.home-hero-visual {
+  grid-column: 8 / 13 !important;
+}
+@media (max-width: 800px) {
+  .home-hero-text,
+  .home-hero-visual {
+    grid-column: 1 / 13 !important;
+  }
+}
+
+/* GREETING / LEVEL UP / Most centered sections — cols 3-11 */
+.greeting .container,
+.mission .container {
+  max-width: 880px !important;
+}
+
+/* LEVEL UP cards — 4+4+4 */
+.level-up-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, 1fr) !important;
+  gap: var(--grid-gutter) !important;
+}
+.level-up-grid > * {
+  grid-column: span 4 !important;
+}
+@media (max-width: 800px) {
+  .level-up-grid > * { grid-column: span 12 !important; }
+}
+
+/* TWO PATHS — 6+6 */
+.paths-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, 1fr) !important;
+  gap: calc(var(--grid-gutter) * 1.5) !important;
+}
+.paths-grid > * {
+  grid-column: span 6 !important;
+}
+@media (max-width: 800px) {
+  .paths-grid > * { grid-column: span 12 !important; }
+}
+
+/* STORY — photo cols 1-5, content cols 7-12 (mirrors Meet Tiffany on masterclass) */
+.home-story-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, 1fr) !important;
+  gap: calc(var(--grid-gutter) * 2) !important;
+  align-items: center !important;
+}
+.home-story-image {
+  grid-column: 1 / 6 !important;
+}
+.home-story-content {
+  grid-column: 7 / 13 !important;
+}
+@media (max-width: 800px) {
+  .home-story-image,
+  .home-story-content {
+    grid-column: 1 / 13 !important;
+  }
+}
+
+/* FREE DOWNLOAD — 6+6 */
+.download-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, 1fr) !important;
+  gap: calc(var(--grid-gutter) * 1.5) !important;
+  align-items: center !important;
+}
+.download-grid > * {
+  grid-column: span 6 !important;
+}
+@media (max-width: 800px) {
+  .download-grid > * { grid-column: span 12 !important; }
+}
+
+/* RESOURCES — 3-up cards (4+4+4) */
+.resources-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, 1fr) !important;
+  gap: var(--grid-gutter) !important;
+}
+.resources-grid > * {
+  grid-column: span 4 !important;
+}
+@media (max-width: 900px) {
+  .resources-grid > * { grid-column: span 6 !important; }
+}
+@media (max-width: 600px) {
+  .resources-grid > * { grid-column: span 12 !important; }
+}
+
+/* TAGLINE CTA — image cols 1-7, content cols 8-12 */
+.tagline-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, 1fr) !important;
+  gap: var(--grid-gutter) !important;
+  align-items: center !important;
+}
+.tagline-image {
+  grid-column: 1 / 8 !important;
+}
+.tagline-content {
+  grid-column: 8 / 13 !important;
+}
+@media (max-width: 800px) {
+  .tagline-image,
+  .tagline-content {
+    grid-column: 1 / 13 !important;
+  }
+}
+
+/* FINAL CTA — centered narrow */
+.final-cta .container {
+  max-width: 720px !important;
+}
+
 </style>
 
 <!-- Meta Pixel Code -->
