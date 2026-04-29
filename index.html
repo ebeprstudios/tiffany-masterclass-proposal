@@ -1351,6 +1351,63 @@ section { position: relative; z-index: 2; }
   .download-card-img { margin: -28px -28px 20px -28px; }
 }
 
+
+/* ============ KILL placeholder pseudo-elements over real photos ============ */
+/* When containers were empty, ::before/::after added decorative gradients
+   and "Replace with portrait" labels. With real images placed, these
+   render on top and look like accidental overlays. Kill them. */
+.home-hero-visual::before,
+.home-hero-visual::after,
+.home-story-image::before,
+.home-story-image::after,
+.tagline-image::before,
+.tagline-image::after {
+  display: none !important;
+  content: none !important;
+}
+
+
+/* ============ HANDWRITTEN PERSONAL MOMENTS ELSEWHERE ============ */
+
+/* Sign-off after the story section: "p.s. — I'm rooting for you. — Tiff" */
+.home-handwritten-ps {
+  margin-top: 28px;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--red);
+  line-height: 1.4;
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+.home-handwritten-ps .ps-label {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Final CTA: handwritten "see you inside!" */
+.home-final-handwritten {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 600;
+  color: var(--red);
+  margin-top: 32px;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+}
+
+/* Footer: handwritten farewell */
+.footer-signoff {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  font-weight: 500;
+  color: rgba(255,253,245,0.8);
+  margin-top: 16px;
+  display: block;
+  font-style: italic;
+}
+
+
 </style>
 
 <!-- Meta Pixel Code -->
@@ -1405,7 +1462,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
     </div>
     <div class="home-hero-visual">
       <div class="home-hero-meta">est. 2015</div>
-      <img src="images/08.jpg" alt="Tiffany Haynes" loading="eager">
+      <img src="images/01.jpg" alt="Tiffany Haynes" loading="eager">
     </div>
   </div>
 </section>
@@ -1528,6 +1585,9 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
           <p>I became a leader in this niche in Texas. I bought out other virtual assistant companies and integrated them into my own. Now I'm helping others do the same.</p>
           <p style="font-family:var(--font-display);font-style:italic;font-size:22px;color:var(--red);">It's a pleasure to meet you.</p>
         </div>
+        <div class="home-handwritten-ps" aria-hidden="true">
+          <span class="ps-label">p.s.</span> I'm rooting for you. <br>xx, Tiff
+        </div>
         <div class="home-story-actions">
           <a href="/about" class="btn-ghost">
             More about Tiffany
@@ -1645,6 +1705,9 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       </a>
     </div>
   </div>
+  <div class="home-final-handwritten" aria-hidden="true" style="text-align:center;margin-top:24px;">
+    see you inside! ✶
+  </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
@@ -1658,6 +1721,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <p class="footer-tag">
         Helping real estate virtual assistants optimize, systematize, and radically grow the revenue of their business.
       </p>
+      <span class="footer-signoff">with so much love, Tiff</span>
     </div>
     <div class="footer-col">
       <h4>Navigate</h4>
