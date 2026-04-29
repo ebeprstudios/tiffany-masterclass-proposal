@@ -1275,6 +1275,82 @@ section { position: relative; z-index: 2; }
   .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 }
 
+
+/* ============ HOME PAGE PHOTOS WIRED IN ============ */
+/* Image elements now fill their placeholder containers, replacing the
+   gradient backgrounds. The "-tag" placeholder text overlays are hidden. */
+
+.home-hero-visual { position: relative; overflow: hidden; }
+.home-hero-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 1;
+}
+.home-hero-visual-tag { display: none !important; }
+
+.home-story-image {
+  position: relative;
+  overflow: hidden;
+  background: var(--stone) !important;
+}
+.home-story-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.tagline-image { position: relative; overflow: hidden; }
+.tagline-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.tagline-image-tag { display: none !important; }
+
+/* Free Download card — image at top of card */
+.download-card-img {
+  margin: -32px -32px 24px -32px;  /* extend to card edges, ignore card padding */
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--stone);
+}
+.download-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.download-card:hover .download-card-img img { transform: scale(1.04); }
+
+/* Footer monogram brand mark */
+.footer-monogram {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+  opacity: 0.92;
+  transition: opacity 0.2s;
+}
+.footer-monogram img { width: 100%; height: auto; display: block; }
+.footer-monogram:hover { opacity: 1; }
+
+@media (max-width: 700px) {
+  .footer-monogram { width: 52px; height: 52px; }
+  .download-card-img { margin: -28px -28px 20px -28px; }
+}
+
 </style>
 
 <!-- Meta Pixel Code -->
@@ -1317,7 +1393,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
         I help CEOs build <em>real estate virtual assistant</em> businesses that <span class="accent">actually scale.</span>
       </h1>
       <p class="home-hero-sub">
-        Nine years inside this niche industry. Thousands of contracts processed. Teams built from one to thirteen. Now I'm handing you the system — so you can grow your revenue without losing your life to your business.
+        Nine years inside this niche industry. Thousands of contracts processed. Teams built from one to thirteen. Now I'm handing you the system, so you can grow your revenue without losing your life to your business.
       </p>
       <div class="home-hero-actions">
         <a href="/masterclass" class="btn-primary">
@@ -1329,7 +1405,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
     </div>
     <div class="home-hero-visual">
       <div class="home-hero-meta">est. 2015</div>
-      <div class="home-hero-visual-tag">Replace with portrait</div>
+      <img src="images/08.jpg" alt="Tiffany Haynes" loading="eager">
     </div>
   </div>
 </section>
@@ -1355,12 +1431,12 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
   <div class="container">
     <div class="greeting-grid">
       <div class="reveal-on-scroll">
-        <div class="greeting-eyebrow">— a note from me</div>
+        <div class="greeting-eyebrow">a note from me</div>
         <h2 class="greeting-title">I'm Tiffany. A maestro of <em>creating and scaling</em> real estate virtual assistant businesses.</h2>
       </div>
       <div class="greeting-text reveal-on-scroll">
         <p>I built VBS Real Estate from one staff member to thirteen in four years. I've processed over four thousand contracts. I've bought out competitors and integrated their businesses into mine. None of that was easy. None of it was the way I'd been told it had to be done.</p>
-        <p>Now I teach the model — to women ready to build something of their own without sacrificing the life they actually want.</p>
+        <p>Now I teach the model. To women ready to build something of their own without sacrificing the life they actually want.</p>
       </div>
     </div>
   </div>
@@ -1375,7 +1451,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
         <h2 class="section-title">Three things I want <em>you</em> to know.</h2>
       </div>
       <p style="font-family:var(--font-body);font-size:19px;line-height:1.65;color:var(--charcoal);max-width:460px;">
-        Most of what you've been told about scaling a business assumes a cost — your time, your sanity, your relationships. None of that is required.
+        Most of what you've been told about scaling a business assumes a cost: your time, your sanity, your relationships. None of that is required.
       </p>
     </div>
 
@@ -1395,7 +1471,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
     </div>
 
     <p class="level-up-quote reveal-on-scroll">
-      I've gone before you and cleared the path. The curriculum, the resources, the community — they exist so your arrival at the next level is safe.
+      I've gone before you and cleared the path. The curriculum, the resources, the community. They exist so your arrival at the next level is safe.
     </p>
   </div>
 </section>
@@ -1417,7 +1493,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <div class="path-num">02</div>
       <div class="path-eyebrow">Just starting?</div>
       <h3 class="path-title">For the budding CEO ready to launch.</h3>
-      <p class="path-body">You want to support real estate agents, but don't know where to begin. I'll walk you through the proper way to launch — start to client one.</p>
+      <p class="path-body">You want to support real estate agents, but don't know where to begin. I'll walk you through the proper way to launch, from day one to client one.</p>
       <a href="/masterclass" class="path-link">
         Learn more
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -1431,7 +1507,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
   <div class="container reveal-on-scroll">
     <div class="home-testimonial-mark">"</div>
     <p class="home-testimonial-quote">
-      Tiffany was the best choice I've made for growing my business — hands down. She's a freaking creative genius.
+      Tiffany was the best choice I've made for growing my business. Hands down. She's a freaking creative genius.
     </p>
     <div class="home-testimonial-attr">Blair Conrad</div>
   </div>
@@ -1441,10 +1517,12 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 <section class="home-story">
   <div class="container">
     <div class="home-story-grid">
-      <div class="home-story-image reveal-on-scroll"></div>
+      <div class="home-story-image reveal-on-scroll">
+        <img src="images/img_2816.jpg" alt="Tiffany Haynes" loading="lazy">
+      </div>
       <div class="reveal-on-scroll">
         <div class="section-eyebrow">My Story</div>
-        <h2 class="home-story-title">I help business owners build <em>systems</em> that create freedom — and still drive revenue.</h2>
+        <h2 class="home-story-title">I help business owners build <em>systems</em> that create freedom and still drive revenue.</h2>
         <div class="home-story-body">
           <p>I worked the corporate job. I left it. I built the real estate virtual assistant business, hired my first employee, then built out departments and teams. I restructured a reactive business into a procedural nucleus with real systems and real processes.</p>
           <p>I became a leader in this niche in Texas. I bought out other virtual assistant companies and integrated them into my own. Now I'm helping others do the same.</p>
@@ -1469,13 +1547,16 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
         <div class="download-eyebrow">Free Download</div>
         <h2 class="download-title">The 7 Biggest Mistakes <em>CEOs Make</em> When Hiring Assistants.</h2>
         <p class="download-body">
-          I've watched it play out hundreds of times. There is absolutely a right and wrong way to select prime talent — and the cost of the wrong way is bigger than most people calculate.
+          I've watched it play out hundreds of times. There is absolutely a right and wrong way to select prime talent, and the cost of the wrong way is bigger than most people calculate.
         </p>
       </div>
       <div class="download-card reveal-on-scroll">
+        <div class="download-card-img">
+          <img src="images/img_2804.jpg" alt="Building the hiring framework" loading="lazy">
+        </div>
         <div class="download-card-badge">Coming Soon</div>
         <h3>The Hiring Mistake Audit</h3>
-        <p>A practical PDF guide walking you through every common pitfall — and how to set up your hiring process to avoid them.</p>
+        <p>A practical PDF guide walking you through every common pitfall, and how to set up your hiring process to avoid them.</p>
         <div class="btn-status">→ Notify Me When It Drops</div>
       </div>
     </div>
@@ -1493,7 +1574,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <article class="resource-card reveal-on-scroll">
         <div class="resource-card-img"><span>i</span></div>
         <div class="resource-card-tag">Systems &amp; Process</div>
-        <h3>Business Systems and Processes — What to Change First</h3>
+        <h3>Business Systems and Processes: What to Change First</h3>
         <p>How to perfect the operational systems that set you up to actually scale.</p>
         <a href="https://tiffanyhaynesco.com/business-systems" class="resource-link" target="_blank" rel="noopener">Read this →</a>
       </article>
@@ -1507,7 +1588,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <article class="resource-card reveal-on-scroll">
         <div class="resource-card-img"><span>iii</span></div>
         <div class="resource-card-tag">Application</div>
-        <h3>How to Apply What You Learn — Immediately</h3>
+        <h3>How to Apply What You Learn, Immediately</h3>
         <p>Stop consuming. Start implementing. The framework I use to convert insight into action.</p>
         <a href="https://tiffanyhaynesco.com/apply-what-you-learn" class="resource-link" target="_blank" rel="noopener">Read this →</a>
       </article>
@@ -1521,7 +1602,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
     <div class="mission-eyebrow">My Mission</div>
     <h2 class="mission-title">Helping real estate virtual assistants <em>optimize, systematize, and radically grow</em> their revenue.</h2>
     <p class="mission-body">
-      The goal is for you to work smarter — not harder. To carve out the time to work <em style="color:var(--red);">on</em> your business, not just <em style="color:var(--red);">in</em> it. To contribute to your success, your efficiency, and your professional development on every level.
+      The goal is for you to work smarter, not harder. To carve out the time to work <em style="color:var(--red);">on</em> your business, not just <em style="color:var(--red);">in</em> it. To contribute to your success, your efficiency, and your professional development on every level.
     </p>
     <a href="/masterclass" class="btn-primary">
       Show Me the Way
@@ -1535,7 +1616,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 <section class="tagline-cta">
   <div class="tagline-grid">
     <div class="tagline-image reveal-on-scroll">
-      <div class="tagline-image-tag">Replace with photo</div>
+      <img src="images/22.jpg" alt="Tiffany Haynes" loading="lazy">
     </div>
     <div class="tagline-content reveal-on-scroll">
       <div class="tagline-eyebrow">Free Resource</div>
@@ -1556,7 +1637,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <div class="final-cta-eyebrow">Like Peeking Behind the Scenes?</div>
       <h2 class="final-cta-title">Come learn how to build a business <em>that pays you back</em>.</h2>
       <p class="final-cta-sub">
-        A free masterclass on the niche real estate model behind multi-six-figure revenue — and how to build it without sacrificing the life you wanted in the first place.
+        A free masterclass on the niche real estate model behind multi-six-figure revenue, and how to build it without sacrificing the life you wanted in the first place.
       </p>
       <a href="/masterclass" class="btn-primary">
         Reserve My Seat
@@ -1570,6 +1651,9 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 <footer class="footer">
   <div class="footer-top">
     <div>
+      <a href="/" class="footer-monogram" aria-label="Tiffany Haynes & Co. home">
+        <img src="images/white_icon.png" alt="Tiffany Haynes & Co.">
+      </a>
       <div class="footer-brand">Tiffany <em>Haynes &amp; Co.</em></div>
       <p class="footer-tag">
         Helping real estate virtual assistants optimize, systematize, and radically grow the revenue of their business.
