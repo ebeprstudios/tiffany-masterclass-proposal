@@ -151,6 +151,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: 5px;
   cursor: pointer;
   padding: 8px;
+  /* Vercel: 44px mobile hit target minimum */
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
 }
 .nav-toggle span {
   display: block;
@@ -2276,7 +2283,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 
         <div class="gm-video-stage-inner">
           <div class="gm-video-frame" data-yt="I37ahtoZyWY" role="button" tabindex="0" aria-label="Play God's Math teaching video">
-            <div class="gm-video-poster" style="background-image: url('https://img.youtube.com/vi/I37ahtoZyWY/maxresdefault.jpg')">
+            <div class="gm-video-poster" style="background-image: url('https://img.youtube.com/vi/I37ahtoZyWY/hqdefault.jpg')">
               <div class="gm-video-play" aria-hidden="true"></div>
             </div>
           </div>
@@ -2616,6 +2623,21 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+</script>
+
+<!-- Progressive upgrade to maxres thumbnail if available -->
+<script>
+(function(){
+  var poster = document.querySelector('.gm-video-poster');
+  if (!poster) return;
+  var img = new Image();
+  img.onload = function(){
+    if (img.naturalWidth > 120) {
+      poster.style.backgroundImage = "url('https://img.youtube.com/vi/I37ahtoZyWY/maxresdefault.jpg')";
+    }
+  };
+  img.src = 'https://img.youtube.com/vi/I37ahtoZyWY/maxresdefault.jpg';
+})();
 </script>
 </body>
 </html>

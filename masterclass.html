@@ -151,6 +151,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: 5px;
   cursor: pointer;
   padding: 8px;
+  /* Vercel: 44px mobile hit target minimum */
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
 }
 .nav-toggle span {
   display: block;
@@ -899,7 +906,11 @@ section { position: relative; z-index: 2; }
 }
 
 @media (max-width: 900px) {
-  .mc-hero { padding: 110px 22px 60px; }
+  .mc-hero {
+    padding: 110px 22px 60px;
+    min-height: auto;        /* Vercel: resilient layouts — don't force 100vh on mobile */
+    align-items: start;       /* Content starts at top, no centered dead space */
+  }
   .mc-hero-inner { grid-template-columns: 1fr; }
   .mc-hero-rail { display: none; }
   .mc-reveal { padding: 80px 0; }
@@ -4342,6 +4353,19 @@ a, button, .btn-primary, .btn-ghost, .nav-cta, .nav-toggle,
 [class*="stat-"], [class*="-num"], [class*="count-"] {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1;
+}
+
+
+/* === Hero mobile fix — eliminate empty-space gap === */
+@media (max-width: 700px) {
+  .mc-hero {
+    min-height: auto;
+    padding: 80px 24px 56px;
+    align-items: start;
+  }
+  .mc-hero-inner {
+    padding-top: 0;
+  }
 }
 
 </style>
