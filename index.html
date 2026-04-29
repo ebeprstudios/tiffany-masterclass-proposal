@@ -151,6 +151,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: 5px;
   cursor: pointer;
   padding: 8px;
+  /* Vercel: 44px mobile hit target minimum */
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
 }
 .nav-toggle span {
   display: block;
@@ -531,9 +538,38 @@ section { position: relative; z-index: 2; }
 }
 .greeting-grid {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 80px;
+  grid-template-columns: 1.05fr 0.85fr 1.1fr;
+  gap: 64px;
   align-items: center;
+}
+.greeting-portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+}
+.greeting-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+  box-shadow: 0 24px 60px rgba(26, 26, 46, 0.18);
+  filter: saturate(1.05);
+}
+/* Editorial flourish — small "est." caption beneath portrait */
+.greeting-portrait::after {
+  content: 'photographed by Desiree Roberts';
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-utility);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  opacity: 0.45;
 }
 .greeting-eyebrow {
   font-family: var(--font-display);
@@ -1070,7 +1106,11 @@ section { position: relative; z-index: 2; }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1024px) {
-  .home-hero { padding: 100px 22px 60px; }
+  .home-hero {
+    padding: 100px 22px 60px;
+    min-height: auto;        /* Vercel: resilient layouts — don't force 100vh on mobile */
+    align-items: start;       /* Content starts at top, no centered dead space */
+  }
   .home-hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .home-hero-visual { max-width: 360px; margin: 0 auto; }
 
@@ -1081,6 +1121,13 @@ section { position: relative; z-index: 2; }
   .greeting-grid, .home-story-grid, .download-grid {
     grid-template-columns: 1fr; gap: 36px;
   }
+  /* Portrait keeps reasonable size when stacked — prevents it from filling viewport */
+  .greeting-portrait {
+    max-width: 380px;
+    margin: 0 auto;
+    aspect-ratio: 4 / 5;
+  }
+  .greeting-portrait::after { bottom: -22px; }
   .level-up-header {
     grid-template-columns: 1fr; gap: 24px; margin-bottom: 50px;
   }
@@ -1894,6 +1941,9 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <div class="reveal-on-scroll">
         <div class="greeting-eyebrow">a note from me</div>
         <h2 class="greeting-title">I'm Tiffany. A maestro of <em>creating and scaling</em> real estate virtual assistant businesses.</h2>
+      </div>
+      <div class="greeting-portrait reveal-on-scroll">
+        <img src="images/11.jpg" alt="Tiffany Haynes" loading="lazy">
       </div>
       <div class="greeting-text reveal-on-scroll">
         <p>I built VBS Real Estate from one staff member to thirteen in four years. I've processed over four thousand contracts. I've bought out competitors and integrated their businesses into mine. None of that was easy. None of it was the way I'd been told it had to be done.</p>
