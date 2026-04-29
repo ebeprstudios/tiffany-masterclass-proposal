@@ -3989,246 +3989,6 @@ form#mc-form button[type="submit"]:hover {
 }
 
 
-/* ============================================================
-   12-COLUMN GRID SYSTEM — sitewide layout discipline
-   ============================================================
-   Every section uses this grid so vertical lines stay consistent
-   from the hero down to the footer. */
-
-:root {
-  --grid-max:     1280px;        /* Outer container */
-  --grid-cols:    12;            /* Column count */
-  --grid-gutter:  24px;          /* Gap between columns */
-  --grid-pad:     32px;          /* Outer page padding */
-}
-
-@media (max-width: 900px) {
-  :root {
-    --grid-pad:     24px;
-    --grid-gutter:  16px;
-  }
-}
-@media (max-width: 600px) {
-  :root {
-    --grid-pad:     20px;
-  }
-}
-
-/* The grid wrapper. Apply to any section that should follow the grid. */
-.grid-12 {
-  max-width: var(--grid-max);
-  margin: 0 auto;
-  padding: 0 var(--grid-pad);
-  display: grid;
-  grid-template-columns: repeat(var(--grid-cols), 1fr);
-  gap: var(--grid-gutter);
-}
-
-/* Common column-span helper classes */
-.col-1  { grid-column: span 1; }
-.col-2  { grid-column: span 2; }
-.col-3  { grid-column: span 3; }
-.col-4  { grid-column: span 4; }
-.col-5  { grid-column: span 5; }
-.col-6  { grid-column: span 6; }
-.col-7  { grid-column: span 7; }
-.col-8  { grid-column: span 8; }
-.col-9  { grid-column: span 9; }
-.col-10 { grid-column: span 10; }
-.col-11 { grid-column: span 11; }
-.col-12 { grid-column: span 12; }
-
-/* Specific column position helpers (start/end) */
-.col-start-1  { grid-column-start: 1; }
-.col-start-2  { grid-column-start: 2; }
-.col-start-3  { grid-column-start: 3; }
-.col-start-4  { grid-column-start: 4; }
-.col-start-5  { grid-column-start: 5; }
-.col-start-6  { grid-column-start: 6; }
-.col-start-7  { grid-column-start: 7; }
-.col-start-9  { grid-column-start: 9; }
-
-/* Mobile: all columns collapse to full width */
-@media (max-width: 700px) {
-  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
-  .col-7, .col-8, .col-9, .col-10, .col-11 {
-    grid-column: span 12 !important;
-  }
-  [class*="col-start-"] {
-    grid-column-start: 1 !important;
-  }
-}
-
-/* ============================================================
-   APPLY THE GRID TO EXISTING SECTIONS
-   ============================================================ */
-
-/* Override global container to use grid foundation */
-.container {
-  max-width: var(--grid-max) !important;
-  padding: 0 var(--grid-pad) !important;
-}
-
-/* HERO ──────────────────────────────────────────────────────── */
-/* Text spans cols 1-7, MLS card sits at cols 9-12 */
-.mc-hero-inner {
-  max-width: var(--grid-max) !important;
-  padding: 0 var(--grid-pad) !important;
-  padding-right: var(--grid-pad) !important;
-  display: grid !important;
-  grid-template-columns: 60px repeat(12, 1fr) !important;
-  gap: var(--grid-gutter) !important;
-  align-items: center !important;
-}
-.mc-hero-rail {
-  grid-column: 1 / 2;
-}
-/* The text content goes inside columns 2-9 (7 cols of the 12) */
-.mc-hero-inner > .mc-hero-content,
-.mc-hero-eyebrow,
-.mc-hero-title,
-.mc-hero-sub,
-.mc-hero-actions {
-  grid-column: 2 / 9 !important;
-}
-/* Constrain title and sub max-width too */
-.mc-hero-title {
-  max-width: 100% !important;
-  font-size: clamp(40px, 5.4vw, 86px) !important;
-  line-height: 1.02 !important;
-}
-.mc-hero-sub {
-  max-width: 100% !important;
-}
-
-/* MLS listing card sits at cols 11-13 (right-anchored) */
-.mc-listing-card {
-  position: absolute !important;
-  top: 100px !important;
-  /* Compute right position relative to grid's right padding */
-  right: max(var(--grid-pad), calc((100vw - var(--grid-max)) / 2 + var(--grid-pad))) !important;
-  width: 268px !important;
-}
-@media (max-width: 1099px) {
-  .mc-listing-card { display: none !important; }
-}
-
-/* MARQUEE / Reviews ─────────────────────────────────────────── */
-/* Reviews header centered using cols 3-11 (8 cols) */
-.mc-reviews-header {
-  max-width: var(--grid-max) !important;
-  margin: 0 auto 28px !important;
-  padding: 0 calc(var(--grid-pad) * 3) !important;
-}
-
-/* JACOBI FEATURE ────────────────────────────────────────────── */
-/* Video on cols 1-5, copy on cols 7-12 */
-.mc-jacobi-feature {
-  max-width: var(--grid-max) !important;
-  margin: 0 auto 0 !important;
-  padding: 0 var(--grid-pad) !important;
-  display: grid !important;
-  grid-template-columns: repeat(12, 1fr) !important;
-  gap: calc(var(--grid-gutter) * 2) !important;
-  align-items: start !important;
-}
-.mc-jacobi-feature .mc-jacobi-header {
-  grid-column: 1 / 13 !important;
-  margin-bottom: 16px !important;
-}
-.mc-jacobi-feature .mc-jacobi-frame {
-  grid-column: 1 / 6 !important;
-  max-width: 100% !important;
-}
-.mc-jacobi-feature .mc-jacobi-copy {
-  grid-column: 7 / 13 !important;
-  min-width: 0 !important;
-}
-@media (max-width: 800px) {
-  .mc-jacobi-feature .mc-jacobi-frame,
-  .mc-jacobi-feature .mc-jacobi-copy {
-    grid-column: 1 / 13 !important;
-  }
-}
-
-/* OPEN HOUSE INVITATION CARD ─────────────────────────────────── */
-/* Centered, cols 3-11 */
-.mc-open-house {
-  max-width: 720px !important;
-  margin: 0 auto 56px !important;
-}
-
-/* MEET TIFFANY ─────────────────────────────────────────────── */
-/* Image cols 1-5, content cols 7-12 */
-.mc-tiffany-grid {
-  display: grid !important;
-  grid-template-columns: repeat(12, 1fr) !important;
-  gap: calc(var(--grid-gutter) * 2) !important;
-  align-items: center !important;
-}
-.mc-tiffany-image {
-  grid-column: 1 / 6 !important;
-}
-.mc-tiffany-content {
-  grid-column: 7 / 13 !important;
-}
-@media (max-width: 800px) {
-  .mc-tiffany-image,
-  .mc-tiffany-content {
-    grid-column: 1 / 13 !important;
-  }
-}
-
-/* AUDIENCE / WHO IS THIS FOR ─────────────────────────────────── */
-/* Header cols 1-12, then 4-up cards (3+3+3+3) */
-.mc-audience-grid {
-  display: grid !important;
-  grid-template-columns: repeat(12, 1fr) !important;
-  gap: var(--grid-gutter) !important;
-}
-.mc-audience-grid > * {
-  grid-column: span 4 !important;
-}
-@media (max-width: 900px) {
-  .mc-audience-grid > * { grid-column: span 6 !important; }
-}
-@media (max-width: 600px) {
-  .mc-audience-grid > * { grid-column: span 12 !important; }
-}
-
-/* REVEAL — three things you'll learn ─────────────────────────── */
-/* Numbered items in 3-col layout (4+4+4) */
-.mc-reveal-grid {
-  display: grid !important;
-  grid-template-columns: repeat(12, 1fr) !important;
-  gap: calc(var(--grid-gutter) * 1.5) !important;
-}
-.mc-reveal-grid > * {
-  grid-column: span 4 !important;
-}
-@media (max-width: 800px) {
-  .mc-reveal-grid > * { grid-column: span 12 !important; }
-}
-
-/* CTA SECTION — Open House + Form ───────────────────────────── */
-.mc-cta-inner {
-  max-width: 720px !important;
-  margin: 0 auto !important;
-}
-
-/* HOUSE BLUEPRINT VIDEO SECTION ───────────────────────────── */
-/* House should also respect the grid — center inside max-width */
-.mc-video-house {
-  max-width: var(--grid-max) !important;
-  margin: 48px auto 0 !important;
-}
-
-/* HOUSE-LEVEL CTA (under house outline) ──────────────────────── */
-.mc-house-cta {
-  max-width: 720px !important;
-  margin: 0 auto !important;
-}
-
 
 /* ============ HOUSE VIDEO FRAME — REMOVE SHADOW ============ */
 .mc-video-house .mc-video-frame {
@@ -4236,123 +3996,45 @@ form#mc-form button[type="submit"]:hover {
 }
 
 
-/* ============ GLOBAL RESPONSIVE FIXES ============ */
-/* Resolves nav cutoff + image overflow across all viewports */
 
-/* 1. Prevent any element from causing horizontal scroll */
+/* ============================================================
+   CLEAN RESPONSIVE LAYER
+   ============================================================
+   Three breakpoints — each owns its scope completely:
+   • Desktop (≥1025px):   full layout as designed (no overrides here)
+   • iPad     (701-1024): hamburger nav, hero stacks, 4-up→2-up
+   • Mobile   (≤700px):   single column, full-width photos, tightest padding
+   
+   Higher specificity selectors used (nav.nav, body .selector) so this
+   layer wins against earlier scattered @media rules without !important
+   spam. */
+
+/* GLOBAL DEFENSIVE RULES — apply at all breakpoints */
 html, body {
-  overflow-x: hidden !important;
-  max-width: 100vw !important;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
-
-/* 2. Force ALL images to respect their container — no overflow ever */
 img {
-  max-width: 100% !important;
+  max-width: 100%;
   height: auto;
 }
+svg { max-width: 100%; }
 
-/* 3. Bump mobile-nav breakpoint from 900px to 1024px so tablets show the
-   hamburger menu instead of trying to fit the desktop nav */
+/* (word-wrap break-word lives in the mobile breakpoint only — see below) */
+
+/* ─────────── iPAD: 701px - 1024px ─────────── */
 @media (max-width: 1024px) {
-  .nav { padding: 14px 22px !important; }
-  .nav-links {
-    position: fixed !important;
-    top: 60px !important;
-    left: 0 !important;
-    right: 0 !important;
-    background: var(--cream) !important;
-    flex-direction: column !important;
-    gap: 24px !important;
-    padding: 32px 22px !important;
-    border-bottom: 1px solid var(--line) !important;
-    transform: translateY(-110%) !important;
-    transition: transform 0.3s ease !important;
-    z-index: 99 !important;
+
+  /* NAV — hamburger menu pattern */
+  nav.nav {
+    padding: 14px 22px !important;
   }
-  .nav-links.open {
-    transform: translateY(0) !important;
+  nav.nav .nav-mark {
+    font-size: 17px !important;
+    line-height: 1.4 !important;
+    padding: 4px 0 !important;
+    overflow: visible !important;  /* italic descenders don't get clipped */
   }
-  .nav-toggle {
-    display: flex !important;
-  }
-}
-
-/* 4. On viewports between 1024px and 1200px the desktop nav was cutting off,
-   so the gap between nav links needs to tighten when both desktop nav AND
-   the long CTA pill must fit */
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .nav-links {
-    gap: 24px !important;
-  }
-  .nav-link {
-    font-size: 11px !important;
-    letter-spacing: 0.14em !important;
-  }
-  .nav-cta {
-    font-size: 11px !important;
-    padding: 10px 18px !important;
-    letter-spacing: 0.14em !important;
-  }
-}
-
-/* 5. Fix common image container patterns that may not have responsive sizing */
-.home-hero-visual,
-.home-hero-photo,
-.home-story-image,
-.tagline-image,
-.about-hero-portrait,
-.story-photos,
-.facts-photos,
-.family-tile,
-.mc-tiffany-image,
-.gm-video-frame,
-.mc-jacobi-frame,
-.mc-jacobi-video,
-.download-card-img {
-  max-width: 100% !important;
-  overflow: hidden;
-}
-
-/* 6. Section content can also overflow if not capped — global safety */
-section {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-/* 7. Prevent SVG illustrations (architectural sketches, decorations)
-   from forcing horizontal scroll on small screens */
-svg {
-  max-width: 100%;
-}
-
-/* 8. The hero MLS listing card on masterclass — hide earlier on tablet */
-@media (max-width: 1024px) {
-  .mc-listing-card,
-  .mc-free-stamp,
-  .mc-section-marker {
-    display: none !important;
-  }
-}
-
-/* 9. Hero text on small viewports — make sure it's never wider than container */
-.mc-hero-title,
-.home-hero-title,
-.about-hero-title,
-.gm-hero-title {
-  max-width: 100% !important;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-
-/* ============ MOBILE FIXES — REAL BUGS ============ */
-/* Targets two specific, observed bugs:
-   1. Mobile nav menu leaking into visible area (red CTA pill showing at top)
-   2. Hero photo container collapsing to zero width (blank cream space) */
-
-/* FIX 1 — Force the mobile nav menu to be hidden off-screen until toggled.
-   Higher specificity (.nav .nav-links) beats earlier @media rules. */
-@media (max-width: 1024px) {
   nav.nav .nav-links {
     position: fixed !important;
     top: 60px !important;
@@ -4377,47 +4059,251 @@ svg {
     display: flex !important;
   }
 
-  /* The nav itself: force it to fit, no overflow drama */
-  nav.nav {
-    padding: 14px 22px !important;
-    overflow: hidden !important;
-  }
-  nav.nav .nav-mark {
-    font-size: 17px !important;
-    overflow: visible;  /* don't clip italic descenders */
-    line-height: 1.3 !important;
-  }
-}
-
-/* FIX 2 — Ensure image containers have explicit width on mobile so
-   aspect-ratio can compute height. Without this, an absolute-positioned
-   <img> child means the container has zero intrinsic width. */
-@media (max-width: 1024px) {
-  .home-hero-visual,
-  .home-story-image,
-  .tagline-image,
-  .download-card-img,
-  .about-hero-portrait,
-  .mc-tiffany-image,
-  .gm-video-frame {
+  /* IMAGE CONTAINERS — explicit width + maintained aspect ratio.
+     This fixes the "photo disappears" bug where containers with 
+     aspect-ratio collapsed because their absolute-positioned <img>
+     children don't contribute to parent intrinsic size. */
+  body .home-hero-visual,
+  body .home-story-image,
+  body .tagline-image,
+  body .about-hero-portrait,
+  body .mc-tiffany-image,
+  body .gm-video-frame {
     width: 100% !important;
-    min-height: 1px;  /* defensive */
+    min-height: 1px;
   }
 
-  /* Hero photo on mobile — keep aspect ratio, cap visual width sensibly */
-  .home-hero-visual {
+  /* HERO photo on iPad — keep aspect ratio, cap visual width */
+  body .home-hero-visual {
     aspect-ratio: 4/5 !important;
-    max-width: 360px !important;
+    max-width: 380px !important;
     margin: 0 auto !important;
   }
+
+  /* HOME hero stacks (text on top, photo below) */
+  .home-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .home-hero {
+    padding: 100px 22px 60px !important;
+  }
+
+  /* HIDE elements that don't fit on smaller screens */
+  body .mc-listing-card,
+  body .mc-free-stamp,
+  body .mc-section-marker {
+    display: none !important;
+  }
+
+  /* MASTERCLASS hero — text full width, smaller font */
+  body .mc-hero-inner {
+    padding-right: 22px !important;
+  }
+  body .mc-hero-title {
+    max-width: 100% !important;
+    font-size: clamp(36px, 5.2vw, 64px) !important;
+  }
+
+  /* GRID-BASED multi-column sections collapse to single column */
+  .home-story-grid,
+  .download-grid,
+  .tagline-grid,
+  .about-hero-grid,
+  .story-grid,
+  .facts-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  /* 4-UP card grids → 2-up on iPad */
+  .resources-grid,
+  .level-up-grid,
+  .family-grid,
+  .gm-principles-grid,
+  .mc-audience-grid,
+  .gm-understand-grid,
+  .gm-inspired-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  /* SECTION padding tightens */
+  section {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  /* FOOTER stacks */
+  .footer-top {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
 }
 
-/* FIX 3 — The nav brand mark uses italic Fraunces with tall descenders
-   that can get clipped by overflow:hidden on the parent. Allow it. */
-.nav-mark {
-  display: inline-block;
-  line-height: 1.4;
-  padding: 4px 0;
+/* ─────────── MOBILE: ≤ 700px ─────────── */
+@media (max-width: 700px) {
+
+  /* HERO photo gets smaller cap */
+  body .home-hero-visual {
+    max-width: 320px !important;
+  }
+
+  /* HEADLINES scale down further */
+  .home-hero-title {
+    font-size: clamp(32px, 8vw, 48px) !important;
+    line-height: 1.05 !important;
+  }
+  .mc-hero-title {
+    font-size: clamp(30px, 7vw, 44px) !important;
+  }
+  .gm-hero-title,
+  .about-hero-title {
+    font-size: clamp(30px, 7vw, 44px) !important;
+  }
+
+  /* SUB copy */
+  .home-hero-sub,
+  .mc-hero-sub {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* CTA buttons full width */
+  .home-hero-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  .home-hero-actions .btn-primary,
+  .home-hero-actions .btn-ghost {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* SECTION padding tightens further */
+  .home-hero,
+  section {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+  .home-hero {
+    padding-top: 90px !important;
+    padding-bottom: 50px !important;
+  }
+  section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  /* ALL multi-up card grids collapse to 1 column */
+  .resources-grid,
+  .level-up-grid,
+  .family-grid,
+  .gm-principles-grid,
+  .mc-audience-grid,
+  .gm-understand-grid,
+  .gm-inspired-grid,
+  .paths-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* DECORATIONS hide on mobile (no horizontal room) */
+  body .mc-house-cta-arrow,
+  body .mc-jacobi-corner,
+  body .mc-hero-sketch,
+  body .gm-hero-sketch,
+  body .mc-video-house-callout {
+    display: none !important;
+  }
+
+  /* HOUSE blueprint video — show simplified on mobile */
+  body .mc-video-house {
+    padding: 32px 0 !important;
+    background: var(--cream-warm) !important;
+  }
+  body .mc-video-house-svg {
+    display: none !important;  /* The blueprint house outline hides on mobile */
+  }
+  body .mc-video-house .mc-video-frame {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+  }
+
+  /* MARQUEE — slow down, tighten gaps */
+  .marquee-track {
+    animation-duration: 130s !important;
+  }
+
+  /* HANDWRITTEN accents scale down */
+  body .handwritten-note,
+  body .mc-house-cta-intro {
+    font-size: 22px !important;
+  }
+
+  /* BUTTONS scale */
+  .btn-primary,
+  .nav-cta {
+    padding: 14px 24px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* End clean responsive layer */
+
+
+/* ============ ACCESSIBILITY ============ */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--charcoal);
+  color: var(--cream);
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 10000;
+  transition: top 0.2s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 16px;
+  outline: 2px solid var(--cream);
+  outline-offset: 2px;
+}
+
+/* Visually-hidden utility — for off-screen content that screen readers should still read */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Improved focus indicators (browser-default outline is hard to see on cream bg) */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--charcoal);
+  outline-offset: 3px;
+}
+.btn-primary:focus-visible,
+.nav-cta:focus-visible {
+  outline-offset: 4px;
 }
 
 </style>
@@ -4450,12 +4336,66 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '943376613232304');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
+<noscript><img height="1" width="1" style="display:none" alt=""
 src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
 
+
+<!-- Open Graph (Facebook / LinkedIn / iMessage) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Masterclass — Real Estate VA Business Blueprint">
+<meta property="og:description" content="A free live masterclass walking you through the niche real estate industry where you can build a passive-income business without your own capital. Reserve your seat.">
+<meta property="og:url" content="https://tiffanyhaynesco.com/masterclass">
+<meta property="og:site_name" content="Tiffany Haynes & Co.">
+<meta property="og:image" content="https://tiffanyhaynesco.com/images/11.jpg">
+<meta property="og:image:alt" content="Tiffany Haynes — Real Estate VA Business Masterclass">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Masterclass — Real Estate VA Business Blueprint">
+<meta name="twitter:description" content="A free live masterclass walking you through the niche real estate industry where you can build a passive-income business without your own capital. Reserve your seat.">
+<meta name="twitter:image" content="https://tiffanyhaynesco.com/images/11.jpg">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://tiffanyhaynesco.com/masterclass">
+<!-- Structured Data — Educational Event -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationEvent",
+  "name": "Real Estate VA Business Masterclass",
+  "description": "A free live masterclass on building a passive-income real estate VA business without your own capital.",
+  "url": "https://tiffanyhaynesco.com/masterclass",
+  "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.tiffanysmasterclass.com/webinar-registration-page1678444143249"
+  },
+  "organizer": {
+    "@type": "Person",
+    "name": "Tiffany Haynes",
+    "url": "https://tiffanyhaynesco.com"
+  },
+  "performer": {
+    "@type": "Person",
+    "name": "Tiffany Haynes"
+  },
+  "location": {
+    "@type": "VirtualLocation",
+    "url": "https://www.tiffanysmasterclass.com/webinar-registration-page1678444143249"
+  }
+}
+</script>
+
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 
 <!-- ClickFunnels metadata form — populated by application.js on page load.
      Hidden, never displayed. Required for proper attribution tracking. -->
@@ -4466,10 +4406,15 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <a href="/" class="nav-mark">Tiffany <span>Haynes &amp; Co.</span></a>
-  <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
-    <span></span><span></span><span></span>
-  </div>
-  <div class="nav-links">
+  <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links-menu" onclick="
+    var links = document.querySelector('.nav-links');
+    var expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !expanded);
+    links.classList.toggle('open');
+  ">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+  <div class="nav-links" id="nav-links-menu">
     <a href="/" class="nav-link">Home</a>
     <a href="/about" class="nav-link">About</a>
     <a href="/gods-math" class="nav-link">God's Math</a>
@@ -4478,7 +4423,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 </nav>
 
 <!-- ============ HERO ============ -->
-<section class="mc-hero">
+<section id="main-content" class="mc-hero">
   <span class="mc-section-marker" aria-hidden="true">PLAN 01 / overview</span>
   <!-- Architectural blueprint sketch layer (like the math sketch on God's Math hero) -->
   <div class="mc-hero-sketch" aria-hidden="true">
@@ -4587,7 +4532,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <div class="mc-hero-eyebrow">Live · Online · Complimentary</div>
       <h1 class="mc-hero-title">A quiet corner of <em>real estate</em> is changing&nbsp;lives.</h1>
       <p class="mc-hero-sub">
-        Inside this free masterclass, I'm walking you through the niche industry I built a passive-income business around — without my own capital, without clocking in, and without sacrificing the life I actually wanted.
+        Inside this free masterclass, I'm walking you through the niche industry I built a passive-income business around. Without my own capital, without clocking in, and without sacrificing the life I actually wanted.
       </p>
       <div class="mc-hero-actions">
         <a href="#register" class="btn-primary">
@@ -4787,7 +4732,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
         <h2 class="section-title">Three things I wish<br>someone had told <em>me</em>.</h2>
       </div>
       <div class="mc-reveal-right">
-        I built this masterclass to hand you the framework I had to figure out the slow way. No fluff, no fillers — just the three pieces that move the needle when you're starting in this space.
+        I built this masterclass to hand you the framework I had to figure out the slow way. No fluff, no fillers. Just the three pieces that move the needle when you're starting in this space.
       </div>
     </div>
     <div class="three-grid">
@@ -4799,7 +4744,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <div class="three-item reveal-on-scroll">
         <div class="three-num">ii</div>
         <h3 class="three-title">Your first client in 30 days.</h3>
-        <p class="three-body">The exact pathway my students follow to land their first paying client within their first month. No cold pitching, no sales gymnastics — just the right doors.</p>
+        <p class="three-body">The exact pathway my students follow to land their first paying client within their first month. No cold pitching, no sales gymnastics. Just the right doors.</p>
       </div>
       <div class="three-item reveal-on-scroll">
         <div class="three-num">iii</div>
@@ -4822,7 +4767,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
         <div class="section-eyebrow">Your Host</div>
         <h2 class="mc-tiffany-name">Tiffany <em>Haynes</em></h2>
         <p class="mc-tiffany-bio">
-          My career started inside one of the top land and commercial brokerages in Texas, where I watched eight- and nine-figure deals close every quarter. The deals were impressive. The cost of getting into them — capital, risk, time — wasn't built for the life I wanted.
+          My career started inside one of the top land and commercial brokerages in Texas, where I watched eight- and nine-figure deals close every quarter. The deals were impressive. The cost of getting into them (capital, risk, time) wasn't built for the life I wanted.
         </p>
         <p class="mc-tiffany-bio">
           So I went looking for something else. Years of research, missteps, and rebuilding later, I found a model that lets me earn passively, work from anywhere, and stay home with my family. Today I teach that model to women ready to do the same.
@@ -4852,7 +4797,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <div class="audience-card reveal-on-scroll">
         <div class="audience-icon">ii</div>
         <h3 class="audience-title">The passive-income builder.</h3>
-        <p class="audience-body">You want to work from home — or anywhere — with full control over your capacity, your calendar, and the kind of work you take on.</p>
+        <p class="audience-body">You want to work from home (or anywhere) with full control over your capacity, your calendar, and the kind of work you take on.</p>
       </div>
       <div class="audience-card reveal-on-scroll">
         <div class="audience-icon">iii</div>
@@ -4871,7 +4816,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <div class="mc-stat-figure reveal-on-scroll">$3.81<span class="small">T</span></div>
       <div class="mc-stat-text reveal-on-scroll">
         <h3>The size of the industry this masterclass walks you into.</h3>
-        <p>One of the largest sectors of the global economy — and most of it operates quietly, behind the scenes, in roles that don't require a brokerage license, a marketing budget, or a single dollar of your own capital to begin.</p>
+        <p>One of the largest sectors of the global economy. And most of it operates quietly, behind the scenes, in roles that don't require a brokerage license, a marketing budget, or a single dollar of your own capital to begin.</p>
       </div>
     </div>
   </div>
@@ -4926,7 +4871,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
     <!-- Architectural label across the top -->
     <div class="mc-jacobi-header">
       Detail A · Virtual Walkthrough
-      <span class="mc-jacobi-header-mark">— Jacobi's tour</span>
+      <span class="mc-jacobi-header-mark">Jacobi's tour</span>
     </div>
 
     <!-- LEFT COLUMN: tilted polaroid video -->
@@ -4958,15 +4903,16 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       </div>
 
       <!-- The YouTube facade — replaced with iframe on click -->
-      <div class="mc-jacobi-video" data-video-id="JACOBI_VIDEO_ID" onclick="loadJacobiFeatureVideo(this)" tabindex="0" role="button" aria-label="Play Jacobi's video testimonial">
+      <div class="mc-jacobi-video" data-video-id="zunmwHjKokE" onclick="loadJacobiFeatureVideo(this)" tabindex="0" role="button" aria-label="Play Jacobi's video testimonial">
         <div class="mc-jacobi-ribbon">
           <span class="yt">▶</span>
           <span>Watch on YouTube</span>
         </div>
-        <!-- Placeholder gradient until video ID is wired in. Once you replace
-             JACOBI_VIDEO_ID, the thumbnail can be swapped for:
-             <img src="https://img.youtube.com/vi/REAL_ID/maxresdefault.jpg" ...> -->
-        <img src="" alt="" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#2a2a2a,#0e0e10)';this.parentNode.style.minHeight='280px';">
+        <!-- YouTube thumbnail — high-res hqdefault preferred over maxresdefault for Jacobi's testimonial -->
+        <img src="https://img.youtube.com/vi/zunmwHjKokE/maxresdefault.jpg"
+             alt="Jacobi sharing how the masterclass changed his business"
+             loading="lazy"
+             onerror="this.src='https://img.youtube.com/vi/zunmwHjKokE/hqdefault.jpg'">
         <div class="play-btn" aria-hidden="true"></div>
       </div>
 
@@ -5200,8 +5146,8 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 // Featured-block click handler (above the marquee)
 function loadJacobiFeatureVideo(el) {
   var videoId = el.getAttribute('data-video-id');
-  if (!videoId || videoId === 'JACOBI_VIDEO_ID') {
-    alert("Jacobi's video ID needs to be wired up. Replace JACOBI_VIDEO_ID with the real YouTube video ID.");
+  if (!videoId) {
+    console.warn("Video ID missing on Jacobi feature element");
     return;
   }
   var iframe = document.createElement('iframe');
@@ -5217,8 +5163,8 @@ function loadJacobiFeatureVideo(el) {
 // but kept in case it's referenced anywhere)
 function loadJacobiVideo(el) {
   var videoId = el.getAttribute('data-video-id');
-  if (!videoId || videoId === 'JACOBI_VIDEO_ID') {
-    alert("Jacobi's video ID needs to be wired up. Replace JACOBI_VIDEO_ID in the HTML with the real YouTube video ID.");
+  if (!videoId) {
+    console.warn("Video ID missing");
     return;
   }
   var iframe = document.createElement('iframe');
@@ -5230,7 +5176,7 @@ function loadJacobiVideo(el) {
   el.classList.add('playing');
   // Auto-load thumbnail when video ID is real
   var thumb = el.querySelector('.mc-jacobi-thumb');
-  if (thumb && videoId !== 'JACOBI_VIDEO_ID') {
+  if (thumb && videoId) {
     thumb.style.backgroundImage = 'url(https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg)';
   }
 }
@@ -5239,7 +5185,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var frame = document.querySelector('.mc-jacobi-frame');
   if (!frame) return;
   var id = frame.getAttribute('data-video-id');
-  if (id && id !== 'JACOBI_VIDEO_ID') {
+  if (id) {
     var thumb = frame.querySelector('.mc-jacobi-thumb');
     if (thumb) thumb.style.backgroundImage = 'url(https://img.youtube.com/vi/' + id + '/maxresdefault.jpg)';
   }

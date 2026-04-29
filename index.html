@@ -1410,123 +1410,45 @@ section { position: relative; z-index: 2; }
 
 
 
-/* ============ GLOBAL RESPONSIVE FIXES ============ */
-/* Resolves nav cutoff + image overflow across all viewports */
 
-/* 1. Prevent any element from causing horizontal scroll */
+/* ============================================================
+   CLEAN RESPONSIVE LAYER
+   ============================================================
+   Three breakpoints — each owns its scope completely:
+   • Desktop (≥1025px):   full layout as designed (no overrides here)
+   • iPad     (701-1024): hamburger nav, hero stacks, 4-up→2-up
+   • Mobile   (≤700px):   single column, full-width photos, tightest padding
+   
+   Higher specificity selectors used (nav.nav, body .selector) so this
+   layer wins against earlier scattered @media rules without !important
+   spam. */
+
+/* GLOBAL DEFENSIVE RULES — apply at all breakpoints */
 html, body {
-  overflow-x: hidden !important;
-  max-width: 100vw !important;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
-
-/* 2. Force ALL images to respect their container — no overflow ever */
 img {
-  max-width: 100% !important;
+  max-width: 100%;
   height: auto;
 }
+svg { max-width: 100%; }
 
-/* 3. Bump mobile-nav breakpoint from 900px to 1024px so tablets show the
-   hamburger menu instead of trying to fit the desktop nav */
+/* (word-wrap break-word lives in the mobile breakpoint only — see below) */
+
+/* ─────────── iPAD: 701px - 1024px ─────────── */
 @media (max-width: 1024px) {
-  .nav { padding: 14px 22px !important; }
-  .nav-links {
-    position: fixed !important;
-    top: 60px !important;
-    left: 0 !important;
-    right: 0 !important;
-    background: var(--cream) !important;
-    flex-direction: column !important;
-    gap: 24px !important;
-    padding: 32px 22px !important;
-    border-bottom: 1px solid var(--line) !important;
-    transform: translateY(-110%) !important;
-    transition: transform 0.3s ease !important;
-    z-index: 99 !important;
+
+  /* NAV — hamburger menu pattern */
+  nav.nav {
+    padding: 14px 22px !important;
   }
-  .nav-links.open {
-    transform: translateY(0) !important;
+  nav.nav .nav-mark {
+    font-size: 17px !important;
+    line-height: 1.4 !important;
+    padding: 4px 0 !important;
+    overflow: visible !important;  /* italic descenders don't get clipped */
   }
-  .nav-toggle {
-    display: flex !important;
-  }
-}
-
-/* 4. On viewports between 1024px and 1200px the desktop nav was cutting off,
-   so the gap between nav links needs to tighten when both desktop nav AND
-   the long CTA pill must fit */
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .nav-links {
-    gap: 24px !important;
-  }
-  .nav-link {
-    font-size: 11px !important;
-    letter-spacing: 0.14em !important;
-  }
-  .nav-cta {
-    font-size: 11px !important;
-    padding: 10px 18px !important;
-    letter-spacing: 0.14em !important;
-  }
-}
-
-/* 5. Fix common image container patterns that may not have responsive sizing */
-.home-hero-visual,
-.home-hero-photo,
-.home-story-image,
-.tagline-image,
-.about-hero-portrait,
-.story-photos,
-.facts-photos,
-.family-tile,
-.mc-tiffany-image,
-.gm-video-frame,
-.mc-jacobi-frame,
-.mc-jacobi-video,
-.download-card-img {
-  max-width: 100% !important;
-  overflow: hidden;
-}
-
-/* 6. Section content can also overflow if not capped — global safety */
-section {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-/* 7. Prevent SVG illustrations (architectural sketches, decorations)
-   from forcing horizontal scroll on small screens */
-svg {
-  max-width: 100%;
-}
-
-/* 8. The hero MLS listing card on masterclass — hide earlier on tablet */
-@media (max-width: 1024px) {
-  .mc-listing-card,
-  .mc-free-stamp,
-  .mc-section-marker {
-    display: none !important;
-  }
-}
-
-/* 9. Hero text on small viewports — make sure it's never wider than container */
-.mc-hero-title,
-.home-hero-title,
-.about-hero-title,
-.gm-hero-title {
-  max-width: 100% !important;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-
-/* ============ MOBILE FIXES — REAL BUGS ============ */
-/* Targets two specific, observed bugs:
-   1. Mobile nav menu leaking into visible area (red CTA pill showing at top)
-   2. Hero photo container collapsing to zero width (blank cream space) */
-
-/* FIX 1 — Force the mobile nav menu to be hidden off-screen until toggled.
-   Higher specificity (.nav .nav-links) beats earlier @media rules. */
-@media (max-width: 1024px) {
   nav.nav .nav-links {
     position: fixed !important;
     top: 60px !important;
@@ -1551,47 +1473,251 @@ svg {
     display: flex !important;
   }
 
-  /* The nav itself: force it to fit, no overflow drama */
-  nav.nav {
-    padding: 14px 22px !important;
-    overflow: hidden !important;
-  }
-  nav.nav .nav-mark {
-    font-size: 17px !important;
-    overflow: visible;  /* don't clip italic descenders */
-    line-height: 1.3 !important;
-  }
-}
-
-/* FIX 2 — Ensure image containers have explicit width on mobile so
-   aspect-ratio can compute height. Without this, an absolute-positioned
-   <img> child means the container has zero intrinsic width. */
-@media (max-width: 1024px) {
-  .home-hero-visual,
-  .home-story-image,
-  .tagline-image,
-  .download-card-img,
-  .about-hero-portrait,
-  .mc-tiffany-image,
-  .gm-video-frame {
+  /* IMAGE CONTAINERS — explicit width + maintained aspect ratio.
+     This fixes the "photo disappears" bug where containers with 
+     aspect-ratio collapsed because their absolute-positioned <img>
+     children don't contribute to parent intrinsic size. */
+  body .home-hero-visual,
+  body .home-story-image,
+  body .tagline-image,
+  body .about-hero-portrait,
+  body .mc-tiffany-image,
+  body .gm-video-frame {
     width: 100% !important;
-    min-height: 1px;  /* defensive */
+    min-height: 1px;
   }
 
-  /* Hero photo on mobile — keep aspect ratio, cap visual width sensibly */
-  .home-hero-visual {
+  /* HERO photo on iPad — keep aspect ratio, cap visual width */
+  body .home-hero-visual {
     aspect-ratio: 4/5 !important;
-    max-width: 360px !important;
+    max-width: 380px !important;
     margin: 0 auto !important;
   }
+
+  /* HOME hero stacks (text on top, photo below) */
+  .home-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .home-hero {
+    padding: 100px 22px 60px !important;
+  }
+
+  /* HIDE elements that don't fit on smaller screens */
+  body .mc-listing-card,
+  body .mc-free-stamp,
+  body .mc-section-marker {
+    display: none !important;
+  }
+
+  /* MASTERCLASS hero — text full width, smaller font */
+  body .mc-hero-inner {
+    padding-right: 22px !important;
+  }
+  body .mc-hero-title {
+    max-width: 100% !important;
+    font-size: clamp(36px, 5.2vw, 64px) !important;
+  }
+
+  /* GRID-BASED multi-column sections collapse to single column */
+  .home-story-grid,
+  .download-grid,
+  .tagline-grid,
+  .about-hero-grid,
+  .story-grid,
+  .facts-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  /* 4-UP card grids → 2-up on iPad */
+  .resources-grid,
+  .level-up-grid,
+  .family-grid,
+  .gm-principles-grid,
+  .mc-audience-grid,
+  .gm-understand-grid,
+  .gm-inspired-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  /* SECTION padding tightens */
+  section {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  /* FOOTER stacks */
+  .footer-top {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
 }
 
-/* FIX 3 — The nav brand mark uses italic Fraunces with tall descenders
-   that can get clipped by overflow:hidden on the parent. Allow it. */
-.nav-mark {
-  display: inline-block;
-  line-height: 1.4;
-  padding: 4px 0;
+/* ─────────── MOBILE: ≤ 700px ─────────── */
+@media (max-width: 700px) {
+
+  /* HERO photo gets smaller cap */
+  body .home-hero-visual {
+    max-width: 320px !important;
+  }
+
+  /* HEADLINES scale down further */
+  .home-hero-title {
+    font-size: clamp(32px, 8vw, 48px) !important;
+    line-height: 1.05 !important;
+  }
+  .mc-hero-title {
+    font-size: clamp(30px, 7vw, 44px) !important;
+  }
+  .gm-hero-title,
+  .about-hero-title {
+    font-size: clamp(30px, 7vw, 44px) !important;
+  }
+
+  /* SUB copy */
+  .home-hero-sub,
+  .mc-hero-sub {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* CTA buttons full width */
+  .home-hero-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  .home-hero-actions .btn-primary,
+  .home-hero-actions .btn-ghost {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* SECTION padding tightens further */
+  .home-hero,
+  section {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+  .home-hero {
+    padding-top: 90px !important;
+    padding-bottom: 50px !important;
+  }
+  section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  /* ALL multi-up card grids collapse to 1 column */
+  .resources-grid,
+  .level-up-grid,
+  .family-grid,
+  .gm-principles-grid,
+  .mc-audience-grid,
+  .gm-understand-grid,
+  .gm-inspired-grid,
+  .paths-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* DECORATIONS hide on mobile (no horizontal room) */
+  body .mc-house-cta-arrow,
+  body .mc-jacobi-corner,
+  body .mc-hero-sketch,
+  body .gm-hero-sketch,
+  body .mc-video-house-callout {
+    display: none !important;
+  }
+
+  /* HOUSE blueprint video — show simplified on mobile */
+  body .mc-video-house {
+    padding: 32px 0 !important;
+    background: var(--cream-warm) !important;
+  }
+  body .mc-video-house-svg {
+    display: none !important;  /* The blueprint house outline hides on mobile */
+  }
+  body .mc-video-house .mc-video-frame {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+  }
+
+  /* MARQUEE — slow down, tighten gaps */
+  .marquee-track {
+    animation-duration: 130s !important;
+  }
+
+  /* HANDWRITTEN accents scale down */
+  body .handwritten-note,
+  body .mc-house-cta-intro {
+    font-size: 22px !important;
+  }
+
+  /* BUTTONS scale */
+  .btn-primary,
+  .nav-cta {
+    padding: 14px 24px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* End clean responsive layer */
+
+
+/* ============ ACCESSIBILITY ============ */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--charcoal);
+  color: var(--cream);
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 10000;
+  transition: top 0.2s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 16px;
+  outline: 2px solid var(--cream);
+  outline-offset: 2px;
+}
+
+/* Visually-hidden utility — for off-screen content that screen readers should still read */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Improved focus indicators (browser-default outline is hard to see on cream bg) */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--charcoal);
+  outline-offset: 3px;
+}
+.btn-primary:focus-visible,
+.nav-cta:focus-visible {
+  outline-offset: 4px;
 }
 
 </style>
@@ -1606,20 +1732,74 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '943376613232304');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
+<noscript><img height="1" width="1" style="display:none" alt=""
 src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
 
+
+<!-- Open Graph (Facebook / LinkedIn / iMessage) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tiffany Haynes & Co. — Real Estate Virtual Assistant Mentor">
+<meta property="og:description" content="Tiffany Haynes helps CEOs build real estate virtual assistant businesses that actually scale. Nine years inside the niche industry. Thousands of contracts processed.">
+<meta property="og:url" content="https://tiffanyhaynesco.com/">
+<meta property="og:site_name" content="Tiffany Haynes & Co.">
+<meta property="og:image" content="https://tiffanyhaynesco.com/images/08.jpg">
+<meta property="og:image:alt" content="Tiffany Haynes — Real Estate Virtual Assistant Mentor">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tiffany Haynes & Co. — Real Estate Virtual Assistant Mentor">
+<meta name="twitter:description" content="Tiffany Haynes helps CEOs build real estate virtual assistant businesses that actually scale. Nine years inside the niche industry. Thousands of contracts processed.">
+<meta name="twitter:image" content="https://tiffanyhaynesco.com/images/08.jpg">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://tiffanyhaynesco.com/">
+<!-- Structured Data — LocalBusiness + Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tiffany Haynes & Co.",
+  "description": "Real estate virtual assistant mentorship and business systems for CEOs.",
+  "url": "https://tiffanyhaynesco.com",
+  "logo": "https://tiffanyhaynesco.com/images/white_icon.png",
+  "founder": {
+    "@type": "Person",
+    "name": "Tiffany Haynes",
+    "jobTitle": "Real Estate Virtual Assistant Mentor",
+    "url": "https://tiffanyhaynesco.com/about",
+    "sameAs": [
+      "https://www.instagram.com/tiffanyhaynesco",
+      "https://www.facebook.com/tiffanyhaynesco"
+    ]
+  },
+  "foundingDate": "2015",
+  "knowsAbout": [
+    "Real Estate Virtual Assistants",
+    "Business Systems",
+    "Real Estate Operations",
+    "Virtual Assistant Training"
+  ]
+}
+</script>
+
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <a href="/" class="nav-mark">Tiffany <span>Haynes &amp; Co.</span></a>
-  <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
-    <span></span><span></span><span></span>
-  </div>
-  <div class="nav-links">
+  <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links-menu" onclick="
+    var links = document.querySelector('.nav-links');
+    var expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !expanded);
+    links.classList.toggle('open');
+  ">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+  <div class="nav-links" id="nav-links-menu">
     <a href="/" class="nav-link active">Home</a>
     <a href="/about" class="nav-link">About</a>
     <a href="/gods-math" class="nav-link">God's Math</a>
@@ -1628,7 +1808,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 </nav>
 
 <!-- ============ HERO ============ -->
-<section class="home-hero">
+<section id="main-content" class="home-hero">
   <div class="home-hero-grid">
     <div class="home-hero-text">
       <div class="hero-eyebrow">Hey, friend</div>
