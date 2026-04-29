@@ -1068,7 +1068,7 @@ section { position: relative; z-index: 2; }
 }
 
 /* ============ RESPONSIVE ============ */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .home-hero { padding: 100px 22px 60px; }
   .home-hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .home-hero-visual { max-width: 360px; margin: 0 auto; }
@@ -1518,6 +1518,82 @@ svg {
   overflow-wrap: break-word;
 }
 
+
+/* ============ MOBILE FIXES — REAL BUGS ============ */
+/* Targets two specific, observed bugs:
+   1. Mobile nav menu leaking into visible area (red CTA pill showing at top)
+   2. Hero photo container collapsing to zero width (blank cream space) */
+
+/* FIX 1 — Force the mobile nav menu to be hidden off-screen until toggled.
+   Higher specificity (.nav .nav-links) beats earlier @media rules. */
+@media (max-width: 1024px) {
+  nav.nav .nav-links {
+    position: fixed !important;
+    top: 60px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    background: var(--cream) !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 24px !important;
+    padding: 32px 24px !important;
+    border-bottom: 1px solid var(--line) !important;
+    transform: translateY(-120%) !important;
+    transition: transform 0.3s ease !important;
+    z-index: 99 !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  nav.nav .nav-links.open {
+    transform: translateY(0) !important;
+  }
+  nav.nav .nav-toggle {
+    display: flex !important;
+  }
+
+  /* The nav itself: force it to fit, no overflow drama */
+  nav.nav {
+    padding: 14px 22px !important;
+    overflow: hidden !important;
+  }
+  nav.nav .nav-mark {
+    font-size: 17px !important;
+    overflow: visible;  /* don't clip italic descenders */
+    line-height: 1.3 !important;
+  }
+}
+
+/* FIX 2 — Ensure image containers have explicit width on mobile so
+   aspect-ratio can compute height. Without this, an absolute-positioned
+   <img> child means the container has zero intrinsic width. */
+@media (max-width: 1024px) {
+  .home-hero-visual,
+  .home-story-image,
+  .tagline-image,
+  .download-card-img,
+  .about-hero-portrait,
+  .mc-tiffany-image,
+  .gm-video-frame {
+    width: 100% !important;
+    min-height: 1px;  /* defensive */
+  }
+
+  /* Hero photo on mobile — keep aspect ratio, cap visual width sensibly */
+  .home-hero-visual {
+    aspect-ratio: 4/5 !important;
+    max-width: 360px !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* FIX 3 — The nav brand mark uses italic Fraunces with tall descenders
+   that can get clipped by overflow:hidden on the parent. Allow it. */
+.nav-mark {
+  display: inline-block;
+  line-height: 1.4;
+  padding: 4px 0;
+}
+
 </style>
 
 <!-- Meta Pixel Code -->
@@ -1572,7 +1648,7 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
     </div>
     <div class="home-hero-visual">
       <div class="home-hero-meta">est. 2015</div>
-      <img src="images/01.jpg" alt="Tiffany Haynes" loading="eager">
+      <img src="images/08.jpg" alt="Tiffany Haynes" loading="eager">
     </div>
   </div>
 </section>
@@ -1873,3 +1949,48 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
 
 </body>
 </html>
+<style>
+/* ============ MOBILE NAV + HERO PHOTO FIXES ============ */
+
+/* Tighten nav padding on phone viewports */
+@media (max-width: 480px) {
+  .nav { padding: 14px 20px !important; }
+}
+
+/* iOS safe area — prevent nav from hiding behind notch/dynamic island */
+.nav {
+  padding-top: max(18px, env(safe-area-inset-top)) !important;
+  padding-left: max(40px, env(safe-area-inset-left)) !important;
+  padding-right: max(40px, env(safe-area-inset-right)) !important;
+}
+@media (max-width: 480px) {
+  .nav {
+    padding-top: max(14px, env(safe-area-inset-top)) !important;
+    padding-left: max(20px, env(safe-area-inset-left)) !important;
+    padding-right: max(20px, env(safe-area-inset-right)) !important;
+  }
+}
+
+/* Hero: ensure photo shows and stacks cleanly on mobile */
+@media (max-width: 1024px) {
+  .home-hero-visual {
+    max-width: 420px !important;
+    margin: 0 auto !important;
+    aspect-ratio: 4/5 !important;
+  }
+  /* Remove the "TH" monogram placeholder — photo takes the full space */
+  .home-hero-visual::before { content: none !important; }
+  .home-hero-visual img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 20% !important;
+  }
+}
+@media (max-width: 480px) {
+  .home-hero-visual {
+    max-width: 100% !important;
+    border-radius: 4px !important;
+  }
+}
+</style>
