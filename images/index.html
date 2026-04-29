@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tiffany Haynes & Co. — Real Estate Virtual Assistant Mentor</title>
+<meta name="description" content="Tiffany Haynes helps CEOs build and scale real estate virtual assistant businesses that drive revenue without consuming their lives." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* === SHARED DESIGN SYSTEM (inlined from styles.css) === */
+/* ============================================
+   TIFFANY HAYNES & CO. — Site Stylesheet
+   Brand merge: THCO official palette + warmth
+   from existing tiffanyhaynesco.com
+   ============================================ */
+
+:root {
+  /* Brand colors */
+  --cream:        #FFFDF5;
+  --cream-warm:   #FAF3E5;
+  --linen:        #F4F0EB;
+  --stone:        #E3D3C8;
+  --stone-deep:   #D4BFB1;
+  --red:          #A00605;
+  --red-dark:     #7A0404;
+  --charcoal:     #414141;
+  --charcoal-soft:#6b6b6b;
+  --charcoal-mute:#9a9a9a;
+  --line:         rgba(65, 65, 65, 0.12);
+  --line-soft:    rgba(65, 65, 65, 0.06);
+
+  /* Typography */
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-body:    "EB Garamond", Georgia, serif;
+  --font-ui:      "Public Sans", system-ui, sans-serif;
+
+  /* Layout */
+  --max:    1240px;
+  --max-narrow: 920px;
+  --pad:    40px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--charcoal);
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Subtle paper grain over everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.25  0 0 0 0 0.25  0 0 0 0 0.25  0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ============ NAVIGATION ============ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 253, 245, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-mark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 19px;
+  letter-spacing: 0.02em;
+  font-style: italic;
+  color: var(--charcoal);
+}
+.nav-mark span {
+  font-style: normal;
+  font-weight: 300;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-link {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  position: relative;
+  transition: color 0.2s;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--red);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+.nav-link.active {
+  color: var(--red);
+}
+.nav-cta {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--red);
+  padding: 12px 22px;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+.nav-cta:hover {
+  background: var(--red-dark);
+  transform: translateY(-1px);
+}
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--charcoal);
+  transition: 0.3s;
+}
+
+/* ============ COMMON SECTIONS ============ */
+section { position: relative; z-index: 2; }
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+.container-narrow {
+  max-width: var(--max-narrow);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.section-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.section-eyebrow::before {
+  content: "";
+  height: 1px;
+  width: 40px;
+  background: var(--red);
+}
+.section-eyebrow.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(36px, 4.8vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--charcoal);
+  font-variation-settings: "opsz" 144;
+}
+.section-title em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.btn-primary {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: var(--red);
+  color: var(--cream);
+  padding: 18px 34px;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.btn-primary:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+}
+.btn-primary svg { transition: transform 0.3s ease; }
+.btn-primary:hover svg { transform: translateX(4px); }
+
+.btn-ghost {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  border: 1px solid var(--charcoal);
+  padding: 14px 28px;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-ghost:hover {
+  background: var(--charcoal);
+  color: var(--cream);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  padding: 80px 40px 40px;
+  background: var(--charcoal);
+  color: var(--cream);
+  position: relative;
+  z-index: 2;
+}
+.footer-top {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 253, 245, 0.12);
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+.footer-brand em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--stone);
+}
+.footer-tag {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255, 253, 245, 0.7);
+  max-width: 380px;
+}
+.footer-col h4 {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: rgba(255, 253, 245, 0.7);
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--cream); }
+
+.footer-bottom {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 245, 0.5);
+}
+
+/* ============ SCROLL REVEAL ============ */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ MARQUEE ============ */
+.marquee {
+  background: var(--charcoal);
+  color: var(--cream);
+  overflow: hidden;
+  padding: 22px 0;
+  position: relative;
+  z-index: 2;
+}
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll 38s linear infinite;
+  gap: 60px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+}
+.marquee-track span {
+  display: inline-flex;
+  align-items: center;
+  gap: 60px;
+}
+.marquee-track span::after {
+  content: "✦";
+  font-style: normal;
+  color: var(--red);
+  font-size: 14px;
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ============ RESPONSIVE NAV + GLOBAL ============ */
+@media (max-width: 900px) {
+  .nav { padding: 14px 22px; }
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 22px;
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-110%);
+    transition: transform 0.3s ease;
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-toggle { display: flex; }
+
+  .footer { padding: 60px 22px 30px; }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-bottom: 40px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  .container, .container-narrow { padding: 0 22px; }
+  :root { --pad: 22px; }
+}
+
+
+/* === PAGE-SPECIFIC === */
+
+/* ============ HOME — page-specific ============ */
+
+/* Hero */
+.home-hero {
+  min-height: 100vh;
+  padding: 140px 40px 80px;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-items: center;
+}
+.home-hero-grid {
+  max-width: var(--max);
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.home-hero-text { position: relative; }
+.hero-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.hero-eyebrow::after {
+  content: "";
+  height: 1px;
+  width: 60px;
+  background: var(--red);
+}
+.home-hero-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(48px, 6.5vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-bottom: 36px;
+  font-variation-settings: "opsz" 144;
+}
+.home-hero-title em {
+  font-style: italic;
+  font-weight: 400;
+}
+.home-hero-title .accent {
+  color: var(--red);
+  font-style: italic;
+}
+.home-hero-sub {
+  font-family: var(--font-body);
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.55;
+  color: var(--charcoal);
+  max-width: 540px;
+  margin-bottom: 44px;
+}
+.home-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.home-hero-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--stone) 0%, var(--stone-deep) 100%);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-hero-visual::before {
+  content: "TH";
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 220px;
+  color: var(--cream);
+  opacity: 0.5;
+  line-height: 1;
+}
+.home-hero-visual-tag {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--charcoal);
+  padding: 8px 14px;
+  border-radius: 2px;
+}
+.home-hero-meta {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--cream);
+  background: rgba(65, 65, 65, 0.7);
+  backdrop-filter: blur(6px);
+  padding: 10px 16px;
+  border-radius: 2px;
+}
+
+/* Greeting */
+.greeting {
+  padding: 140px 0;
+  background: var(--linen);
+  position: relative;
+  z-index: 2;
+}
+.greeting-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: center;
+}
+.greeting-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--red);
+  margin-bottom: 18px;
+}
+.greeting-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: var(--charcoal);
+}
+.greeting-title em { font-style: italic; font-weight: 400; }
+.greeting-text p {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+}
+
+/* Level Up */
+.level-up {
+  padding: 140px 0;
+  background: var(--cream);
+}
+.level-up-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 80px;
+}
+.level-up-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+.level-item {
+  padding: 44px 32px 44px 0;
+  border-right: 1px solid var(--line);
+}
+.level-item:last-child { border-right: none; padding-right: 0; }
+.level-item:not(:first-child) { padding-left: 32px; }
+.level-check {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+.level-text {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+.level-text strong {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--red);
+}
+.level-up-quote {
+  margin-top: 60px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.4;
+  color: var(--charcoal);
+  max-width: 820px;
+  padding-left: 28px;
+  border-left: 2px solid var(--red);
+}
+
+/* Two paths */
+.paths {
+  padding: 0;
+  background: var(--cream);
+}
+.paths-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 520px;
+}
+.path-card {
+  padding: 90px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  transition: background 0.4s ease;
+}
+.path-card.path-a {
+  background: var(--stone);
+}
+.path-card.path-b {
+  background: var(--charcoal);
+  color: var(--cream);
+}
+.path-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 64px;
+  line-height: 1;
+  margin-bottom: 28px;
+  font-variation-settings: "opsz" 144;
+}
+.path-a .path-num { color: var(--red); }
+.path-b .path-num { color: var(--stone); }
+.path-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: var(--charcoal);
+}
+.path-b .path-eyebrow { color: var(--stone); }
+.path-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(26px, 2.8vw, 36px);
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.path-body {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 460px;
+}
+.path-link {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 4px;
+  align-self: flex-start;
+  transition: gap 0.3s;
+}
+.path-link:hover { gap: 18px; }
+
+/* Testimonial */
+.home-testimonial {
+  padding: 140px 0;
+  background: var(--linen);
+  text-align: center;
+}
+.home-testimonial-mark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 96px;
+  line-height: 0.5;
+  color: var(--red);
+  margin-bottom: 32px;
+}
+.home-testimonial-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.3;
+  color: var(--charcoal);
+  max-width: 880px;
+  margin: 0 auto 40px;
+  letter-spacing: -0.01em;
+}
+.home-testimonial-attr {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.home-testimonial-attr::before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: var(--red);
+}
+
+/* Story */
+.home-story {
+  padding: 140px 0;
+  background: var(--cream);
+}
+.home-story-grid {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: 80px;
+  align-items: center;
+}
+.home-story-image {
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--stone-deep) 0%, var(--stone) 100%);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.home-story-image::before {
+  content: "Tiffany";
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-style: italic;
+  font-size: 64px;
+  color: var(--charcoal);
+  opacity: 0.55;
+}
+.home-story-image::after {
+  content: "Replace with portrait";
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--charcoal);
+  padding: 8px 14px;
+  border-radius: 2px;
+}
+.home-story-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin-bottom: 36px;
+  color: var(--charcoal);
+}
+.home-story-title em { font-style: italic; font-weight: 400; }
+.home-story-body p {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  color: var(--charcoal);
+}
+.home-story-actions { margin-top: 32px; }
+
+/* Free download */
+.download {
+  padding: 140px 0;
+  background: var(--charcoal);
+  color: var(--cream);
+}
+.download-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.download-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.download-eyebrow::before {
+  content: "";
+  height: 1px;
+  width: 40px;
+  background: var(--stone);
+}
+.download-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+}
+.download-title em { font-style: italic; font-weight: 400; color: var(--stone); }
+.download-body {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.6;
+  color: rgba(255, 253, 245, 0.85);
+  margin-bottom: 36px;
+}
+.download-card {
+  background: var(--cream);
+  color: var(--charcoal);
+  padding: 48px 40px;
+  border-radius: 4px;
+  position: relative;
+}
+.download-card-badge {
+  position: absolute;
+  top: -12px;
+  left: 40px;
+  background: var(--red);
+  color: var(--cream);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 2px;
+}
+.download-card h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.download-card p {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+.download-card .btn-status {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 500;
+}
+
+/* Resources */
+.resources {
+  padding: 140px 0;
+  background: var(--cream);
+}
+.resources-header {
+  text-align: center;
+  margin-bottom: 80px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.resources-header .section-eyebrow::before { display: none; }
+.resources-header .section-eyebrow::after {
+  content: "";
+  height: 1px;
+  width: 40px;
+  background: var(--red);
+}
+.resources-header .section-eyebrow { justify-content: center; }
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.resource-card {
+  padding: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+.resource-card-img {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--linen) 0%, var(--stone) 100%);
+  border-radius: 4px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.resource-card-img span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 72px;
+  color: var(--charcoal);
+  opacity: 0.4;
+  font-variation-settings: "opsz" 144;
+}
+.resource-card-tag {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+.resource-card h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  color: var(--charcoal);
+}
+.resource-card p {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--charcoal);
+  margin-bottom: 20px;
+}
+.resource-card .resource-link {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  border-bottom: 1px solid var(--charcoal);
+  padding-bottom: 4px;
+  transition: gap 0.3s, color 0.2s;
+}
+.resource-card .resource-link:hover {
+  color: var(--red);
+  border-color: var(--red);
+  gap: 16px;
+}
+
+/* Mission */
+.mission {
+  padding: 140px 0;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--linen) 100%);
+}
+.mission-inner {
+  max-width: var(--max-narrow);
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 var(--pad);
+}
+.mission-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 28px;
+}
+.mission-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(36px, 4.6vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--charcoal);
+  margin-bottom: 32px;
+}
+.mission-title em { font-style: italic; font-weight: 400; color: var(--red); }
+.mission-body {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--charcoal);
+  max-width: 720px;
+  margin: 0 auto 44px;
+}
+
+/* Final CTA */
+.final-cta {
+  padding: 160px 0;
+  background: var(--charcoal);
+  color: var(--cream);
+  text-align: center;
+}
+.final-cta-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 28px;
+}
+.final-cta-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(44px, 6vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.final-cta-title em { font-style: italic; font-weight: 400; color: var(--stone); }
+.final-cta-sub {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.6;
+  color: rgba(255, 253, 245, 0.8);
+  max-width: 560px;
+  margin: 0 auto 44px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .home-hero { padding: 100px 22px 60px; }
+  .home-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .home-hero-visual { max-width: 360px; margin: 0 auto; }
+
+  .greeting, .level-up, .home-testimonial,
+  .home-story, .download, .resources, .mission, .final-cta {
+    padding: 80px 0;
+  }
+  .greeting-grid, .home-story-grid, .download-grid {
+    grid-template-columns: 1fr; gap: 36px;
+  }
+  .level-up-header {
+    grid-template-columns: 1fr; gap: 24px; margin-bottom: 50px;
+  }
+  .level-up-list { grid-template-columns: 1fr; }
+  .level-item {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding: 32px 0;
+  }
+  .level-item:not(:first-child) { padding-left: 0; }
+  .level-item:last-child { border-bottom: none; }
+
+  .paths-grid { grid-template-columns: 1fr; min-height: auto; }
+  .path-card { padding: 60px 28px; }
+
+  .resources-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* === TAGLINE CTA + INSTAGRAM SECTIONS === */
+.tagline-cta { padding: 0; background: var(--cream); }
+.tagline-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 480px;
+}
+.tagline-image {
+  background: linear-gradient(135deg, var(--stone) 0%, var(--stone-deep) 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tagline-image::before {
+  content: "T";
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 200;
+  font-size: 320px;
+  line-height: 1;
+  color: var(--cream);
+  opacity: 0.5;
+  font-variation-settings: "opsz" 144;
+}
+.tagline-image-tag {
+  position: absolute;
+  top: 24px; left: 24px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--charcoal);
+  padding: 8px 14px;
+  border-radius: 2px;
+}
+.tagline-content {
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--linen);
+}
+.tagline-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.tagline-eyebrow::before {
+  content: "";
+  height: 1px;
+  width: 40px;
+  background: var(--red);
+}
+.tagline-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+  font-variation-settings: "opsz" 144;
+}
+.tagline-title em { font-style: italic; font-weight: 400; color: var(--red); }
+.tagline-body {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--charcoal);
+  margin-bottom: 32px;
+  max-width: 460px;
+}
+
+.instagram-section {
+  padding: 120px 0;
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+}
+.instagram-header { text-align: center; margin-bottom: 60px; }
+.instagram-header .section-eyebrow { justify-content: center; }
+.instagram-header .section-eyebrow::before { display: none; }
+.instagram-header .section-eyebrow::after {
+  content: "";
+  height: 1px;
+  width: 40px;
+  background: var(--red);
+}
+.instagram-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 144;
+}
+.instagram-title em { font-style: italic; font-weight: 400; color: var(--red); }
+.instagram-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+}
+.instagram-handle {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--red);
+  padding-bottom: 4px;
+  transition: gap 0.3s;
+}
+.instagram-handle:hover { gap: 16px; }
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.instagram-tile {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--stone) 0%, var(--cream-warm) 100%);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.instagram-tile:hover { transform: translateY(-4px); }
+.instagram-tile:nth-child(2n) {
+  background: linear-gradient(135deg, var(--stone-deep) 0%, var(--stone) 100%);
+}
+.instagram-tile:nth-child(3n) {
+  background: linear-gradient(135deg, var(--linen) 0%, var(--stone) 100%);
+}
+.instagram-tile:nth-child(4n) {
+  background: linear-gradient(135deg, var(--cream-warm) 0%, var(--stone-deep) 100%);
+}
+.instagram-tile-tag {
+  position: absolute;
+  top: 12px; left: 12px;
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: rgba(65, 65, 65, 0.7);
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+@media (max-width: 900px) {
+  .tagline-grid { grid-template-columns: 1fr; min-height: auto; }
+  .tagline-image { aspect-ratio: 4/3; }
+  .tagline-image::before { font-size: 200px; }
+  .tagline-content { padding: 50px 28px; }
+  .instagram-section { padding: 80px 0; }
+  .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+}
+
+
+/* ============ HOME PAGE PHOTOS WIRED IN ============ */
+/* Image elements now fill their placeholder containers, replacing the
+   gradient backgrounds. The "-tag" placeholder text overlays are hidden. */
+
+.home-hero-visual { position: relative; overflow: hidden; }
+.home-hero-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 1;
+}
+.home-hero-visual-tag { display: none !important; }
+
+.home-story-image {
+  position: relative;
+  overflow: hidden;
+  background: var(--stone) !important;
+}
+.home-story-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.tagline-image { position: relative; overflow: hidden; }
+.tagline-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.tagline-image-tag { display: none !important; }
+
+/* Free Download card — image at top of card */
+.download-card-img {
+  margin: -32px -32px 24px -32px;  /* extend to card edges, ignore card padding */
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--stone);
+}
+.download-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.download-card:hover .download-card-img img { transform: scale(1.04); }
+
+/* Footer monogram brand mark */
+.footer-monogram {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+  opacity: 0.92;
+  transition: opacity 0.2s;
+}
+.footer-monogram img { width: 100%; height: auto; display: block; }
+.footer-monogram:hover { opacity: 1; }
+
+@media (max-width: 700px) {
+  .footer-monogram { width: 52px; height: 52px; }
+  .download-card-img { margin: -28px -28px 20px -28px; }
+}
+
+
+/* ============ KILL placeholder pseudo-elements over real photos ============ */
+/* When containers were empty, ::before/::after added decorative gradients
+   and "Replace with portrait" labels. With real images placed, these
+   render on top and look like accidental overlays. Kill them. */
+.home-hero-visual::before,
+.home-hero-visual::after,
+.home-story-image::before,
+.home-story-image::after,
+.tagline-image::before,
+.tagline-image::after {
+  display: none !important;
+  content: none !important;
+}
+
+
+/* ============ HANDWRITTEN PERSONAL MOMENTS ELSEWHERE ============ */
+
+/* Sign-off after the story section: "p.s. — I'm rooting for you. — Tiff" */
+.home-handwritten-ps {
+  margin-top: 28px;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--red);
+  line-height: 1.4;
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+.home-handwritten-ps .ps-label {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Final CTA: handwritten "see you inside!" */
+.home-final-handwritten {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 600;
+  color: var(--red);
+  margin-top: 32px;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+}
+
+/* Footer: handwritten farewell */
+.footer-signoff {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  font-weight: 500;
+  color: rgba(255,253,245,0.8);
+  margin-top: 16px;
+  display: block;
+  font-style: italic;
+}
+
+
+
+
+
+/* ============================================================
+   CLEAN RESPONSIVE LAYER
+   ============================================================
+   Three breakpoints — each owns its scope completely:
+   • Desktop (≥1025px):   full layout as designed (no overrides here)
+   • iPad     (701-1024): hamburger nav, hero stacks, 4-up→2-up
+   • Mobile   (≤700px):   single column, full-width photos, tightest padding
+   
+   Higher specificity selectors used (nav.nav, body .selector) so this
+   layer wins against earlier scattered @media rules without !important
+   spam. */
+
+/* GLOBAL DEFENSIVE RULES — apply at all breakpoints */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+svg { max-width: 100%; }
+
+/* (word-wrap break-word lives in the mobile breakpoint only — see below) */
+
+/* ─────────── iPAD: 701px - 1024px ─────────── */
+@media (max-width: 1024px) {
+
+  /* NAV — hamburger menu pattern */
+  nav.nav {
+    padding: 14px 22px !important;
+  }
+  nav.nav .nav-mark {
+    font-size: 17px !important;
+    line-height: 1.4 !important;
+    padding: 4px 0 !important;
+    overflow: visible !important;  /* italic descenders don't get clipped */
+  }
+  nav.nav .nav-links {
+    position: fixed !important;
+    top: 60px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    background: var(--cream) !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 24px !important;
+    padding: 32px 24px !important;
+    border-bottom: 1px solid var(--line) !important;
+    transform: translateY(-120%) !important;
+    transition: transform 0.3s ease !important;
+    z-index: 99 !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  nav.nav .nav-links.open {
+    transform: translateY(0) !important;
+  }
+  nav.nav .nav-toggle {
+    display: flex !important;
+  }
+
+  /* IMAGE CONTAINERS — explicit width + maintained aspect ratio.
+     This fixes the "photo disappears" bug where containers with 
+     aspect-ratio collapsed because their absolute-positioned <img>
+     children don't contribute to parent intrinsic size. */
+  body .home-hero-visual,
+  body .home-story-image,
+  body .tagline-image,
+  body .about-hero-portrait,
+  body .mc-tiffany-image,
+  body .gm-video-frame {
+    width: 100% !important;
+    min-height: 1px;
+  }
+
+  /* HERO photo on iPad — keep aspect ratio, cap visual width */
+  body .home-hero-visual {
+    aspect-ratio: 4/5 !important;
+    max-width: 380px !important;
+    margin: 0 auto !important;
+  }
+
+  /* HOME hero stacks (text on top, photo below) */
+  .home-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .home-hero {
+    padding: 100px 22px 60px !important;
+  }
+
+  /* HIDE elements that don't fit on smaller screens */
+  body .mc-listing-card,
+  body .mc-free-stamp,
+  body .mc-section-marker {
+    display: none !important;
+  }
+
+  /* MASTERCLASS hero — text full width, smaller font */
+  body .mc-hero-inner {
+    padding-right: 22px !important;
+  }
+  body .mc-hero-title {
+    max-width: 100% !important;
+    font-size: clamp(36px, 5.2vw, 64px) !important;
+  }
+
+  /* GRID-BASED multi-column sections collapse to single column */
+  .home-story-grid,
+  .download-grid,
+  .tagline-grid,
+  .about-hero-grid,
+  .story-grid,
+  .facts-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  /* 4-UP card grids → 2-up on iPad */
+  .resources-grid,
+  .level-up-grid,
+  .family-grid,
+  .gm-principles-grid,
+  .mc-audience-grid,
+  .gm-understand-grid,
+  .gm-inspired-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  /* SECTION padding tightens */
+  section {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  /* FOOTER stacks */
+  .footer-top {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+}
+
+/* ─────────── MOBILE: ≤ 700px ─────────── */
+@media (max-width: 700px) {
+
+  /* HERO photo gets smaller cap */
+  body .home-hero-visual {
+    max-width: 320px !important;
+  }
+
+  /* HEADLINES scale down further */
+  .home-hero-title {
+    font-size: clamp(32px, 8vw, 48px) !important;
+    line-height: 1.05 !important;
+  }
+  .mc-hero-title {
+    font-size: clamp(30px, 7vw, 44px) !important;
+  }
+  .gm-hero-title,
+  .about-hero-title {
+    font-size: clamp(30px, 7vw, 44px) !important;
+  }
+
+  /* SUB copy */
+  .home-hero-sub,
+  .mc-hero-sub {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* CTA buttons full width */
+  .home-hero-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  .home-hero-actions .btn-primary,
+  .home-hero-actions .btn-ghost {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* SECTION padding tightens further */
+  .home-hero,
+  section {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+  .home-hero {
+    padding-top: 90px !important;
+    padding-bottom: 50px !important;
+  }
+  section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  /* ALL multi-up card grids collapse to 1 column */
+  .resources-grid,
+  .level-up-grid,
+  .family-grid,
+  .gm-principles-grid,
+  .mc-audience-grid,
+  .gm-understand-grid,
+  .gm-inspired-grid,
+  .paths-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* DECORATIONS hide on mobile (no horizontal room) */
+  body .mc-house-cta-arrow,
+  body .mc-jacobi-corner,
+  body .mc-hero-sketch,
+  body .gm-hero-sketch,
+  body .mc-video-house-callout {
+    display: none !important;
+  }
+
+  /* HOUSE blueprint video — show simplified on mobile */
+  body .mc-video-house {
+    padding: 32px 0 !important;
+    background: var(--cream-warm) !important;
+  }
+  body .mc-video-house-svg {
+    display: none !important;  /* The blueprint house outline hides on mobile */
+  }
+  body .mc-video-house .mc-video-frame {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+  }
+
+  /* MARQUEE — slow down, tighten gaps */
+  .marquee-track {
+    animation-duration: 130s !important;
+  }
+
+  /* HANDWRITTEN accents scale down */
+  body .handwritten-note,
+  body .mc-house-cta-intro {
+    font-size: 22px !important;
+  }
+
+  /* BUTTONS scale */
+  .btn-primary,
+  .nav-cta {
+    padding: 14px 24px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* End clean responsive layer */
+
+
+/* ============ ACCESSIBILITY ============ */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--charcoal);
+  color: var(--cream);
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 10000;
+  transition: top 0.2s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 16px;
+  outline: 2px solid var(--cream);
+  outline-offset: 2px;
+}
+
+/* Visually-hidden utility — for off-screen content that screen readers should still read */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Improved focus indicators (browser-default outline is hard to see on cream bg) */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--charcoal);
+  outline-offset: 3px;
+}
+.btn-primary:focus-visible,
+.nav-cta:focus-visible {
+  outline-offset: 4px;
+}
+
+</style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '943376613232304');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+<!-- Open Graph (Facebook / LinkedIn / iMessage) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tiffany Haynes & Co. — Real Estate Virtual Assistant Mentor">
+<meta property="og:description" content="Tiffany Haynes helps CEOs build real estate virtual assistant businesses that actually scale. Nine years inside the niche industry. Thousands of contracts processed.">
+<meta property="og:url" content="https://tiffanyhaynesco.com/">
+<meta property="og:site_name" content="Tiffany Haynes & Co.">
+<meta property="og:image" content="https://tiffanyhaynesco.com/images/01.jpg">
+<meta property="og:image:alt" content="Tiffany Haynes — Real Estate Virtual Assistant Mentor">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tiffany Haynes & Co. — Real Estate Virtual Assistant Mentor">
+<meta name="twitter:description" content="Tiffany Haynes helps CEOs build real estate virtual assistant businesses that actually scale. Nine years inside the niche industry. Thousands of contracts processed.">
+<meta name="twitter:image" content="https://tiffanyhaynesco.com/images/01.jpg">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://tiffanyhaynesco.com/">
+<!-- Structured Data — LocalBusiness + Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tiffany Haynes & Co.",
+  "description": "Real estate virtual assistant mentorship and business systems for CEOs.",
+  "url": "https://tiffanyhaynesco.com",
+  "logo": "https://tiffanyhaynesco.com/images/white_icon.png",
+  "founder": {
+    "@type": "Person",
+    "name": "Tiffany Haynes",
+    "jobTitle": "Real Estate Virtual Assistant Mentor",
+    "url": "https://tiffanyhaynesco.com/about",
+    "sameAs": [
+      "https://www.instagram.com/tiffanyhaynesco",
+      "https://www.facebook.com/tiffanyhaynesco"
+    ]
+  },
+  "foundingDate": "2015",
+  "knowsAbout": [
+    "Real Estate Virtual Assistants",
+    "Business Systems",
+    "Real Estate Operations",
+    "Virtual Assistant Training"
+  ]
+}
+</script>
+
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a href="/" class="nav-mark">Tiffany <span>Haynes &amp; Co.</span></a>
+  <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links-menu" onclick="
+    var links = document.querySelector('.nav-links');
+    var expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !expanded);
+    links.classList.toggle('open');
+  ">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
+  <div class="nav-links" id="nav-links-menu">
+    <a href="/" class="nav-link active">Home</a>
+    <a href="/about" class="nav-link">About</a>
+    <a href="/gods-math" class="nav-link">God's Math</a>
+    <a href="/masterclass" class="nav-cta">Attend My Masterclass</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="main-content" class="home-hero">
+  <div class="home-hero-grid">
+    <div class="home-hero-text">
+      <div class="hero-eyebrow">Hey, friend</div>
+      <h1 class="home-hero-title">
+        I help CEOs build <em>real estate virtual assistant</em> businesses that <span class="accent">actually scale.</span>
+      </h1>
+      <p class="home-hero-sub">
+        Nine years inside this niche industry. Thousands of contracts processed. Teams built from one to thirteen. Now I'm handing you the system, so you can grow your revenue without losing your life to your business.
+      </p>
+      <div class="home-hero-actions">
+        <a href="/masterclass" class="btn-primary">
+          Join the Masterclass
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+        <a href="/about" class="btn-ghost">About Tiffany</a>
+      </div>
+    </div>
+    <div class="home-hero-visual">
+      <div class="home-hero-meta">est. 2015</div>
+      <img src="images/01.jpg" alt="Tiffany Haynes" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Real Estate Virtual Assistants</span>
+    <span>Systems &amp; Scale</span>
+    <span>Revenue Without Burnout</span>
+    <span>God's Math</span>
+    <span>Build the Business You Want</span>
+    <span>Real Estate Virtual Assistants</span>
+    <span>Systems &amp; Scale</span>
+    <span>Revenue Without Burnout</span>
+    <span>God's Math</span>
+    <span>Build the Business You Want</span>
+  </div>
+</div>
+
+<!-- ============ GREETING ============ -->
+<section class="greeting">
+  <div class="container">
+    <div class="greeting-grid">
+      <div class="reveal-on-scroll">
+        <div class="greeting-eyebrow">a note from me</div>
+        <h2 class="greeting-title">I'm Tiffany. A maestro of <em>creating and scaling</em> real estate virtual assistant businesses.</h2>
+      </div>
+      <div class="greeting-text reveal-on-scroll">
+        <p>I built VBS Real Estate from one staff member to thirteen in four years. I've processed over four thousand contracts. I've bought out competitors and integrated their businesses into mine. None of that was easy. None of it was the way I'd been told it had to be done.</p>
+        <p>Now I teach the model. To women ready to build something of their own without sacrificing the life they actually want.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEVEL UP ============ -->
+<section class="level-up">
+  <div class="container">
+    <div class="level-up-header reveal-on-scroll">
+      <div>
+        <div class="section-eyebrow">Ready to Level Up</div>
+        <h2 class="section-title">Three things I want <em>you</em> to know.</h2>
+      </div>
+      <p style="font-family:var(--font-body);font-size:19px;line-height:1.65;color:var(--charcoal);max-width:460px;">
+        Most of what you've been told about scaling a business assumes a cost: your time, your sanity, your relationships. None of that is required.
+      </p>
+    </div>
+
+    <div class="level-up-list">
+      <div class="level-item reveal-on-scroll">
+        <div class="level-check">✓</div>
+        <p class="level-text"><strong>You can</strong> increase revenue without losing control of your personal life.</p>
+      </div>
+      <div class="level-item reveal-on-scroll">
+        <div class="level-check">✓</div>
+        <p class="level-text"><strong>You can</strong> acquire teams without overwhelming your staff.</p>
+      </div>
+      <div class="level-item reveal-on-scroll">
+        <div class="level-check">✓</div>
+        <p class="level-text"><strong>You can</strong> scale even if you've never scaled a business before.</p>
+      </div>
+    </div>
+
+    <p class="level-up-quote reveal-on-scroll">
+      I've gone before you and cleared the path. The curriculum, the resources, the community. They exist so your arrival at the next level is safe.
+    </p>
+  </div>
+</section>
+
+<!-- ============ TWO PATHS ============ -->
+<section class="paths">
+  <div class="paths-grid">
+    <div class="path-card path-a reveal-on-scroll">
+      <div class="path-num">01</div>
+      <div class="path-eyebrow">Already in business?</div>
+      <h3 class="path-title">For the real estate virtual assistant looking to scale.</h3>
+      <p class="path-body">You're running it. You're stretched. You want growth that doesn't require your every waking hour. Let's build the system.</p>
+      <a href="/masterclass" class="path-link">
+        Learn more
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
+    <div class="path-card path-b reveal-on-scroll">
+      <div class="path-num">02</div>
+      <div class="path-eyebrow">Just starting?</div>
+      <h3 class="path-title">For the budding CEO ready to launch.</h3>
+      <p class="path-body">You want to support real estate agents, but don't know where to begin. I'll walk you through the proper way to launch, from day one to client one.</p>
+      <a href="/masterclass" class="path-link">
+        Learn more
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIAL ============ -->
+<section class="home-testimonial">
+  <div class="container reveal-on-scroll">
+    <div class="home-testimonial-mark">"</div>
+    <p class="home-testimonial-quote">
+      Tiffany was the best choice I've made for growing my business. Hands down. She's a freaking creative genius.
+    </p>
+    <div class="home-testimonial-attr">Blair Conrad</div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="home-story">
+  <div class="container">
+    <div class="home-story-grid">
+      <div class="home-story-image reveal-on-scroll">
+        <img src="images/img_2816.jpg" alt="Tiffany Haynes" loading="lazy">
+      </div>
+      <div class="reveal-on-scroll">
+        <div class="section-eyebrow">My Story</div>
+        <h2 class="home-story-title">I help business owners build <em>systems</em> that create freedom and still drive revenue.</h2>
+        <div class="home-story-body">
+          <p>I worked the corporate job. I left it. I built the real estate virtual assistant business, hired my first employee, then built out departments and teams. I restructured a reactive business into a procedural nucleus with real systems and real processes.</p>
+          <p>I became a leader in this niche in Texas. I bought out other virtual assistant companies and integrated them into my own. Now I'm helping others do the same.</p>
+          <p style="font-family:var(--font-display);font-style:italic;font-size:22px;color:var(--red);">It's a pleasure to meet you.</p>
+        </div>
+        <div class="home-handwritten-ps" aria-hidden="true">
+          <span class="ps-label">p.s.</span> I'm rooting for you. <br>xx, Tiff
+        </div>
+        <div class="home-story-actions">
+          <a href="/about" class="btn-ghost">
+            More about Tiffany
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FREE DOWNLOAD ============ -->
+<section class="download">
+  <div class="container">
+    <div class="download-grid">
+      <div class="reveal-on-scroll">
+        <div class="download-eyebrow">Free Download</div>
+        <h2 class="download-title">The 7 Biggest Mistakes <em>CEOs Make</em> When Hiring Assistants.</h2>
+        <p class="download-body">
+          I've watched it play out hundreds of times. There is absolutely a right and wrong way to select prime talent, and the cost of the wrong way is bigger than most people calculate.
+        </p>
+      </div>
+      <div class="download-card reveal-on-scroll">
+        <div class="download-card-img">
+          <img src="images/img_2804.jpg" alt="Building the hiring framework" loading="lazy">
+        </div>
+        <div class="download-card-badge">Coming Soon</div>
+        <h3>The Hiring Mistake Audit</h3>
+        <p>A practical PDF guide walking you through every common pitfall, and how to set up your hiring process to avoid them.</p>
+        <div class="btn-status">→ Notify Me When It Drops</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESOURCES ============ -->
+<section class="resources">
+  <div class="container">
+    <div class="resources-header reveal-on-scroll">
+      <div class="section-eyebrow">Top Resources</div>
+      <h2 class="section-title">Read while you wait <em>for the masterclass</em>.</h2>
+    </div>
+    <div class="resources-grid">
+      <article class="resource-card reveal-on-scroll">
+        <div class="resource-card-img"><span>i</span></div>
+        <div class="resource-card-tag">Systems &amp; Process</div>
+        <h3>Business Systems and Processes: What to Change First</h3>
+        <p>How to perfect the operational systems that set you up to actually scale.</p>
+        <a href="https://tiffanyhaynesco.com/business-systems" class="resource-link" target="_blank" rel="noopener">Read this →</a>
+      </article>
+      <article class="resource-card reveal-on-scroll">
+        <div class="resource-card-img"><span>ii</span></div>
+        <div class="resource-card-tag">Vision &amp; Strategy</div>
+        <h3>What Is Your Dream Opportunity?</h3>
+        <p>If you could do anything to be successful, what would you actually do? Let's get specific.</p>
+        <a href="https://tiffanyhaynesco.com/dream-opp" class="resource-link" target="_blank" rel="noopener">Read this →</a>
+      </article>
+      <article class="resource-card reveal-on-scroll">
+        <div class="resource-card-img"><span>iii</span></div>
+        <div class="resource-card-tag">Application</div>
+        <h3>How to Apply What You Learn, Immediately</h3>
+        <p>Stop consuming. Start implementing. The framework I use to convert insight into action.</p>
+        <a href="https://tiffanyhaynesco.com/apply-what-you-learn" class="resource-link" target="_blank" rel="noopener">Read this →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MISSION ============ -->
+<section class="mission">
+  <div class="mission-inner reveal-on-scroll">
+    <div class="mission-eyebrow">My Mission</div>
+    <h2 class="mission-title">Helping real estate virtual assistants <em>optimize, systematize, and radically grow</em> their revenue.</h2>
+    <p class="mission-body">
+      The goal is for you to work smarter, not harder. To carve out the time to work <em style="color:var(--red);">on</em> your business, not just <em style="color:var(--red);">in</em> it. To contribute to your success, your efficiency, and your professional development on every level.
+    </p>
+    <a href="/masterclass" class="btn-primary">
+      Show Me the Way
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
+    </a>
+  </div>
+</section>
+
+
+<!-- ============ TAGLINE CTA ============ -->
+<section class="tagline-cta">
+  <div class="tagline-grid">
+    <div class="tagline-image reveal-on-scroll">
+      <img src="images/22.jpg" alt="Tiffany Haynes" loading="lazy">
+    </div>
+    <div class="tagline-content reveal-on-scroll">
+      <div class="tagline-eyebrow">Free Resource</div>
+      <h2 class="tagline-title">How to write a tagline <em>you actually love</em> &mdash; in under an hour.</h2>
+      <p class="tagline-body">Whether you have a tagline that needs a makeover, or you don't have one at all, I've got the tips to help you come up with something professional and catchy for your business.</p>
+      <a href="https://tiffanyhaynesco.com/how-to-write-a-tagline" target="_blank" rel="noopener" class="btn-ghost" style="align-self: flex-start;">
+        Tell Me More
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <div class="container">
+    <div class="reveal-on-scroll">
+      <div class="final-cta-eyebrow">Like Peeking Behind the Scenes?</div>
+      <h2 class="final-cta-title">Come learn how to build a business <em>that pays you back</em>.</h2>
+      <p class="final-cta-sub">
+        A free masterclass on the niche real estate model behind multi-six-figure revenue, and how to build it without sacrificing the life you wanted in the first place.
+      </p>
+      <a href="/masterclass" class="btn-primary">
+        Reserve My Seat
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="home-final-handwritten" aria-hidden="true" style="text-align:center;margin-top:24px;">
+    see you inside! ✶
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <a href="/" class="footer-monogram" aria-label="Tiffany Haynes & Co. home">
+        <img src="images/white_icon.png" alt="Tiffany Haynes & Co.">
+      </a>
+      <div class="footer-brand">Tiffany <em>Haynes &amp; Co.</em></div>
+      <p class="footer-tag">
+        Helping real estate virtual assistants optimize, systematize, and radically grow the revenue of their business.
+      </p>
+      <span class="footer-signoff">with so much love, Tiff</span>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/gods-math">God's Math</a></li>
+        <li><a href="/masterclass">Masterclass</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/tiffanyhaynesco/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.facebook.com/tiffanyhaynesco" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://tiffanyhaynesco.com/contact">Contact</a></li>
+        <li><a href="https://docs.google.com/document/d/1llMfWrZYLt7GC77P3756OBunehEdFMl2q5jdacRG5Rw/edit?usp=sharing" target="_blank" rel="noopener">Privacy Policy</a></li>
+        <li><a href="https://drive.google.com/file/d/1YTa3tpwuC1fT4Bo_jCZ9UWpXvRlwtskr/view?usp=sharing" target="_blank" rel="noopener">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Tiffany Haynes &amp; Co, LLC</span>
+    <span>Making offices more efficient.</span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
+<style>
+/* ============ MOBILE NAV + HERO PHOTO FIXES ============ */
+
+/* Tighten nav padding on phone viewports */
+@media (max-width: 480px) {
+  .nav { padding: 14px 20px !important; }
+}
+
+/* iOS safe area — prevent nav from hiding behind notch/dynamic island */
+.nav {
+  padding-top: max(18px, env(safe-area-inset-top)) !important;
+  padding-left: max(40px, env(safe-area-inset-left)) !important;
+  padding-right: max(40px, env(safe-area-inset-right)) !important;
+}
+@media (max-width: 480px) {
+  .nav {
+    padding-top: max(14px, env(safe-area-inset-top)) !important;
+    padding-left: max(20px, env(safe-area-inset-left)) !important;
+    padding-right: max(20px, env(safe-area-inset-right)) !important;
+  }
+}
+
+/* Hero: ensure photo shows and stacks cleanly on mobile */
+@media (max-width: 1024px) {
+  .home-hero-visual {
+    max-width: 420px !important;
+    margin: 0 auto !important;
+    aspect-ratio: 4/5 !important;
+  }
+  /* Remove the "TH" monogram placeholder — photo takes the full space */
+  .home-hero-visual::before { content: none !important; }
+  .home-hero-visual img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 20% !important;
+  }
+}
+@media (max-width: 480px) {
+  .home-hero-visual {
+    max-width: 100% !important;
+    border-radius: 4px !important;
+  }
+}
+</style>
