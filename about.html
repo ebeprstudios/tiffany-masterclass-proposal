@@ -906,7 +906,8 @@ section { position: relative; z-index: 2; }
   font-size: 17px;
   letter-spacing: 0.01em;
 }
-.family-tile.wide { grid-column: span 2; aspect-ratio: 8/5; }
+.family-tile.wide { grid-column: span 3; aspect-ratio: 12/5; }
+.family-tile.wide img { object-position: center 35%; }
 @media (max-width: 900px) {
   .family-grid { grid-template-columns: 1fr 1fr; }
   .family-tile.wide { grid-column: span 2; aspect-ratio: 8/5; }
@@ -973,14 +974,14 @@ section { position: relative; z-index: 2; }
   margin: 0 auto;
   padding: 0 32px;
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 64px;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 72px;
   align-items: start;
 }
 .facts-photo-stack {
   display: grid;
   grid-template-rows: auto auto;
-  gap: 20px;
+  gap: 24px;
   position: sticky;
   top: 100px;
 }
@@ -989,6 +990,20 @@ section { position: relative; z-index: 2; }
   overflow: hidden;
   border-radius: 4px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+.facts-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Editorial offset — second photo nudged down slightly for asymmetric rhythm */
+.facts-photo-stack > .facts-photo:nth-child(2) {
+  transform: translateY(28px);
+}
+@media (max-width: 900px) {
+  .facts-photo-stack > .facts-photo:nth-child(2) {
+    transform: none;
+  }
 }
 .facts-photo img { width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 900px) {
@@ -1471,9 +1486,6 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
       <div class="story-photo tall">
         <img src="images/vbs-112_copy.jpg" alt="Tiffany and Tristan Skiles, COO" loading="lazy">
       </div>
-      <div class="story-photo tall offset">
-        <img src="images/img_5732.jpg" alt="Tiffany and her husband" loading="lazy">
-      </div>
     </div>
   </div>
 </section>
@@ -1497,6 +1509,10 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
     <div class="family-tile reveal-on-scroll">
       <img src="images/zariah.jpg" alt="Baby Zariah" loading="lazy">
       <div class="family-caption">Baby Z, my joy</div>
+    </div>
+    <div class="family-tile wide reveal-on-scroll">
+      <img src="images/img_5732.jpg" alt="Tiffany and her husband" loading="lazy">
+      <div class="family-caption">My partner in everything</div>
     </div>
   </div>
 </section>
@@ -1542,6 +1558,16 @@ src="https://www.facebook.com/tr?id=943376613232304&ev=PageView&noscript=1"/></n
           <h3 style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--charcoal);margin-bottom:10px;font-style:italic;">Presence over balance.</h3>
           <p style="font-family:var(--font-body);font-size:17px;line-height:1.7;color:var(--charcoal);">As a mom, wife, and business owner, I have found that being present in all situations is better than chasing some idea of balance.</p>
         </div>
+        <div class="reveal-on-scroll" style="border-left:3px solid var(--red);padding-left:24px;">
+          <h3 style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--charcoal);margin-bottom:10px;font-style:italic;">Faith is the actual strategy.</h3>
+          <p style="font-family:var(--font-body);font-size:17px;line-height:1.7;color:var(--charcoal);">Everything I have built — the business, the team, the community — started with a conversation with God. Strategy is important, but obedience is what actually moves things.</p>
+        </div>
+      </div>
+
+      <!-- Pull quote — anchors the column to the full height of the photo stack -->
+      <div class="reveal-on-scroll" style="margin-top:56px;padding:40px 44px;background:var(--linen);border-radius:4px;border-top:3px solid var(--red);">
+        <p style="font-family:var(--font-display);font-weight:300;font-style:italic;font-size:clamp(20px,2.2vw,26px);line-height:1.45;color:var(--charcoal);letter-spacing:-0.01em;margin-bottom:24px;">"I am not building a brand. I am building a legacy — one contract, one student, one conversation at a time."</p>
+        <span style="font-family:var(--font-ui);font-size:11px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--red);">Tiffany Haynes</span>
       </div>
     </div>
   </div>
