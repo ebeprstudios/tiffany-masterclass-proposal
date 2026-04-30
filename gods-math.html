@@ -1437,11 +1437,55 @@ section { position: relative; z-index: 2; }
 .gm-video-axis svg { width: 100%; height: 100%; }
 @media (max-width: 900px) {
   .gm-video-axis { display: none; }
-  .gm-video-equation-top { font-size: 24px; }
+  .gm-video-equation-top  { font-size: 24px; }
   .gm-video-equation-top em { font-size: 20px; }
   .gm-video-equation-bottom { font-size: 24px; }
-  .gm-bracket { width: 22px; }
-  .gm-video-sigma { font-size: 18px; right: 10px; }
+
+  /* ── Bracket layout fix (mobile + iPad portrait) ────────────────────────
+     Root cause: in flex mode, stage-inner uses flex-basis:0%, which causes
+     the video frame's padding-bottom:56.25% to resolve against the flex
+     CONTAINER height (not the element's own width) on iOS Safari. This
+     inflates the video frame height, which then over-stretches the
+     hand-drawn brackets via align-self:stretch.
+
+     Fix: switch mathrow to block so padding-bottom always resolves against
+     the element's own inline width. Brackets then pin absolutely so they
+     hug exactly the video frame's real rendered height. ─────────────── */
+  .gm-video-mathrow {
+    display: block;
+    position: relative;
+  }
+
+  /* Brackets: absolute, top-to-bottom of the mathrow block = video height */
+  .gm-bracket {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 22px;
+  }
+  .gm-bracket.gm-bracket-left  { left: 0; }
+  .gm-bracket.gm-bracket-right { right: 0; }
+  .gm-bracket svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Stage-inner: normal block, indented so brackets flank it cleanly */
+  .gm-video-stage-inner {
+    display: block;
+    margin: 0 26px;
+    position: relative;
+  }
+
+  /* Sigma chip: move inside the bracket frame — keeps the math annotation
+     visible without crowding the equation line above */
+  .gm-video-sigma {
+    font-size: 18px;
+    top: 10px  !important;
+    right: 10px !important;
+    transform: rotate(1.5deg) !important;
+  }
 }
 
 
@@ -1908,9 +1952,16 @@ svg { max-width: 100%; }
   body .mc-house-cta-arrow,
   body .mc-jacobi-corner,
   body .mc-hero-sketch,
-  body .gm-hero-sketch,
   body .mc-video-house-callout {
     display: none !important;
+  }
+
+  /* God's Math hero sketch stays visible — the SVG uses
+     preserveAspectRatio="xMidYMid slice" so it fills any viewport
+     width correctly. Just soften the opacity slightly for mobile. */
+  body .gm-hero-sketch {
+    display: block !important;
+    opacity: 0.07;
   }
 
   /* HOUSE blueprint video — show simplified on mobile */
